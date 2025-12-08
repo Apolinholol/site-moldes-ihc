@@ -1,4 +1,5 @@
 <template>
+  
   <Navbar @toggle-menu="handleToggleMenu" />
   <div class="min-h-screen">
     <router-view @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />

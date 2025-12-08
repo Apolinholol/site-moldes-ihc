@@ -2,7 +2,7 @@
 
     <section id="SectionApresentacao" class="h-[33vh]">
         <div class="mt-[4rem]">
-            <div class="ms-[5px] text-[3rem] inline-block  border-b-[5px] border-black">
+            <div class="ms-[5px] text-[3rem] inline-block border-b-[5px] border-black">
                 <b class="flex gap-[8px] " style="flex-wrap: wrap;">
                     Interface Homem Máquina é
                     <span class="my-0 mb-[4px] bg-[oklch(90.5%_.182_98.111)] p-[4px] pb-[0px] h-fit ">
@@ -11,7 +11,7 @@
                 </b>
             </div>
         </div>
-        <p class="ms-[5px]" style="font-size: 1.3em;">
+        <p class="ms-[5px]" style="font-size: 1.2em;">
             Seja bem-vindo! Este espaço foi criado para aproximar você do fascinante universo da Interface Homem-Máquina.<br>
             Juntos exploraremos os conceitos, princípios e melhores práticas que tornam a interação mais intuitiva, eficiente e agradável.
         </p>

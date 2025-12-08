@@ -1,5 +1,5 @@
 <template>
-    <nav class="border-2 border-black shadow-[4px_4px_0_0] w-100 h-[3rem] flex items-center justify-between px-4">
+    <nav class="border-2 border-black shadow-[4px_4px_0_0] h-[3rem] flex items-center justify-between px-4 w-[100%] mt-[6px]">
         <button 
             @click="$emit('toggle-menu');state.mudarBotao = !state.mudarBotao"
             class="min-[576px]:hidden w-8 h-8 

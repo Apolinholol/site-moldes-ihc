@@ -1,18 +1,17 @@
 <template>
   <section id="SectionDocumentacao" class="flex relative min-h-screen">
 
-    <!-- OFF CANVAS OVERLAY (Somente em telas < 576px) -->
+
     <div 
       v-if="props.menuAberto && eTelaMobile"
       class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
       @click="$emit('toggle-menu')">
     </div>
 
-    <!-- SIDEBAR: Aberto por padrão, off-canvas em telas pequenas -->
     <section 
       id="SectionItensDocumentacao"
       class="
-        w-64 bg-white border-r-2 border-black p-4 overflow-y-auto
+        w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto
         fixed left-0 top-12 h-[calc(100vh-3rem)] z-50 transition-transform duration-500 ease-out
         min-[576px]:relative min-[576px]:top-0 min-[576px]:h-auto min-[576px]:translate-x-0
       "
@@ -61,7 +60,6 @@
       </div>
     </section>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <section 
       id="SectionConteudoDocumentacao" 
       class="flex-1 p-6 min-[576px]:ml-0">

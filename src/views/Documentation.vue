@@ -13,10 +13,10 @@
   class="
     w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto
     fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out
-    min-[576px]:static min-[576px]:translate-x-0 min-[576px]:h-auto
+    min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto
   "
   :class="{
-    '-translate-x-full h-[calc(100vh-3rem)]': !props.menuAberto && eTelaMobile,
+    '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
     'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile
   }"
 >
@@ -66,7 +66,7 @@
 
     <section 
       id="SectionConteudoDocumentacao" 
-      class="flex-1 p-4 sm:p-8 bg-yellow absolute">
+      class="flex-1 p-4 sm:p-8 bg-yellow md-absolute">
 
       <div v-if="state.paginaAtiva === 0" class="max-w-3xl">
         <h1 class="text-4xl font-black text-black mb-6 border-b-4 border-black pb-4">Heurísticas de Nielsen</h1>
@@ -113,7 +113,7 @@ const state = reactive({
 });
 
 const checarTelaMobile = () => {
-  eTelaMobile.value = window.innerWidth < 576;
+  eTelaMobile.value = window.innerWidth < 800;
 };
 
 onMounted(() => {
@@ -122,7 +122,7 @@ onMounted(() => {
 });
 
 watch(() => window.innerWidth, (novoValor) => {
-      if (window.innerWidth >= 576) {
+      if (window.innerWidth >= 800) {
         eTelaMobile.value = false;
       } else {
         eTelaMobile.value = true;
@@ -138,4 +138,10 @@ function alterarPagina(index: number) {
 </script>
 
 <style scoped>
+
+  @media screen and (max-width: 800px) {
+    .md-absolute{
+      position: absolute;
+    }
+  }
 </style>

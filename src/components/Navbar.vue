@@ -2,7 +2,7 @@
     <nav class=" bg-black  h-[3rem] flex items-center justify-between px-4 w-[100%] sticky">
         <button 
             @click="$emit('toggle-menu');"
-            class="min-[576px]:hidden w-10 h-10 
+            class="min-[800px]:hidden w-10 h-10 
                    flex items-center justify-center border-2 border-black
                    bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all
                    font-bold">

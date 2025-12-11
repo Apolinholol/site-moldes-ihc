@@ -1,7 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss";
+:root{
+    --mouse-shadow: 5px;
+}
 
 svg {
     max-height: 36px;
+}
+
+html,body{
+    font-family: "Oswald Bold", sans-serif ;
+    text-transform: uppercase;
+    
+
+}
+
+.texto-sombra-padrao{
+    text-shadow: -2px 0 #000, 0 -2px #000, 2px 0 #000, 0 2px #000,
+    2px 2px #000, -2px -2px #000, -2px 2px #000, 2px -2px #000,
+    calc(-1 * var(--mouse-shadow)) var(--mouse-shadow) #000;
 }

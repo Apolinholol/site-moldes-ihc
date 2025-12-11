@@ -1,64 +1,65 @@
 <template>
   <section id="SectionDocumentacao" class="flex relative min-h-screen">
-
-    <!-- OFF CANVAS OVERLAY (Somente em telas < 576px) -->
     <div
       v-if="props.menuAberto && eTelaMobile"
       class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
       @click="$emit('toggle-menu')">
-    </div>
+  </div>
 
-    <!-- SIDEBAR: Aberto por padrão, off-canvas em telas pequenas -->
-    <section
-      id="SectionItensDocumentacao"
-      class="
-        w-64 bg-white border-r-2 border-black p-4 overflow-y-auto
-        fixed left-0 top-12 h-[calc(100vh-3rem)] z-50 transition-transform duration-500 ease-out
-        min-[576px]:relative min-[576px]:top-0 min-[576px]:h-auto min-[576px]:translate-x-0
-      "
-      :class="{
-        '-translate-x-[200px]': !props.menuAberto && eTelaMobile,
-        'translate-x-0': props.menuAberto || !eTelaMobile
-      }">
+<section
+  id="SectionItensDocumentacao"
+  class="
+    w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto
+    fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out
+    min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto
+  "
+  :class="{
+    '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
+    'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile
+  }"
+>
 
-      <div role="tablist" class="flex flex-col gap-2">
+
+
+      <nav role="tablist" class="flex flex-col gap-3">
+        <p class="text-xs font-bold uppercase tracking-wider text-gray-600 pl-2">Tópicos</p>
 
         <button
           @click="alterarPagina(0)"
-          :class="{ 'bg-yellow-300': state.paginaAtiva === 0 }"
-          class="tab-item border-2 border-black px-4 py-2 font-semibold hover:bg-yellow-200 transition-colors">
+          :class="{ 'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 0, 'border-l-4 border-transparent': state.paginaAtiva !== 0 }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Heurísticas de Nielsen
         </button>
 
         <button
           @click="alterarPagina(1)"
-          :class="{ 'bg-yellow-300': state.paginaAtiva === 1 }"
-          class="tab-item border-2 border-black px-4 py-2 font-semibold hover:bg-yellow-200 transition-colors">
+          :class="{ 'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 1, 'border-l-4 border-transparent': state.paginaAtiva !== 1 }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Teoria das cores
         </button>
 
         <button
           @click="alterarPagina(2)"
-          :class="{ 'bg-yellow-300': state.paginaAtiva === 2 }"
-          class="tab-item border-2 border-black px-4 py-2 font-semibold hover:bg-yellow-200 transition-colors">
+          :class="{ 'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 2, 'border-l-4 border-transparent': state.paginaAtiva !== 2 }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Lei de Hick-Hyman
         </button>
 
         <button
           @click="alterarPagina(3)"
-          :class="{ 'bg-yellow-300': state.paginaAtiva === 3 }"
-          class="tab-item border-2 border-black px-4 py-2 font-semibold hover:bg-yellow-200 transition-colors">
+          :class="{ 'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 3, 'border-l-4 border-transparent': state.paginaAtiva !== 3 }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Lei de Fitts
         </button>
 
         <button
           @click="alterarPagina(4)"
-          :class="{ 'bg-yellow-300': state.paginaAtiva === 4 }"
-          class="tab-item border-2 border-black px-4 py-2 font-semibold hover:bg-yellow-200 transition-colors">
+          :class="{ 'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 4, 'border-l-4 border-transparent': state.paginaAtiva !== 4 }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Gestalt
         </button>
 
-      </div>
+      </nav>
     </section>
 
     <!-- CONTEÚDO PRINCIPAL -->
@@ -1005,7 +1006,7 @@ const state = reactive({
 });
 
 const checarTelaMobile = () => {
-  eTelaMobile.value = window.innerWidth < 576;
+  eTelaMobile.value = window.innerWidth < 800;
 };
 
 onMounted(() => {
@@ -1014,9 +1015,11 @@ onMounted(() => {
 });
 
 watch(() => window.innerWidth, (novoValor) => {
-    if (novoValor >= 576 && !props.menuAberto) {
-        emit('toggle-menu');
-    }
+      if (window.innerWidth >= 800) {
+        eTelaMobile.value = false;
+      } else {
+        eTelaMobile.value = true;
+      }
 });
 
 function alterarPagina(index: number) {
@@ -1028,4 +1031,9 @@ function alterarPagina(index: number) {
 </script>
 
 <style scoped>
+  @media screen and (max-width: 800px) {
+    .md-absolute{
+      position: absolute;
+    }
+  }
 </style>

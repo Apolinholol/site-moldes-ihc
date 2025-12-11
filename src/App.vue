@@ -1,7 +1,9 @@
 <template>
-  <Navbar @toggle-menu="handleToggleMenu" />
-  <div class="min-h-screen">
-    <router-view @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />
+
+  <div class="flex flex-col min-h-screen">
+    <Navbar @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto"/>
+  
+        <router-view @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />
   </div>
   <Footer />
 </template>
@@ -19,4 +21,5 @@ function handleToggleMenu() {
 </script>
 
 <style scoped>
+
 </style>

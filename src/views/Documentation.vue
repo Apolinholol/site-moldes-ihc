@@ -1227,14 +1227,14 @@
                   Usar ícones super detalhados ou fotos complexas para representar ações simples.
                   Demora para o cérebro processar.
                 </p>
-                <div
-                  class="bg-white h-16 flex items-center justify-center border border-gray-200 text-xs text-gray-400"
-                >
+                <div class="bg-white h-40 w-full border border-gray-200 rounded overflow-hidden">
                   <img
                     src="../assets/coleman-glover-ZF2_DnhI4t4-unsplash.jpg"
-                    alt="Foto realista de uma lixeira"
+                    alt="Foto realista de lixeira"
+                    class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   />
                 </div>
+                <p class="text-xs text-red-500 mt-2 text-center">Muita informação visual desnecessária.</p>
               </div>
 
               <div class="p-6 bg-green-50">

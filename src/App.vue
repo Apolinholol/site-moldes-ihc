@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <Navbar @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />
+  <div class="flex flex-col min-h-screen relative">
+    <Navbar  @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />
 
     <router-view @toggle-menu="handleToggleMenu" :menu-aberto="menuAberto" />
   </div>

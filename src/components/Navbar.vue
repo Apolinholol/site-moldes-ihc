@@ -1,6 +1,9 @@
 <template>
-  <nav class="bg-black h-[3rem] flex items-center justify-between px-4 w-[100%] sticky">
+  <nav
+    class="limelight-regular bg-black h-[3rem] flex items-center justify-between px-4 w-[100%] sticky top-0 z-50"
+  >
     <button
+      v-show="pathAtual === '/documentacao'"
       @click="$emit('toggle-menu')"
       class="min-[800px]:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all font-bold"
     >
@@ -49,7 +52,14 @@
   </nav>
 </template>
 <script lang="ts" setup>
-import { reactive, watch } from 'vue'
+import { computed, reactive, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+
+const pathAtual = computed(() => route.path)
+let tamanhoTela = computed(() => window.innerWidth)
 
 const state = reactive({
   mudarBotao: false,
@@ -60,14 +70,21 @@ const props = defineProps<{
 }>()
 
 watch(
+  () => window.innerWidth,
+  () => {
+    tamanhoTela = window.innerWidth > 800;
+  },
+)
+watch(
   () => props.menuAberto,
-  (novoValor) => {
+  () => {
     state.mudarBotao = !state.mudarBotao
   },
 )
 
 defineEmits(['toggle-menu'])
 </script>
+
 <style scoped>
 ul {
   text-decoration: none;

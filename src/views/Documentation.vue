@@ -1,5 +1,5 @@
 <template>
-  <section id="SectionDocumentacao" class="flex relative min-h-screen">
+  <section id="SectionDocumentacao" class="flex sticky min-h-screen">
     <div
       v-if="props.menuAberto && eTelaMobile"
       class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"

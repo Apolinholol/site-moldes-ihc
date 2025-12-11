@@ -1,16 +1,28 @@
 <template>
-  <footer
-    class="border-t-4 border-black bg-black text-yellow-300 py-4 px-4 flex justify-between items-center min-h-[4rem] shadow-[0_-4px_0_0]"
-  >
-    <div class="text-sm font-bold uppercase tracking-wider">
-      <p>© 2025</p>
-    </div>
-    <div
-      class="hidden sm:flex gap-4 items-center text-xs uppercase font-bold tracking-wider text-yellow-200"
-    >
-      <span>Todos os direitos reservados</span>
-    </div>
-  </footer>
+   <footer class="bg-black text-yellow-400 px-8 py-8  border-yellow-400">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h4 class="font-black text-lg mb-3" >NAVEGAÇÃO</h4>
+              <ul class="space-y-2 font-bold">
+                <li><a href="/" class="hover:text-white transition">Home</a></li>
+                <li><a href="/documentacao" class="hover:text-white transition">Documentação</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-black text-lg mb-3" >INSTITUIÇÃO</h4>
+              <p class="font-bold text-sm">Instituto Federal Fluminense -<br/>Campus Itaperuna<br/>Disciplina IHC</p>
+            </div>
+            <div>
+              <h4 class="font-black text-lg mb-3" >PROFESSORA</h4>
+              <p class="font-bold text-sm">Michelle Maria Freitas Neto</p>
+            </div>
+          </div>
+          <div class="border-t-2 border-yellow-400 pt-6 text-center font-bold">
+            <p>Direitos reservados para Matheus Lopes Couto Neves - © 2025</p>
+          </div>
+        </div>
+      </footer>
 </template>
 
 <script lang="ts" setup></script>

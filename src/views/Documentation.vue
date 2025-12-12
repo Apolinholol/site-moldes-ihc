@@ -8,7 +8,7 @@
 
     <section
       id="SectionItensDocumentacao"
-      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
+      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12  z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
       :class="{
         '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
         'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile,
@@ -1234,7 +1234,9 @@
                     class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   />
                 </div>
-                <p class="text-xs text-red-500 mt-2 text-center">Muita informação visual desnecessária.</p>
+                <p class="text-xs text-red-500 mt-2 text-center">
+                  Muita informação visual desnecessária.
+                </p>
               </div>
 
               <div class="p-6 bg-green-50">

@@ -59,7 +59,7 @@ const route = useRoute()
 
 
 const pathAtual = computed(() => route.path)
-let tamanhoTela = computed(() => window.innerWidth)
+let tamanhoTela = window.innerWidth;
 
 const state = reactive({
   mudarBotao: false,
@@ -72,7 +72,7 @@ const props = defineProps<{
 watch(
   () => window.innerWidth,
   () => {
-    tamanhoTela = window.innerWidth > 800;
+      tamanhoTela = window.innerWidth > 800;
   },
 )
 watch(

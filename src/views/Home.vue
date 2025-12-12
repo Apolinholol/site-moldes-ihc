@@ -227,7 +227,7 @@ onMounted(() => {
 
 function retornaDefinicao() {
   setInterval(() => {
-    state.definicao = state.lstDefinicoes[state.indexDefinicao % state.lstDefinicoes.length]
+    state.definicao = state.lstDefinicoes[state.indexDefinicao % state.lstDefinicoes.length] ?? 'Usabilidade'
     state.indexDefinicao++
   }, 2000)
 }

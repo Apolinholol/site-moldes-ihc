@@ -58,7 +58,6 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const pathAtual = computed(() => route.path)
-// let tamanhoTela = window.innerWidth;
 
 const state = reactive({
   mudarBotao: false,
@@ -68,12 +67,6 @@ const props = defineProps<{
   menuAberto: boolean
 }>()
 
-// watch(
-//   () => window.innerWidth,
-//   () => {
-//       tamanhoTela = window.innerWidth > 800;
-//   },
-// )
 watch(
   () => props.menuAberto,
   () => {

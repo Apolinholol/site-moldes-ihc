@@ -50,10 +50,11 @@
       </li>
     </ul>
   </nav>
+
 </template>
 <script lang="ts" setup>
-import { computed, reactive, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed, reactive, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
@@ -71,7 +72,7 @@ watch(
   () => props.menuAberto,
   () => {
     state.mudarBotao = !state.mudarBotao
-  },
+  }
 )
 
 defineEmits(['toggle-menu'])

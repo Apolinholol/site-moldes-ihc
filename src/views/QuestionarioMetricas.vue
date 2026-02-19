@@ -1,267 +1,231 @@
 <template>
-  <div class="questionnaire-metrics">
-    <div class="container mx-auto p-6">
-      <h1 class="text-3xl font-bold mb-6">Métricas do Formulário</h1>
+  <div class="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold text-slate-900 mb-2">📊 Suas Métricas</h1>
+        <p class="text-lg text-slate-600">Acompanhe seu desempenho nos quizzes de IHC</p>
+      </div>
 
-      <!-- Seção de Perguntas -->
-      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 class="text-2xl font-semibold mb-4">Perguntas</h2>
-        <div class="space-y-4">
-          <div
-            v-for="(pergunta, index) in perguntas"
-            :key="index"
-            class="border border-gray-300 rounded-lg p-4"
+      <!-- Cards de Resumo -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <!-- Total de Quizzes -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-sm text-slate-600 font-medium">Total de Quizzes</p>
+              <p class="text-3xl font-bold text-slate-900 mt-2">{{ totalQuizzes }}</p>
+            </div>
+            <span class="text-3xl">📝</span>
+          </div>
+        </div>
+
+        <!-- Total de Perguntas -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-sm text-slate-600 font-medium">Total de Perguntas</p>
+              <p class="text-3xl font-bold text-slate-900 mt-2">{{ totalPerguntas }}</p>
+            </div>
+            <span class="text-3xl">❓</span>
+          </div>
+        </div>
+
+        <!-- Total de Acertos -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-sm text-slate-600 font-medium">Respostas Corretas</p>
+              <p class="text-3xl font-bold text-slate-900 mt-2">{{ totalAcertos }}</p>
+            </div>
+            <span class="text-3xl">✅</span>
+          </div>
+        </div>
+
+        <!-- Porcentagem Geral -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-500">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="text-sm text-slate-600 font-medium">Taxa de Acerto</p>
+              <p class="text-3xl font-bold text-slate-900 mt-2">{{ porcentagemGeral }}%</p>
+            </div>
+            <span class="text-3xl">🎯</span>
+          </div>
+          <!-- Barra de progresso -->
+          <div class="mt-4 bg-gray-200 rounded-full h-2">
+            <div
+              class="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full transition-all"
+              :style="{ width: `${porcentagemGeral}%` }"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Quizzes Respondidos -->
+      <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6">📋 Histórico de Quizzes</h2>
+
+        <div v-if="carregando" class="text-center py-8">
+          <p class="text-slate-600">Carregando dados...</p>
+        </div>
+
+        <div v-else-if="quizzes.length === 0" class="bg-slate-50 rounded-lg p-8 text-center">
+          <p class="text-slate-600 mb-4">Você ainda não respondeu nenhum quiz.</p>
+          <router-link
+            to="/gamificacao"
+            class="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
-            <div class="flex items-center gap-4">
-              <input
-                type="checkbox"
-                :id="`pergunta-${index}`"
-                v-model="pergunta.marcada"
-                class="w-5 h-5 cursor-pointer"
-                @change="calcularMetricas"
-              />
-              <div class="flex-1">
-                <label :for="`pergunta-${index}`" class="font-medium cursor-pointer">
-                  {{ pergunta.pergunta }}
-                </label>
-                <div class="mt-2 text-sm text-gray-600">
-                  <p>
-                    <span class="font-semibold">Status:</span>
-                    <span v-if="pergunta.marcada" class="text-blue-600">Marcada</span>
-                    <span v-else class="text-gray-500">Não marcada</span>
-                  </p>
-                  <p>
-                    <span class="font-semibold">Resposta Correta:</span>
-                    <span v-if="pergunta.ehCerta" class="text-green-600">Sim ✓</span>
-                    <span v-else class="text-red-600">Não ✗</span>
-                  </p>
-                </div>
+            Começar um Quiz
+          </router-link>
+        </div>
+
+        <div v-else class="space-y-4">
+          <div
+            v-for="(quiz, index) in quizzes"
+            :key="index"
+            class="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-lg font-semibold text-slate-900">Quiz {{ index + 1 }}</h3>
+                <p class="text-sm text-slate-500">{{ formatarData(quiz.data) }}</p>
               </div>
+              <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                {{ quiz.respostas_corretas }}/{{ quiz.total_perguntas }} acertos
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <p class="text-xs text-slate-600 font-medium">Desempenho</p>
+                <p class="text-2xl font-bold text-slate-900">
+                  {{ Math.round((quiz.respostas_corretas / quiz.total_perguntas) * 100) }}%
+                </p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-600 font-medium">Pontuação</p>
+                <p class="text-2xl font-bold text-slate-900">{{ quiz.pontos }}</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-600 font-medium">Status</p>
+                <p
+                  class="text-lg font-bold"
+                  :class="
+                    quiz.respostas_corretas / quiz.total_perguntas >= 0.8
+                      ? 'text-green-600'
+                      : 'text-orange-600'
+                  "
+                >
+                  {{ quiz.respostas_corretas / quiz.total_perguntas >= 0.8 ? '🌟 Bom' : '⚡ Pode melhorar' }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Barra de progresso individual -->
+            <div class="mt-4 bg-gray-200 rounded-full h-2">
+              <div
+                class="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all"
+                :style="{ width: `${(quiz.respostas_corretas / quiz.total_perguntas) * 100}%` }"
+              />
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Seção de Métricas -->
-      <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-        <h2 class="text-2xl font-semibold mb-4">Resultados</h2>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-blue-50 p-4 rounded-lg">
-            <p class="text-gray-600">Perguntas Marcadas</p>
-            <p class="text-3xl font-bold text-blue-600">{{ metricas.totalMarcadas }}</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg">
-            <p class="text-gray-600">Respostas Corretas</p>
-            <p class="text-3xl font-bold text-green-600">{{ metricas.respostasCorretas }}</p>
-          </div>
-          <div class="bg-purple-50 p-4 rounded-lg col-span-2">
-            <p class="text-gray-600">Porcentagem de Acerto</p>
-            <p class="text-3xl font-bold text-purple-600">{{ metricas.porcentagemAcerto }}%</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Botões de Ação -->
-      <div class="flex gap-4">
-        <input
-          v-model="state.usuario"
-          style="background-color: red; color: white"
-          placeholder="Nome do Usuário"
-          class="border border-gray-300 w-full rounded-lg px-4 py-2"
-        />
-        <button
-          @click="enviarParaSupabase"
-          class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+      <!-- Botão para novo Quiz -->
+      <div class="text-center">
+        <router-link
+          to="/gamificacao"
+          class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
         >
-          Enviar para Supabase
-        </button>
-        <button
-          @click="resetarFormulario"
-          class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition"
-        >
-          Resetar Formulário
-        </button>
-      </div>
-
-      <!-- Mensagens de Status -->
-      <div v-if="mensagem" :class="`mt-4 p-4 rounded-lg ${mensagem.tipo}`">
-        {{ mensagem.texto }}
+          🎮 Fazer Outro Quiz
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue'
-import { createClient } from '@supabase/supabase-js'
+import { ref, computed, onMounted } from 'vue'
+import { supabase } from '@/utils/supabaseClient'
 
-// ========================================
-// CONFIGURAÇÃO DO SUPABASE
-// ========================================
-// IMPORTANTE: Substitua as strings abaixo pelas suas credenciais do Supabase
-const SUPABASE_URL = 'https://lnzimmgifmhpoqeuhjss.supabase.co'
-const SUPABASE_ANON_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxuemltbWdpZm1ocG9xZXVoanNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjk3NzMsImV4cCI6MjA4Njk0NTc3M30.yMa2blMTa4pWKhuO0SNL1z8rSDihentFLNtxTWCRjCU'
-
-// Criar cliente Supabase
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-
-const state = reactive({
-  usuario: '',
-})
 // ========================================
 // TIPOS E INTERFACES
 // ========================================
-interface Pergunta {
-  marcada: boolean
-  pergunta: string
-  ehCerta: boolean
-}
-
-interface Metricas {
-  totalMarcadas: number
-  respostasCorretas: number
-  porcentagemAcerto: number
+interface QuizResposta {
+  data: string
+  total_perguntas: number
+  respostas_corretas: number
+  pontos: number
+  erros_identificados?: number
 }
 
 // ========================================
-// DADOS MOCKADOS
+// ESTADO REATIVO
 // ========================================
-const perguntas = ref<Pergunta[]>([
-  {
-    marcada: false,
-    pergunta: 'O Vue 3 utiliza Composition API como padrão?',
-    ehCerta: true,
-  },
-  {
-    marcada: false,
-    pergunta: 'Tailwind CSS é um framework de componentes pré-construídos?',
-    ehCerta: false,
-  },
-  {
-    marcada: false,
-    pergunta: 'Supabase é um backend-as-a-service baseado em PostgreSQL?',
-    ehCerta: true,
-  },
-  {
-    marcada: false,
-    pergunta: 'TypeScript é obrigatório para usar Vue 3?',
-    ehCerta: false,
-  },
-  {
-    marcada: false,
-    pergunta: 'Vite é um bundler mais rápido que Webpack?',
-    ehCerta: true,
-  },
-])
+const quizzes = ref<QuizResposta[]>([])
+const carregando = ref(true)
 
 // ========================================
-// MÉTRICAS
+// COMPUTED
 // ========================================
-const metricas = reactive<Metricas>({
-  totalMarcadas: 0,
-  respostasCorretas: 0,
-  porcentagemAcerto: 0,
+const totalQuizzes = computed(() => quizzes.value.length)
+
+const totalPerguntas = computed(() => {
+  return quizzes.value.reduce((sum, quiz) => sum + quiz.total_perguntas, 0)
 })
 
-const mensagem = ref<{ tipo: string; texto: string } | null>(null)
+const totalAcertos = computed(() => {
+  return quizzes.value.reduce((sum, quiz) => sum + quiz.respostas_corretas, 0)
+})
+
+const porcentagemGeral = computed(() => {
+  if (totalPerguntas.value === 0) return 0
+  return Math.round((totalAcertos.value / totalPerguntas.value) * 100)
+})
 
 // ========================================
 // FUNÇÕES
 // ========================================
-
-/**
- * Calcula as métricas com base nas respostas marcadas
- */
-const calcularMetricas = () => {
-  const marcadas = perguntas.value.filter((p) => p.marcada)
-  const corretas = marcadas.filter((p) => p.ehCerta)
-
-  metricas.totalMarcadas = marcadas.length
-  metricas.respostasCorretas = corretas.length
-
-  // Calcular porcentagem
-  if (marcadas.length === 0) {
-    metricas.porcentagemAcerto = 0
-  } else {
-    metricas.porcentagemAcerto = Math.round((corretas.length / marcadas.length) * 100)
-  }
-}
-
-/**
- * Envia as métricas para Supabase
- */
-const enviarParaSupabase = async () => {
+const carregarQuizzes = async () => {
   try {
-    // Preparar dados para envio
-    const dadosParaEnvio = {
-      usuario: state.usuario,
-      data: new Date().toISOString(),
-      total_perguntas: perguntas.value.length,
-      total_marcadas: metricas.totalMarcadas,
-      respostas_corretas: metricas.respostasCorretas,
-      porcentagem_acerto: metricas.porcentagemAcerto,
-      detalhes_perguntas: perguntas.value,
-    }
-
-    // Inserir dados na tabela 'metricas_formulario' do Supabase
-    const { data, error } = await supabase.from('metricas_formulario').insert([dadosParaEnvio])
+    carregando.value = true
+    const { data, error } = await supabase
+      .from('gamificacao_respostas')
+      .select('data, total_perguntas, respostas_corretas, pontos, erros_identificados')
+      .order('data', { ascending: false })
 
     if (error) {
-      mostrarMensagem(
-        `Erro ao enviar para Supabase: ${error.message}`,
-        'bg-red-100 text-red-800 border border-red-400',
-      )
-      console.error('Erro Supabase:', error)
-    } else {
-      mostrarMensagem(
-        'Métricas enviadas com sucesso para Supabase!',
-        'bg-green-100 text-green-800 border border-green-400',
-      )
-      console.log('Dados enviados:', data)
+      console.error('Erro ao carregar quizzes:', error)
+    } else if (data) {
+      quizzes.value = data
     }
-  } catch (erro) {
-    mostrarMensagem(
-      `Erro ao conectar com Supabase: ${erro instanceof Error ? erro.message : 'Erro desconhecido'}`,
-      'bg-red-100 text-red-800 border border-red-400',
-    )
-    console.error('Erro:', erro)
+  } catch (err) {
+    console.error('Erro:', err)
+  } finally {
+    carregando.value = false
   }
 }
 
-/**
- * Reseta o formulário
- */
-const resetarFormulario = () => {
-  perguntas.value.forEach((p) => {
-    p.marcada = false
-  })
-  calcularMetricas()
-  state.usuario = ''
-  mostrarMensagem(
-    'Formulário resetado com sucesso!',
-    'bg-blue-100 text-blue-800 border border-blue-400',
-  )
+const formatarData = (dataISO: string) => {
+  try {
+    const data = new Date(dataISO)
+    return data.toLocaleDateString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  } catch {
+    return dataISO
+  }
 }
 
-/**
- * Exibe mensagem de status
- */
-const mostrarMensagem = (texto: string, tipo: string) => {
-  mensagem.value = { texto, tipo }
-  setTimeout(() => {
-    mensagem.value = null
-  }, 4000)
-}
-
-// Calcular métricas ao montar o componente
-calcularMetricas()
+// Carregar dados ao montar o componente
+onMounted(() => {
+  carregarQuizzes()
+})
 </script>
 
-<style scoped>
-.questionnaire-metrics {
-  background-color: #f9fafb;
-  min-height: 100vh;
-  padding: 2rem 0;
-}
-</style>
+<style scoped></style>

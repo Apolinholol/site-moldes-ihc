@@ -1,0 +1,25 @@
+#!/bin/bash
+# Script para executar migrações do Supabase
+# Execute este arquivo para criar as tabelas necessárias
+
+echo "======================================="
+echo "Setup do Banco de Dados Supabase"
+echo "======================================="
+echo ""
+echo "Este script ajudará a criar as tabelas necessárias."
+echo ""
+echo "IMPORTANTE: Você precisa fazer isso manualmente no dashboard Supabase:"
+echo ""
+echo "1. Acesse https://app.supabase.com"
+echo "2. Selecione seu projeto"
+echo "3. Vá para 'SQL Editor'"
+echo "4. Clique em 'New Query'"
+echo "5. Cole o conteúdo dos arquivos em supabase/migrations/"
+echo "6. Execute (Run)"
+echo ""
+echo "Arquivos a executar em ordem:"
+echo "  - 001_create_gamificacao_respostas.sql"
+echo "  - 002_create_metricas_formulario.sql"
+echo ""
+echo "Após criar as tabelas, seu aplicativo funcionará normalmente!"
+echo ""

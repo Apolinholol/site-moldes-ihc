@@ -48,6 +48,13 @@
           >Documentação</router-link
         >
       </li>
+      <li>
+        <router-link
+          to="/gamificacao"
+          class="text-yellow-300 font-bold hover:text-white transition-colors"
+          >Gamificação</router-link
+        >
+      </li>
     </ul>
   </nav>
 

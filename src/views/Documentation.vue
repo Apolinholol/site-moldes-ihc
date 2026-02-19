@@ -85,6 +85,26 @@
       </nav>
     </section>
 
+    <!-- Toasts globais (teleportados para o body, acima do header) -->
+    <Teleport to="body">
+      <Transition name="fade">
+        <div
+          v-if="state.h1ToastVisivel"
+          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]"
+        >
+          ✓ Salvo com sucesso!
+        </div>
+      </Transition>
+      <Transition name="fade">
+        <div
+          v-if="state.h3ToastVisivel"
+          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]"
+        >
+          ✓ Relatório gerado com sucesso!
+        </div>
+      </Transition>
+    </Teleport>
+
     <!-- CONTEÚDO PRINCIPAL -->
     <section id="SectionConteudoDocumentacao" class="flex-1 p-6 min-[576px]:ml-0">
       <div v-if="state.paginaAtiva === 0" class="prose max-w-none">
@@ -128,7 +148,7 @@
                   <span class="text-xl">✕</span> O Erro (Sem Feedback)
                 </h4>
                 <p class="text-sm text-gray-700 mb-2">
-                  O usuário clica em "Salvar Notas", o botão não muda de cor, nada aparece na tela.
+                  O usuário clica em "Salvar notas", o botão não muda de cor, nada aparece na tela.
                   Ele clica mais 5 vezes achando que travou.
                 </p>
                 <div
@@ -147,9 +167,22 @@
                   mensagem de sucesso.
                 </p>
                 <div
-                  class="bg-white p-3 border border-green-200 rounded flex items-center justify-center gap-2 text-green-600 font-semibold shadow-sm"
+                  class="bg-white p-3 border border-green-200 rounded flex items-center justify-center gap-2 shadow-sm"
                 >
-                  <span class="animate-spin">⟳</span> Salvando... -> Salvo!
+                  <button
+                    @click="simularSalvar"
+                    :disabled="state.h1Salvando || state.h1Salvo"
+                    class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150"
+                    :class="{
+                      'bg-blue-600 hover:bg-blue-700 cursor-pointer': !state.h1Salvando && !state.h1Salvo,
+                      'bg-blue-400 cursor-not-allowed': state.h1Salvando,
+                      'bg-green-600 cursor-default': state.h1Salvo,
+                    }"
+                  >
+                    <span v-if="!state.h1Salvando && !state.h1Salvo">Salvar</span>
+                    <span v-else-if="state.h1Salvando" class="flex items-center gap-2"><span class="animate-spin">⟳</span> Salvando...</span>
+                    <span v-else class="flex items-center gap-1">✓ Salvo!</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -189,7 +222,7 @@
                   Traduzir o erro para a linguagem da escola e do dia a dia.
                 </p>
                 <div
-                  class="bg-white p-4 border border-green-200 rounded font-semibold text-gray-800"
+                  class="bg-white p-4 border border-green-200 rounded font-semibold text-red-600"
                 >
                   Não foi possível cadastrar: Já existe um aluno com esta matrícula no sistema.
                 </div>
@@ -211,11 +244,11 @@
                   <span class="text-xl">✕</span> O Erro (Beco sem saída)
                 </h4>
                 <p class="text-sm text-gray-700 mb-2">
-                  O usuário clica em "Gerar Relatório Completo" sem querer. O processo demora 5
+                  O usuário clica em "Gerar relatório completo" sem querer. O processo demora 5
                   minutos e não há botão de cancelar.
                 </p>
                 <div class="bg-white p-4 border border-red-200 rounded text-center">
-                  <button class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed">
+                  <button class="bg-gray-300 text-gray-500 px-4 py-2 rounded cursor-not-allowed" disabled>
                     Carregando... (Aguarde)
                   </button>
                 </div>
@@ -226,15 +259,37 @@
                   <span class="text-xl">✓</span> A Solução
                 </h4>
                 <p class="text-sm text-gray-700 mb-2">
-                  Oferecer formas de desfazer ações ou cancelar processos.
+                  Antes de executar, confirmar a intenção do usuário com uma pergunta clara.
                 </p>
                 <div
-                  class="bg-white p-4 border border-green-200 rounded text-center flex justify-center gap-4"
+                  class="bg-white p-4 border border-green-200 rounded text-center"
                 >
-                  <button class="bg-blue-600 text-white px-4 py-2 rounded">Carregando...</button>
-                  <button class="text-red-600 font-bold underline hover:text-red-800">
-                    Cancelar
-                  </button>
+                  <!-- Estado inicial -->
+                  <div v-if="state.h3EtapaModal === 0">
+                    <button
+                      @click="h3GerarRelatorio"
+                      class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer"
+                    >Gerar relatório completo</button>
+                  </div>
+                  <!-- Mini modal de confirmação -->
+                  <div v-else-if="state.h3EtapaModal === 1" class="space-y-3">
+                    <p class="text-sm text-gray-700 font-semibold m-0">Tem certeza que deseja gerar o relatório completo?</p>
+                    <p class="text-xs text-gray-500 m-0">Esse processo pode levar alguns minutos.</p>
+                    <div class="flex justify-center gap-3 mt-2">
+                      <button
+                        @click="h3Confirmar"
+                        class="bg-green-600 text-white px-4 py-2 rounded text-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer"
+                      >Gerar</button>
+                      <button
+                        @click="h3Cancelar"
+                        class="bg-white text-red-600 border border-red-200 px-4 py-2 rounded text-sm font-semibold transition-colors duration-150 hover:bg-red-50 cursor-pointer"
+                      >Cancelar</button>
+                    </div>
+                  </div>
+                  <!-- Feedback pós-confirmação -->
+                  <div v-else class="text-green-600 font-semibold flex items-center justify-center gap-2">
+                    <span class="animate-spin">⟳</span> Gerando relatório...
+                  </div>
                 </div>
               </div>
             </div>
@@ -260,8 +315,8 @@
                   Professores, o botão é azul e diz "Persistir Dados".
                 </p>
                 <div class="flex gap-2 justify-center mt-4">
-                  <button class="bg-green-500 text-white text-xs px-2 py-1 rounded">Salvar</button>
-                  <button class="bg-blue-500 text-white text-xs px-2 py-1 rounded">
+                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Salvar</button>
+                  <button class="bg-blue-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer">
                     Persistir
                   </button>
                 </div>
@@ -275,10 +330,10 @@
                   "Salvar" sempre.
                 </p>
                 <div class="flex gap-2 justify-center mt-4">
-                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded">
+                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Aluno
                   </button>
-                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded">
+                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Prof.
                   </button>
                 </div>
@@ -308,7 +363,7 @@
                   <input
                     type="text"
                     value="Fevereiro/2025"
-                    class="border border-red-300 w-full p-1 text-red-600"
+                    class="border border-red-300 w-full p-1 text-red-600 rounded"
                     disabled
                   />
                 </div>
@@ -318,16 +373,27 @@
                   <span class="text-xl">✓</span> A Solução
                 </h4>
                 <p class="text-sm text-gray-700 mb-2">
-                  Usar máscaras de input ou seletores de data (calendário) para impedir formatos
-                  inválidos.
+                  Usar máscaras de input para impedir formatos inválidos. Apenas números são
+                  aceitos e a formatação é automática.
                 </p>
                 <div class="bg-white p-3 border border-green-200 rounded text-center text-sm">
                   <label class="block text-xs text-left text-gray-500">Data:</label>
-                  <input
-                    type="date"
-                    class="border border-gray-300 w-full p-1 text-gray-800 rounded"
-                    disabled
-                  />
+                  <div class="relative">
+                    <input
+                      type="text"
+                      :value="state.h5Data"
+                      @input="h5MascaraData"
+                      placeholder="dd/mm/aaaa"
+                      maxlength="10"
+                      class="border border-gray-300 w-full p-1 pr-7 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none"
+                    />
+                    <button
+                      v-if="state.h5Data.length > 0"
+                      @click="state.h5Data = ''"
+                      class="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-150 text-sm leading-none"
+                      type="button"
+                    >✕</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -353,7 +419,7 @@
                   <input
                     type="text"
                     placeholder="Digite o ID (ex: 4092)"
-                    class="border border-gray-300 w-full p-1"
+                    class="border border-gray-300 w-full p-1 rounded"
                     disabled
                   />
                 </div>
@@ -369,12 +435,15 @@
                 <div
                   class="bg-white p-3 border border-green-200 rounded text-center text-sm relative"
                 >
-                  <div
-                    class="border border-gray-300 w-full p-1 text-left bg-gray-50 flex justify-between items-center"
+                  <select
+                    v-model="state.cursoSelecionado"
+                    class="border border-gray-300 w-full p-1 text-left bg-gray-50 flex justify-between items-center rounded cursor-pointer focus:ring-2 focus:ring-green-300 focus:outline-none"
                   >
-                    <span>História - 1º Ano</span>
-                    <span>▼</span>
-                  </div>
+                    <option value="História - 1º Ano">História - 1º Ano</option>
+                    <option value="Matemática - 2º Ano">Matemática - 2º Ano</option>
+                    <option value="Geografia - 1º Ano">Geografia - 1º Ano</option>
+                    <option value="Artes - 2º Ano">Artes - 2º Ano</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -407,9 +476,20 @@
                   automático ao sair do campo.
                 </p>
                 <div
-                  class="bg-white p-2 border border-green-200 rounded text-center text-xs font-mono text-gray-500"
+                  class="bg-white p-3 border border-green-200 rounded text-sm space-y-2"
                 >
-                  [TAB] Próximo Aluno
+                  <div v-for="(_, i) in 3" :key="i" class="flex items-center gap-2">
+                    <label class="text-xs text-gray-500 w-20 shrink-0">Aluno {{ i + 1 }}:</label>
+                    <input
+                      :ref="(el) => { h7Refs[i] = el as HTMLInputElement | null }"
+                      v-model="state.h7Notas[i]"
+                      type="text"
+                      :placeholder="i < 2 ? 'Digite a nota e pressione TAB' : 'Digite a nota e pressione TAB'"
+                      @keydown="(e) => h7TabHandler(e, i)"
+                      class="border border-gray-300 w-full p-1 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none"
+                    />
+                  </div>
+                  <p class="text-[10px] text-gray-400 text-center m-0 pt-1 font-mono">[TAB] Navega entre alunos</p>
                 </div>
               </div>
             </div>
@@ -504,11 +584,21 @@
                   Tooltips (dicas de ferramenta) contextuais. Ao passar o mouse sobre um campo
                   complexo, uma pequena explicação aparece.
                 </p>
-                <div class="flex justify-center mt-4">
+                <div class="flex justify-center mt-4 relative">
                   <span
-                    class="bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center font-bold text-gray-600 cursor-help"
+                    @mouseenter="state.h10TooltipVisivel = true"
+                    @mouseleave="state.h10TooltipVisivel = false"
+                    class="bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center font-bold text-gray-600 cursor-help transition-colors duration-150 hover:bg-gray-300"
                     >?</span
                   >
+                  <Transition name="fade">
+                    <div
+                      v-if="state.h10TooltipVisivel"
+                      class="absolute bottom-8 bg-gray-800 text-white text-xs rounded px-3 py-2 shadow-lg whitespace-nowrap"
+                    >
+                      A explicação pode aparecer aqui
+                    </div>
+                  </Transition>
                 </div>
               </div>
             </div>
@@ -570,8 +660,8 @@
                     <div class="h-20 w-1/3 bg-orange-400 rounded"></div>
                     <div class="h-20 w-2/3 bg-green-400 rounded"></div>
                   </div>
-                  <button class="w-full bg-red-500 text-white py-1 rounded">Botão 1</button>
-                  <button class="w-full bg-yellow-400 text-black py-1 rounded">Botão 2</button>
+                  <button class="w-full bg-red-500 text-white py-1 rounded transition-colors duration-150 hover:bg-red-600 cursor-pointer">Botão 1</button>
+                  <button class="w-full bg-yellow-400 text-black py-1 rounded transition-colors duration-150 hover:bg-yellow-500 cursor-pointer">Botão 2</button>
                 </div>
               </div>
 
@@ -586,11 +676,11 @@
                 <div class="bg-gray-50 p-4 border border-gray-300 rounded space-y-2">
                   <div class="h-8 bg-white w-full border border-gray-200 rounded"></div>
                   <div class="flex gap-2">
-                    <div class="h-20 w-1/3 bg-blue-700 rounded opacity-90"></div>
+                    <div class="h-20 w-1/3 bg-blue-600 rounded opacity-90"></div>
                     <div class="h-20 w-2/3 bg-white border border-gray-200 rounded"></div>
                   </div>
-                  <button class="w-full bg-green-600 text-white py-1 rounded font-bold shadow-sm">
-                    Salvar Notas
+                  <button class="w-full bg-green-600 text-white py-1 rounded shadow-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer">
+                    Salvar notas
                   </button>
                 </div>
               </div>
@@ -616,10 +706,10 @@
                   graves por hábito.
                 </p>
                 <div class="flex justify-around mt-6">
-                  <button class="bg-red-600 text-white px-4 py-2 rounded">
+                  <button class="bg-red-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-red-700 cursor-pointer">
                     Salvar com Sucesso
                   </button>
-                  <button class="bg-green-600 text-white px-4 py-2 rounded">Apagar Tudo</button>
+                  <button class="bg-green-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Apagar Tudo</button>
                 </div>
               </div>
 
@@ -632,11 +722,11 @@
                   <strong>Vermelho:</strong> Ações destrutivas, erros, paradas.
                 </p>
                 <div class="flex justify-around mt-6">
-                  <button class="bg-green-600 text-white px-4 py-2 rounded shadow">
+                  <button class="bg-green-600 text-white px-4 py-2 rounded shadow transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Dados
                   </button>
                   <button
-                    class="bg-red-100 text-red-700 border border-red-200 px-4 py-2 rounded hover:bg-red-200"
+                    class="bg-red-600 text-white border border-red-200 px-4 py-2 rounded hover:bg-red-700 cursor-pointer"
                   >
                     Excluir
                   </button>
@@ -696,7 +786,7 @@
               <span class="text-xs text-gray-600">Confiança / Dados</span>
             </div>
             <div class="text-center">
-              <div class="h-12 w-full bg-green-500 rounded mb-2"></div>
+              <div class="h-12 w-full bg-green-600 rounded mb-2"></div>
               <span class="font-bold text-sm block">Verde</span>
               <span class="text-xs text-gray-600">Aprovação / $</span>
             </div>
@@ -706,7 +796,7 @@
               <span class="text-xs text-gray-600">Atenção / Otimismo</span>
             </div>
             <div class="text-center">
-              <div class="h-12 w-full bg-red-500 rounded mb-2"></div>
+              <div class="h-12 w-full bg-red-600 rounded mb-2"></div>
               <span class="font-bold text-sm block">Vermelho</span>
               <span class="text-xs text-gray-600">Erro / Urgência</span>
             </div>
@@ -784,7 +874,7 @@
                     <summary class="font-bold cursor-pointer list-none flex justify-between">
                       📂 Secretaria <span>▼</span>
                     </summary>
-                    <div class="pl-4 mt-2 text-gray-600 text-xs space-y-1">
+                    <div class="pl-6 mt-2 text-gray-600 text-xs space-y-1">
                       <div>- Cadastrar Aluno</div>
                       <div>- Editar Turma</div>
                     </div>
@@ -793,6 +883,10 @@
                     <summary class="font-bold cursor-pointer list-none flex justify-between">
                       💰 Financeiro <span>▼</span>
                     </summary>
+                    <div class="pl-6 mt-2 text-gray-600 text-xs space-y-1">
+                      <div>- Relatório Financeiro</div>
+                      <div>- Mensalidades</div>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -952,9 +1046,9 @@
                 </p>
                 <div class="flex justify-center items-center h-20 border border-green-200 bg-white">
                   <button
-                    class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 font-bold"
+                    class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 cursor-pointer"
                   >
-                    SALVAR NOTAS
+                    Salvar notas
                   </button>
                 </div>
                 <p class="text-xs text-green-700 mt-2 text-center">
@@ -982,8 +1076,8 @@
                   clique acidental é enorme.
                 </p>
                 <div class="bg-white p-4 border border-red-200 rounded flex gap-2 justify-center">
-                  <button class="bg-green-500 text-white px-4 py-2 rounded">Enviar</button>
-                  <button class="bg-red-500 text-white px-4 py-2 rounded">Resetar</button>
+                  <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">Enviar</button>
+                  <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 cursor-pointer">Resetar</button>
                 </div>
               </div>
 
@@ -998,13 +1092,13 @@
                 <div
                   class="bg-white p-4 border border-green-200 rounded flex justify-between items-center"
                 >
-                  <a href="#" class="text-red-400 text-xs hover:text-red-600 ml-2"
+                  <a href="#" class="text-red-400 text-xs hover:text-red-600 ml-2 center"
                     >Resetar formulário</a
                   >
                   <button
-                    class="bg-green-600 text-white px-6 py-2 rounded shadow-lg font-bold transform hover:scale-105 transition"
+                    class="bg-green-600 text-white px-6 py-2 rounded shadow-lg transform hover:bg-green-700 cursor-pointer"
                   >
-                    ENVIAR DADOS
+                    Enviar dados
                   </button>
                 </div>
               </div>
@@ -1028,8 +1122,15 @@
                   Deixar um menu importante "boiando" no meio da tela. O usuário precisa desacelerar
                   o mouse para acertar o alvo.
                 </p>
-                <div class="bg-gray-200 h-32 w-full relative border border-gray-400">
-                  <div class="absolute top-10 left-10 bg-white p-2 shadow border">Menu</div>
+                <div class="bg-gray-200 h-32 w-full relative border border-gray-400 group/menu">
+                  <div class="absolute top-10 left-10 bg-white p-2 shadow border rounded cursor-default group-hover/menu:bg-gray-50 transition-colors duration-150">
+                    <span class="text-xl text-gray-700">Menu</span>
+                    <div class="hidden group-hover/menu:block mt-1 border-t border-gray-200 pt-1 space-y-1">
+                      <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Início</div>
+                      <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Alunos</div>
+                      <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Relatórios</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1041,9 +1142,20 @@
                   Fixar menus no topo ou na lateral esquerda. O usuário pode "jogar" o mouse sem
                   medo de passar do ponto.
                 </p>
-                <div class="bg-gray-200 h-32 w-full relative border border-gray-400">
-                  <div class="absolute top-0 left-0 w-full bg-blue-800 h-8 shadow"></div>
-                  <div class="absolute top-0 left-0 h-full w-8 bg-white border-r"></div>
+                <div class="bg-gray-200 h-32 w-full relative border border-gray-400 overflow-hidden">
+                  <!-- Barra de navegação no topo -->
+                  <div class="absolute top-0 left-0 w-full bg-blue-800 h-8 shadow flex items-center px-2 gap-3">
+                    <span class="text-[10px] text-white font-semibold">Início</span>
+                    <span class="text-[10px] text-blue-200">Alunos</span>
+                    <span class="text-[10px] text-blue-200">Turmas</span>
+                    <span class="text-[10px] text-blue-200">Relatórios</span>
+                  </div>
+                  <!-- Sidebar lateral -->
+                  <div class="absolute top-8 left-0 h-full w-16 bg-white border-r border-gray-300 pt-2 space-y-2 px-1">
+                    <div class="text-[9px] text-gray-600 font-semibold px-1">Painel</div>
+                    <div class="text-[9px] text-gray-400 px-1">Notas</div>
+                    <div class="text-[9px] text-gray-400 px-1">Chamada</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1143,9 +1255,9 @@
                 <div
                   class="bg-white p-4 border border-red-200 rounded flex gap-2 justify-center items-center"
                 >
-                  <span class="text-blue-600 underline">Alunos</span>
-                  <button class="bg-gray-200 px-2 rounded">Turmas</button>
-                  <span class="text-red-600 font-bold">Notas</span>
+                  <span class="text-blue-600 underline cursor-pointer hover:text-blue-800">Alunos</span>
+                  <button class="bg-gray-200 px-2 rounded hover:bg-gray-300 cursor-pointer">Turmas</button>
+                  <span class="text-red-600 font-bold cursor-pointer hover:text-red-800">Notas</span>
                 </div>
               </div>
 
@@ -1190,10 +1302,19 @@
                   Alinhamento em zigue-zague. O olho do professor tem que pular pela tela para ler
                   os dados.
                 </p>
-                <div class="bg-white p-4 border border-red-200 rounded space-y-2">
-                  <div class="text-left bg-gray-100 p-1 w-1/2">Nome</div>
-                  <div class="text-right bg-gray-100 p-1 w-1/2 ml-auto">Turma</div>
-                  <div class="text-center bg-gray-100 p-1 w-1/2 mx-auto">Status</div>
+                <div class="bg-white p-4 border border-red-200 rounded space-y-3">
+                  <div>
+                    <label class="text-xs text-gray-500 block mb-0.5">Nome</label>
+                    <input type="text" value="João" disabled class="bg-gray-100 p-1 w-1/2 border border-gray-300 rounded text-sm text-gray-700" />
+                  </div>
+                  <div class="text-right">
+                    <label class="text-xs text-gray-500 block mb-0.5 text-right">Turma</label>
+                    <input type="text" value="3B" disabled class="bg-gray-100 p-1 w-1/2 ml-auto block border border-gray-300 rounded text-sm text-gray-700 text-right" />
+                  </div>
+                  <div class="text-center">
+                    <label class="text-xs text-gray-500 block mb-0.5">Status</label>
+                    <input type="text" value="Ativo" disabled class="bg-gray-100 p-1 w-1/2 mx-auto block border border-gray-300 rounded text-sm text-gray-700 text-center" />
+                  </div>
                 </div>
               </div>
 
@@ -1205,15 +1326,18 @@
                   Alinhar tudo à esquerda (padrão ocidental de leitura) cria uma linha imaginária
                   que guia o olhar.
                 </p>
-                <div class="bg-white p-4 border border-green-200 rounded space-y-2">
-                  <div class="text-left bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2">
-                    Nome: João
+                <div class="bg-white p-4 border border-green-200 rounded space-y-3">
+                  <div>
+                    <label class="text-xs text-gray-500 block mb-0.5">Nome</label>
+                    <input type="text" value="João" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
                   </div>
-                  <div class="text-left bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2">
-                    Turma: 3B
+                  <div>
+                    <label class="text-xs text-gray-500 block mb-0.5">Turma</label>
+                    <input type="text" value="3B" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
                   </div>
-                  <div class="text-left bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2">
-                    Status: Ativo
+                  <div>
+                    <label class="text-xs text-gray-500 block mb-0.5">Status</label>
+                    <input type="text" value="Ativo" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
                   </div>
                 </div>
               </div>
@@ -1259,7 +1383,7 @@
                   lixeira é entendido instantaneamente.
                 </p>
                 <div class="bg-white h-16 flex items-center justify-center border border-gray-200">
-                  <span class="text-2xl text-gray-700">🗑️</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                 </div>
               </div>
             </div>
@@ -1462,7 +1586,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, watch, ref, onMounted } from 'vue'
+import { reactive, watch, ref, onMounted, nextTick } from 'vue'
 
 const props = defineProps<{
   menuAberto: boolean
@@ -1473,7 +1597,80 @@ const eTelaMobile = ref(false)
 
 const state = reactive({
   paginaAtiva: 0,
+  cursoSelecionado: 'História - 1º Ano',
+  // #1
+  h1Salvando: false,
+  h1Salvo: false,
+  h1ToastVisivel: false,
+  // #3
+  h3EtapaModal: 0 as 0 | 1 | 2,
+  h3ToastVisivel: false,
+  // #5
+  h5Data: '',
+  // #7
+  h7Notas: ['', '', ''],
+  // #10
+  h10TooltipVisivel: false,
 })
+
+// #1: Simular salvamento
+function simularSalvar() {
+  if (state.h1Salvando || state.h1Salvo) return
+  state.h1Salvando = true
+  setTimeout(() => {
+    state.h1Salvando = false
+    state.h1Salvo = true
+    state.h1ToastVisivel = true
+    setTimeout(() => {
+      state.h1ToastVisivel = false
+    }, 2000)
+    setTimeout(() => {
+      state.h1Salvo = false
+    }, 2500)
+  }, 1200)
+}
+
+// #3: Controle do mini modal
+function h3GerarRelatorio() {
+  state.h3EtapaModal = 1
+}
+function h3Confirmar() {
+  state.h3EtapaModal = 2
+  setTimeout(() => {
+    state.h3EtapaModal = 0
+    state.h3ToastVisivel = true
+    setTimeout(() => {
+      state.h3ToastVisivel = false
+    }, 2000)
+  }, 1500)
+}
+function h3Cancelar() {
+  state.h3EtapaModal = 0
+}
+
+// #5: Máscara dd/mm/aaaa
+function h5MascaraData(e: Event) {
+  const input = e.target as HTMLInputElement
+  let v = input.value.replace(/\D/g, '')
+  if (v.length > 8) v = v.slice(0, 8)
+  if (v.length > 4) {
+    v = v.slice(0, 2) + '/' + v.slice(2, 4) + '/' + v.slice(4)
+  } else if (v.length > 2) {
+    v = v.slice(0, 2) + '/' + v.slice(2)
+  }
+  state.h5Data = v
+  input.value = v
+}
+
+// #7: TAB cíclico entre 3 inputs
+const h7Refs = ref<(HTMLInputElement | null)[]>([])
+function h7TabHandler(e: KeyboardEvent, index: number) {
+  if (e.key === 'Tab') {
+    e.preventDefault()
+    const next = (index + 1) % 3
+    h7Refs.value[next]?.focus()
+  }
+}
 
 const checarTelaMobile = () => {
   eTelaMobile.value = window.innerWidth < 800
@@ -1508,5 +1705,14 @@ function alterarPagina(index: number) {
   .md-absolute {
     position: absolute;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

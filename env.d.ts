@@ -1,1 +1,4 @@
 /// <reference types="vite/client" />
+VITE_SUPABASE_URL='https://lnzimmgifmhpoqeuhjss.supabase.co'
+VITE_SUPABASE_PUBLISHABLE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxuemltbWdpZm1ocG9xZXVoanNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzNjk3NzMsImV4cCI6MjA4Njk0NTc3M30.yMa2blMTa4pWKhuO0SNL1z8rSDihentFLNtxTWCRjCU'
+

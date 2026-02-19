@@ -8,7 +8,7 @@
 
     <section
       id="SectionItensDocumentacao"
-      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12  z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
+      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
       :class="{
         '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
         'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile,
@@ -70,6 +70,17 @@
           class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
         >
           Gestalt
+        </button>
+
+        <button
+          @click="alterarPagina(5)"
+          :class="{
+            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 5,
+            'border-l-4 border-transparent': state.paginaAtiva !== 5,
+          }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
+        >
+          Tipografia
         </button>
       </nav>
     </section>
@@ -1254,15 +1265,195 @@
             </div>
           </div>
         </section>
+      </div>
 
-        <section class="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center">
+      <div v-if="state.paginaAtiva === 5" class="prose max-w-none">
+        <section class="prose max-w-none">
+          <h1 class="text-3xl font-bold border-b-4 border-yellow-300 inline-block mb-4">
+            Tipografia em IHC
+          </h1>
+          <p class="text-lg text-gray-700">
+            A tipografia não é apenas estética; é uma ferramenta de interface que dita a velocidade
+            de processamento da informação. Em sistemas educacionais, ela deve ser
+            <strong>funcional</strong> antes de ser decorativa.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6">
+            <h3 class="text-blue-800 font-bold text-lg m-0">Por que é importante?</h3>
+            <p class="m-0 text-blue-700 mt-2">
+              Uma boa escolha tipográfica reduz a carga cognitiva, melhora a acessibilidade para
+              pessoas com dificuldades visuais e guia o olhar do usuário através da hierarquia
+              visual.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-6">Erros Comuns vs. Boas Práticas</h2>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#1: Legibilidade e Família Tipográfica</h3>
+              <p class="text-sm text-gray-500 m-0">
+                A clareza dos caracteres é vital para evitar erros de interpretação.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="p-6 bg-red-50 border-r border-gray-200">
+                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
+                  ✕ O Erro (Baixa Nitidez)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Usar fontes decorativas ou com serifa muito fina para textos de instrução.
+                </p>
+                <div class="bg-white p-4 border border-red-200 rounded text-center">
+                  <span class="italic text-gray-400 font-serif"
+                    >Instruções complexas de IHC...</span
+                  >
+                </div>
+              </div>
+              <div class="p-6 bg-green-50">
+                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
+                  ✓ A Solução (Sans-serif)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Fontes sem serifa (Inter, Roboto) mantêm a nitidez em qualquer resolução.
+                </p>
+                <div class="bg-white p-4 border border-green-200 rounded text-center">
+                  <span class="font-sans font-bold text-gray-800">Instruções Claras de IHC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#2: Contraste e Acessibilidade (WCAG)</h3>
+              <p class="text-sm text-gray-500 m-0">
+                O texto deve ser legível para todos, independentemente do fundo.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="p-6 bg-red-50 border-r border-gray-200">
+                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
+                  ✕ O Erro (Baixo Contraste)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Texto branco ou cinza claro sobre o fundo amarelo vibrante.
+                </p>
+                <div class="bg-yellow-400 p-4 rounded text-center">
+                  <span class="text-white font-bold text-xs">Informação importante aqui</span>
+                </div>
+              </div>
+              <div class="p-6 bg-green-50">
+                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
+                  ✓ A Solução (Contraste 4.5:1)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Usar cores escuras sobre o amarelo garante a acessibilidade.
+                </p>
+                <div class="bg-yellow-400 p-4 rounded text-center">
+                  <span class="text-black font-black">Informação Clara e Legível</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#3: Hierarquia Visual e Escaneabilidade</h3>
+              <p class="text-sm text-gray-500 m-0">
+                O uso de pesos e tamanhos diferentes ajuda o usuário a processar a informação por
+                ordem de importância.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="p-6 bg-red-50 border-r border-gray-200">
+                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
+                  ✕ O Erro (Monotonia Visual)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Título e corpo de texto com o mesmo peso e tamanho. O usuário não sabe por onde
+                  começar.
+                </p>
+                <div class="bg-white p-4 border border-gray-300 rounded">
+                  <p class="text-base text-gray-800 m-0">Título do Módulo de Ensino</p>
+                  <p class="text-base text-gray-800 m-0">
+                    Este é um parágrafo explicativo sobre as métricas de usabilidade em sistemas
+                    complexos.
+                  </p>
+                </div>
+              </div>
+              <div class="p-6 bg-green-50">
+                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
+                  ✓ A Solução (Pesos e Contraste)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Destacar o título com negrito e tamanho maior cria um caminho visual claro.
+                </p>
+                <div class="bg-white p-4 border border-green-200 rounded">
+                  <p class="text-xl font-black text-black m-0 uppercase tracking-tight">
+                    Título do Módulo
+                  </p>
+                  <p class="text-sm text-gray-600 m-0">
+                    Este é um parágrafo explicativo sobre as métricas de usabilidade em sistemas
+                    complexos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#4: Ritmo Vertical e Espaçamento</h3>
+              <p class="text-sm text-gray-500 m-0">
+                O espaço entre as linhas (entrelinha) influencia diretamente a velocidade de leitura
+                e o conforto visual.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="p-6 bg-red-50 border-r border-gray-200">
+                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
+                  ✕ O Erro (Texto Sufocado)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Linhas muito próximas (line-height: 1.0) fazem com que as palavras se "atropelem"
+                  durante a leitura.
+                </p>
+                <div class="bg-white p-4 border border-red-200 rounded">
+                  <p class="text-sm text-gray-800 m-0 leading-none">
+                    A tipografia em IHC foca na experiência do usuário final. Quando as linhas estão
+                    muito juntas, o olho humano tem dificuldade em encontrar o início da próxima
+                    linha, causando fadiga rápida.
+                  </p>
+                </div>
+              </div>
+              <div class="p-6 bg-green-50">
+                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
+                  ✓ A Solução (Respiro Visual)
+                </h4>
+                <p class="text-sm text-gray-700 mb-4">
+                  Um espaçamento entre 1.5 e 1.6 torna a leitura fluida e profissional.
+                </p>
+                <div class="bg-white p-4 border border-green-200 rounded">
+                  <p class="text-sm text-gray-800 m-0 leading-relaxed">
+                    A tipografia em IHC foca na experiência do usuário final. Quando as linhas
+                    possuem um espaçamento adequado, a leitura se torna natural e o aprendizado é
+                    facilitado.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center mt-8">
           <h3 class="font-bold text-xl mb-2 text-purple-900">Conclusão do Módulo de IHC</h3>
           <p class="text-purple-800 max-w-2xl mx-auto">
-            Ao combinar as <strong>Heurísticas de Nielsen</strong> (regras gerais), a
-            <strong>Teoria das Cores</strong> (emoção e hierarquia), as Leis de
-            <strong>Hick e Fitts</strong> (tempo e movimento) e a
-            <strong>Gestalt</strong> (percepção visual), você cria uma interface que não é apenas
-            "bonita", mas cientificamente eficiente.
+            Ao combinar as <strong>Heurísticas de Nielsen</strong>, a
+            <strong>Teoria das Cores</strong>, as Leis de <strong>Hick e Fitts</strong>, a
+            <strong>Gestalt</strong> e a <strong>Tipografia</strong>, você cria uma interface
+            cientificamente eficiente.
           </p>
         </section>
       </div>

@@ -1,85 +1,62 @@
 <template>
   <section id="SectionDocumentacao" class="flex sticky min-h-screen">
-    <div
-      v-if="props.menuAberto && eTelaMobile"
-      class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
-      @click="$emit('toggle-menu')"
-    ></div>
+    <div v-if="props.menuAberto && eTelaMobile" class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
+      @click="$emit('toggle-menu')"></div>
 
-    <section
-      id="SectionItensDocumentacao"
+    <section id="SectionItensDocumentacao"
       class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
       :class="{
         '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
         'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile,
-      }"
-    >
+      }">
       <nav role="tablist" class="flex flex-col gap-3">
         <p class="text-xs font-bold uppercase tracking-wider text-gray-600 pl-2">Tópicos</p>
 
-        <button
-          @click="alterarPagina(0)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 0,
-            'border-l-4 border-transparent': state.paginaAtiva !== 0,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(0)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 0,
+          'border-l-4 border-transparent': state.paginaAtiva !== 0,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Heurísticas de Nielsen
         </button>
 
-        <button
-          @click="alterarPagina(1)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 1,
-            'border-l-4 border-transparent': state.paginaAtiva !== 1,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(1)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 1,
+          'border-l-4 border-transparent': state.paginaAtiva !== 1,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Teoria das cores
         </button>
 
-        <button
-          @click="alterarPagina(2)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 2,
-            'border-l-4 border-transparent': state.paginaAtiva !== 2,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(2)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 2,
+          'border-l-4 border-transparent': state.paginaAtiva !== 2,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Lei de Hick-Hyman
         </button>
 
-        <button
-          @click="alterarPagina(3)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 3,
-            'border-l-4 border-transparent': state.paginaAtiva !== 3,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(3)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 3,
+          'border-l-4 border-transparent': state.paginaAtiva !== 3,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Lei de Fitts
         </button>
 
-        <button
-          @click="alterarPagina(4)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 4,
-            'border-l-4 border-transparent': state.paginaAtiva !== 4,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(4)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 4,
+          'border-l-4 border-transparent': state.paginaAtiva !== 4,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Gestalt
         </button>
 
-        <button
-          @click="alterarPagina(5)"
-          :class="{
-            'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 5,
-            'border-l-4 border-transparent': state.paginaAtiva !== 5,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]"
-        >
+        <button @click="alterarPagina(5)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 5,
+          'border-l-4 border-transparent': state.paginaAtiva !== 5,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Tipografia
         </button>
       </nav>
@@ -88,19 +65,25 @@
     <!-- Toasts globais (teleportados para o body, acima do header) -->
     <Teleport to="body">
       <Transition name="fade">
-        <div
-          v-if="state.h1ToastVisivel"
-          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]"
-        >
+        <div v-if="state.h1ToastVisivel"
+          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]">
           ✓ Salvo com sucesso!
+          <button @click="state.h1ToastVisivel = false"
+            class="ml-2 text-white hover:text-gray-200 font-bold text-lg leading-none cursor-pointer"
+            aria-label="Fechar">
+            ✕
+          </button>
         </div>
       </Transition>
       <Transition name="fade">
-        <div
-          v-if="state.h3ToastVisivel"
-          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]"
-        >
+        <div v-if="state.h3ToastVisivel"
+          class="fixed top-15 right-4 bg-green-600 text-white text-base font-semibold px-4 py-2 rounded shadow-lg flex items-center gap-2 z-[99999]">
           ✓ Relatório gerado com sucesso!
+          <button @click="state.h3ToastVisivel = false"
+            class="ml-2 text-white hover:text-gray-200 font-bold text-lg leading-none cursor-pointer"
+            aria-label="Fechar">
+            ✕
+          </button>
         </div>
       </Transition>
     </Teleport>
@@ -109,7 +92,7 @@
     <section id="SectionConteudoDocumentacao" class="flex-1 p-6 min-[576px]:ml-0">
       <div v-if="state.paginaAtiva === 0" class="prose max-w-none">
         <section class="prose max-w-none">
-          <h1 class="text-3xl font-bold border-b-4 border-yellow-300 inline-block mb-4">
+          <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">
             10 Heurísticas de Nielsen
           </h1>
           <p class="text-lg text-gray-700">
@@ -119,7 +102,7 @@
             garantir que o sistema converse bem com o humano.
           </p>
 
-          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6">
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
             <h3 class="text-blue-800 font-bold text-lg m-0">Por que são importantes?</h3>
             <p class="m-0 text-blue-700 mt-2">
               Aplicar essas heurísticas reduz a carga cognitiva do usuário (ele pensa menos para
@@ -143,48 +126,38 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Sem Feedback)
-                </h4>
+              <ExemploErro titulo="O Erro (Sem Feedback)">
                 <p class="text-sm text-gray-700 mb-2">
                   O usuário clica em "Salvar notas", o botão não muda de cor, nada aparece na tela.
                   Ele clica mais 5 vezes achando que travou.
                 </p>
-                <div
-                  class="bg-white p-4 border border-red-200 rounded text-center text-gray-400 italic"
-                >
+                <div class="bg-white p-4 border border-red-200 rounded text-center text-gray-400 italic">
                   (Nenhuma mensagem aparece...)
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Ao clicar, o botão mostra um "spinner" de carregamento e, ao finalizar, exibe uma
                   mensagem de sucesso.
                 </p>
-                <div
-                  class="bg-white p-3 border border-green-200 rounded flex items-center justify-center gap-2 shadow-sm"
-                >
-                  <button
-                    @click="simularSalvar"
-                    :disabled="state.h1Salvando || state.h1Salvo"
-                    class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150"
-                    :class="{
+                <div class="bg-white p-4 border border-green-200 rounded text-center flex justify-center">
+                  <button @click="simularSalvar" :disabled="state.h1Salvando || state.h1Salvo"
+                    class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150" :class="{
                       'bg-blue-600 hover:bg-blue-700 cursor-pointer': !state.h1Salvando && !state.h1Salvo,
                       'bg-blue-400 cursor-not-allowed': state.h1Salvando,
                       'bg-green-600 cursor-default': state.h1Salvo,
-                    }"
-                  >
+                    }">
                     <span v-if="!state.h1Salvando && !state.h1Salvo">Salvar</span>
-                    <span v-else-if="state.h1Salvando" class="flex items-center gap-2"><span class="animate-spin">⟳</span> Salvando...</span>
+                    <span v-else-if="state.h1Salvando" class="flex items-center gap-2"><span
+                        class="animate-spin">⟳</span> Salvando...</span>
                     <span v-else class="flex items-center gap-1">✓ Salvo!</span>
                   </button>
                 </div>
-              </div>
+                <p class="text-xs text-green-700 mt-2 text-center">
+                  Clique no botão para simular o processo de salvamento e ver os feedbacks em ação.
+                </p>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -199,34 +172,24 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Jargão Técnico)
-                </h4>
+              <ExemploErro titulo="O Erro (Jargão Técnico)">
                 <p class="text-sm text-gray-700 mb-2">
                   Uma mensagem de erro aparece para a secretária escolar:
                 </p>
-                <div
-                  class="bg-white p-4 border border-red-200 rounded font-mono text-xs text-red-600"
-                >
+                <div class="bg-white p-4 border border-red-200 rounded font-mono text-xs text-red-600">
                   Error 404: Duplicate Entry 'Student_ID_55' on Index Primary. Exception
                   NullPointer.
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Traduzir o erro para a linguagem da escola e do dia a dia.
                 </p>
-                <div
-                  class="bg-white p-4 border border-green-200 rounded font-semibold text-red-600"
-                >
+                <div class="bg-white p-4 border border-green-200 rounded font-semibold text-red-600">
                   Não foi possível cadastrar: Já existe um aluno com esta matrícula no sistema.
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -239,10 +202,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Beco sem saída)
-                </h4>
+              <ExemploErro titulo="O Erro (Beco sem saída)">
                 <p class="text-sm text-gray-700 mb-2">
                   O usuário clica em "Gerar relatório completo" sem querer. O processo demora 5
                   minutos e não há botão de cancelar.
@@ -252,38 +212,29 @@
                     Carregando... (Aguarde)
                   </button>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Antes de executar, confirmar a intenção do usuário com uma pergunta clara.
                 </p>
-                <div
-                  class="bg-white p-4 border border-green-200 rounded text-center"
-                >
+                <div class="bg-white p-4 border border-green-200 rounded text-center">
                   <!-- Estado inicial -->
                   <div v-if="state.h3EtapaModal === 0">
-                    <button
-                      @click="h3GerarRelatorio"
-                      class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer"
-                    >Gerar relatório completo</button>
+                    <button @click="h3GerarRelatorio"
+                      class="bg-blue-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer">Gerar
+                      relatório completo</button>
                   </div>
                   <!-- Mini modal de confirmação -->
                   <div v-else-if="state.h3EtapaModal === 1" class="space-y-3">
-                    <p class="text-sm text-gray-700 font-semibold m-0">Tem certeza que deseja gerar o relatório completo?</p>
+                    <p class="text-sm text-gray-700 font-semibold m-0">Tem certeza que deseja gerar o relatório
+                      completo?</p>
                     <p class="text-xs text-gray-500 m-0">Esse processo pode levar alguns minutos.</p>
                     <div class="flex justify-center gap-3 mt-2">
-                      <button
-                        @click="h3Confirmar"
-                        class="bg-green-600 text-white px-4 py-2 rounded text-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer"
-                      >Gerar</button>
-                      <button
-                        @click="h3Cancelar"
-                        class="bg-white text-red-600 border border-red-200 px-4 py-2 rounded text-sm font-semibold transition-colors duration-150 hover:bg-red-50 cursor-pointer"
-                      >Cancelar</button>
+                      <button @click="h3Confirmar"
+                        class="bg-green-600 text-white px-4 py-2 rounded text-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer">Gerar</button>
+                      <button @click="h3Cancelar"
+                        class="bg-white text-red-600 border border-red-200 px-4 py-2 rounded text-sm font-semibold transition-colors duration-150 hover:bg-red-50 cursor-pointer">Cancelar</button>
                     </div>
                   </div>
                   <!-- Feedback pós-confirmação -->
@@ -291,7 +242,7 @@
                     <span class="animate-spin">⟳</span> Gerando relatório...
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -306,38 +257,36 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Na tela de Alunos, o botão de salvar é verde e diz "Salvar". Na tela de
                   Professores, o botão é azul e diz "Persistir Dados".
                 </p>
-                <div class="flex gap-2 justify-center mt-4">
-                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Salvar</button>
-                  <button class="bg-blue-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer">
+                <div class="bg-white p-4 border border-red-200 rounded text-center gap-2 flex justify-center">
+                  <button
+                    class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Salvar</button>
+                  <button
+                    class="bg-blue-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-blue-700 cursor-pointer">
                     Persistir
                   </button>
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Manter o mesmo design, cor e terminologia em todo o sistema. Se é "Salvar", é
                   "Salvar" sempre.
                 </p>
-                <div class="flex gap-2 justify-center mt-4">
-                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
+                <div class="bg-white p-4 border border-green-200 rounded text-center gap-2 flex justify-center">
+                  <button
+                    class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Aluno
                   </button>
-                  <button class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
+                  <button
+                    class="bg-green-600 text-white text-xs px-2 py-1 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Prof.
                   </button>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -350,28 +299,18 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Permitir que a secretária digite data em qualquer formato num campo de texto
                   livre.
                 </p>
                 <div class="bg-white p-3 border border-red-200 rounded text-center text-sm">
                   <label class="block text-xs text-left text-gray-500">Data:</label>
-                  <input
-                    type="text"
-                    value="Fevereiro/2025"
-                    class="border border-red-300 w-full p-1 text-red-600 rounded"
-                    disabled
-                  />
+                  <input type="text" value="Fevereiro/2025"
+                    class="border border-red-300 w-full p-1 text-red-600 rounded" disabled />
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Usar máscaras de input para impedir formatos inválidos. Apenas números são
                   aceitos e a formatação é automática.
@@ -379,23 +318,15 @@
                 <div class="bg-white p-3 border border-green-200 rounded text-center text-sm">
                   <label class="block text-xs text-left text-gray-500">Data:</label>
                   <div class="relative">
-                    <input
-                      type="text"
-                      :value="state.h5Data"
-                      @input="h5MascaraData"
-                      placeholder="dd/mm/aaaa"
+                    <input type="text" :value="state.h5Data" @input="h5MascaraData" placeholder="dd/mm/aaaa"
                       maxlength="10"
-                      class="border border-gray-300 w-full p-1 pr-7 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none"
-                    />
-                    <button
-                      v-if="state.h5Data.length > 0"
-                      @click="state.h5Data = ''"
+                      class="border border-gray-300 w-full p-1 pr-7 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none" />
+                    <button v-if="state.h5Data.length > 0" @click="state.h5Data = ''"
                       class="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-150 text-sm leading-none"
-                      type="button"
-                    >✕</button>
+                      type="button">✕</button>
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -407,45 +338,31 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Pedir o "ID do Curso" para matricular um aluno, obrigando a pessoa a decorar
                   códigos.
                 </p>
                 <div class="bg-white p-3 border border-red-200 rounded text-center text-sm">
-                  <input
-                    type="text"
-                    placeholder="Digite o ID (ex: 4092)"
-                    class="border border-gray-300 w-full p-1 rounded"
-                    disabled
-                  />
+                  <input type="text" placeholder="Digite o ID (ex: 4092)"
+                    class="border border-gray-300 w-full p-1 rounded" disabled />
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Oferecer uma lista suspensa com os nomes dos cursos. O sistema lembra os códigos,
                   não o humano.
                 </p>
-                <div
-                  class="bg-white p-3 border border-green-200 rounded text-center text-sm relative"
-                >
-                  <select
-                    v-model="state.cursoSelecionado"
-                    class="border border-gray-300 w-full p-1 text-left bg-gray-50 flex justify-between items-center rounded cursor-pointer focus:ring-2 focus:ring-green-300 focus:outline-none"
-                  >
+                <div class="bg-white p-3 border border-green-200 rounded text-center text-sm relative">
+                  <select v-model="state.cursoSelecionado"
+                    class="border border-gray-300 w-full p-1 text-left bg-gray-50 flex justify-between items-center rounded cursor-pointer focus:ring-2 focus:ring-green-300 focus:outline-none">
                     <option value="História - 1º Ano">História - 1º Ano</option>
                     <option value="Matemática - 2º Ano">Matemática - 2º Ano</option>
                     <option value="Geografia - 1º Ano">Geografia - 1º Ano</option>
                     <option value="Artes - 2º Ano">Artes - 2º Ano</option>
                   </select>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -458,40 +375,41 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Para lançar notas, o professor precisa clicar em "Editar", clicar no campo,
                   digitar, clicar em "Salvar", repetir para 40 alunos.
                 </p>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+                <div class="bg-white p-3 border border-red-200 rounded text-sm space-y-2">
+                  <div v-for="i in 3" :key="'h7err' + i" class="flex items-center gap-2">
+                    <label class="text-xs text-gray-500 w-20 shrink-0">Aluno {{ i }}:</label>
+                    <span class="border border-gray-300 w-full p-1 text-gray-300 rounded bg-gray-50 text-xs">Nome do
+                      aluno</span>
+                    <button
+                      class="text-[10px] bg-gray-200 text-gray-500 px-2 py-0.5 rounded border border-gray-300 whitespace-nowrap cursor-default">Editar</button>
+                    <button
+                      class="text-[10px] bg-gray-200 text-gray-500 px-2 py-0.5 rounded border border-gray-300 whitespace-nowrap cursor-default">Salvar</button>
+                  </div>
+                </div>
+                <p class="text-xs text-red-500 mt-2 text-center">3 cliques por aluno × 40 alunos = 120 cliques</p>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Permitir navegação com a tecla "TAB" entre os campos de nota e salvamento
                   automático ao sair do campo.
                 </p>
-                <div
-                  class="bg-white p-3 border border-green-200 rounded text-sm space-y-2"
-                >
+                <div class="bg-white p-3 border border-green-200 rounded text-sm space-y-2">
                   <div v-for="(_, i) in 3" :key="i" class="flex items-center gap-2">
                     <label class="text-xs text-gray-500 w-20 shrink-0">Aluno {{ i + 1 }}:</label>
-                    <input
-                      :ref="(el) => { h7Refs[i] = el as HTMLInputElement | null }"
-                      v-model="state.h7Notas[i]"
+                    <input :ref="(el) => { h7Refs[i] = el as HTMLInputElement | null }" v-model="state.h7Notas[i]"
                       type="text"
                       :placeholder="i < 2 ? 'Digite a nota e pressione TAB' : 'Digite a nota e pressione TAB'"
                       @keydown="(e) => h7TabHandler(e, i)"
-                      class="border border-gray-300 w-full p-1 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none"
-                    />
+                      class="border border-gray-300 w-full p-1 text-gray-800 rounded focus:ring-2 focus:ring-green-300 focus:outline-none" />
                   </div>
                   <p class="text-[10px] text-gray-400 text-center m-0 pt-1 font-mono">[TAB] Navega entre alunos</p>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -503,23 +421,62 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Um dashboard inicial cheio de gráficos que a secretária nunca usa (ex: "Uso de CPU
                   do Servidor").
                 </p>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+                <div class="bg-white p-3 border border-red-200 rounded text-sm space-y-2">
+                  <div class="flex gap-2">
+                    <div class="flex-1 border border-gray-200 rounded p-2 text-center">
+                      <div class="text-[10px] text-gray-400">Uso de CPU</div>
+                      <div class="h-6 bg-purple-200 rounded mt-1"></div>
+                    </div>
+                    <div class="flex-1 border border-gray-200 rounded p-2 text-center">
+                      <div class="text-[10px] text-gray-400">RAM Livre</div>
+                      <div class="h-6 bg-orange-200 rounded mt-1"></div>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <div class="flex-1 border border-gray-200 rounded p-2 text-center">
+                      <div class="text-[10px] text-gray-400">Disco I/O</div>
+                      <div class="h-6 bg-blue-200 rounded mt-1"></div>
+                    </div>
+                    <div class="flex-1 border border-gray-200 rounded p-2 text-center">
+                      <div class="text-[10px] text-gray-400">Logs do Servidor</div>
+                      <div class="h-6 bg-gray-200 rounded mt-1"></div>
+                    </div>
+                  </div>
+                </div>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Mostrar apenas o essencial: "3 Matrículas Pendentes", "2 Turmas sem Professor".
                 </p>
-              </div>
+                <div class="bg-white p-3 border border-green-200 rounded text-sm space-y-2">
+                  <div class="flex items-center gap-2 p-2 bg-yellow-100 border border-yellow-200 rounded">
+                    <span class="text-lg">⚠️</span>
+                    <div>
+                      <div class="font-bold text-xs text-gray-800">3 Matrículas Pendentes</div>
+                      <div class="text-[10px] text-gray-500">Aguardando aprovação</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 p-2 bg-red-100 border border-red-200 rounded">
+                    <span class="text-lg">🚨</span>
+                    <div>
+                      <div class="font-bold text-xs text-gray-800">2 Turmas sem Professor</div>
+                      <div class="text-[10px] text-gray-500">Precisa de atenção</div>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 p-2 bg-emerald-100 border border-green-200 rounded">
+                    <span class="text-lg">✅</span>
+                    <div>
+                      <div class="font-bold text-xs text-gray-800">128 Alunos Ativos</div>
+                      <div class="text-[10px] text-gray-500">Tudo em dia</div>
+                    </div>
+                  </div>
+                </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -532,30 +489,22 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
-                <div
-                  class="bg-white p-4 border border-red-200 rounded text-red-600 font-bold text-center"
-                >
+              <ExemploErro titulo="O Erro">
+                <div class="bg-white p-4 border border-red-200 rounded text-red-600 font-bold">
                   Erro: Input Inválido!
                 </div>
-                <p class="text-xs text-gray-500 mt-2 text-center">
+                <p class="text-xs text-red-500 mt-2 text-center">
                   (O usuário não sabe o que errou)
                 </p>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <div class="bg-white p-4 border border-green-200 rounded text-red-600 text-sm">
                   <strong>Não foi possível salvar:</strong> O campo "CPF" está incompleto.
                 </div>
                 <p class="text-xs text-green-700 mt-2 text-center">
                   O erro é específico e construtivo.
                 </p>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -568,39 +517,37 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro
-                </h4>
+              <ExemploErro titulo="O Erro">
                 <p class="text-sm text-gray-700 mb-2">
                   Entregar um manual em PDF de 200 páginas que ninguém lê.
                 </p>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução
-                </h4>
+                <div class="bg-white p-4 border border-red-200 rounded text-center">
+                  <div class="text-4xl mb-2">📄</div>
+                  <div class="text-xs font-bold text-gray-700">Manual_Sistema_v3.pdf</div>
+                  <div class="text-[10px] text-gray-400 mt-1">200 páginas • 12 MB</div>
+                  <div class="mt-2 text-[10px] bg-gray-100 text-gray-500 px-3 py-1 rounded inline-block">Baixar PDF
+                  </div>
+                </div>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução">
                 <p class="text-sm text-gray-700 mb-2">
                   Tooltips (dicas de ferramenta) contextuais. Ao passar o mouse sobre um campo
                   complexo, uma pequena explicação aparece.
                 </p>
-                <div class="flex justify-center mt-4 relative">
-                  <span
-                    @mouseenter="state.h10TooltipVisivel = true"
-                    @mouseleave="state.h10TooltipVisivel = false"
-                    class="bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center font-bold text-gray-600 cursor-help transition-colors duration-150 hover:bg-gray-300"
-                    >?</span
-                  >
+                <div class="bg-white p-4 border border-green-200 rounded text-center flex justify-center">
+                  <span @mouseenter="state.h10TooltipVisivel = true" @mouseleave="state.h10TooltipVisivel = false"
+                    class="bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center font-bold text-gray-600 cursor-help transition-colors duration-150 hover:bg-gray-300">?</span>
                   <Transition name="fade">
-                    <div
-                      v-if="state.h10TooltipVisivel"
-                      class="absolute bottom-8 bg-gray-800 text-white text-xs rounded px-3 py-2 shadow-lg whitespace-nowrap"
-                    >
+                    <div v-if="state.h10TooltipVisivel"
+                      class="absolute bottom-28 bg-gray-800 text-white text-xs rounded px-3 py-2 shadow-lg whitespace-nowrap">
                       A explicação pode aparecer aqui
                     </div>
                   </Transition>
                 </div>
-              </div>
+                <p class="text-xs text-green-700 mt-2 text-center">
+                  Passe o mouse sobre o ícone de interrogação para ver a dica contextual.
+                </p>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -616,7 +563,7 @@
             status (Aprovado, Reprovado, Alerta).
           </p>
 
-          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6">
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
             <h3 class="text-blue-800 font-bold text-lg m-0">A Regra de Ouro: 60-30-10</h3>
             <p class="m-0 text-blue-700 mt-2">
               Para garantir equilíbrio visual, utilize a proporção:
@@ -646,44 +593,43 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Carnaval Visual)
-                </h4>
+              <ExemploErro titulo="O Erro (Carnaval Visual)">
                 <p class="text-sm text-gray-700 mb-4">
                   Usar uma cor diferente para cada botão ou seção sem hierarquia, cansando a vista
                   do professor.
                 </p>
-                <div class="bg-white p-4 border border-gray-300 rounded space-y-2">
+                <div class="bg-white p-4 border border-red-200 rounded space-y-2">
                   <div class="h-8 bg-purple-500 w-full rounded"></div>
                   <div class="flex gap-2">
                     <div class="h-20 w-1/3 bg-orange-400 rounded"></div>
                     <div class="h-20 w-2/3 bg-green-400 rounded"></div>
                   </div>
-                  <button class="w-full bg-red-500 text-white py-1 rounded transition-colors duration-150 hover:bg-red-600 cursor-pointer">Botão 1</button>
-                  <button class="w-full bg-yellow-400 text-black py-1 rounded transition-colors duration-150 hover:bg-yellow-500 cursor-pointer">Botão 2</button>
+                  <button
+                    class="w-full bg-red-500 text-white py-1 rounded transition-colors duration-150 hover:bg-red-600 cursor-pointer">Botão
+                    1</button>
+                  <button
+                    class="w-full bg-yellow-400 text-black py-1 rounded transition-colors duration-150 hover:bg-yellow-500 cursor-pointer">Botão
+                    2</button>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Hierarquia)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Hierarquia)">
                 <p class="text-sm text-gray-700 mb-4">
                   Fundo neutro (60%), Azul para estrutura (30%) e Verde para o botão principal
                   (10%).
                 </p>
-                <div class="bg-gray-50 p-4 border border-gray-300 rounded space-y-2">
+                <div class="bg-gray-50 p-4 border border-green-200 rounded space-y-2">
                   <div class="h-8 bg-white w-full border border-gray-200 rounded"></div>
                   <div class="flex gap-2">
                     <div class="h-20 w-1/3 bg-blue-600 rounded opacity-90"></div>
                     <div class="h-20 w-2/3 bg-white border border-gray-200 rounded"></div>
                   </div>
-                  <button class="w-full bg-green-600 text-white py-1 rounded shadow-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer">
+                  <button
+                    class="w-full bg-green-600 text-white py-1 rounded shadow-sm transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar notas
                   </button>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -697,41 +643,38 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Sinais Trocados)
-                </h4>
+              <ExemploErro titulo="O Erro (Sinais Trocados)">
                 <p class="text-sm text-gray-700 mb-2">
                   Usar vermelho para um botão de "Sucesso" ou verde para "Deletar". Isso causa erros
                   graves por hábito.
                 </p>
-                <div class="flex justify-around mt-6">
-                  <button class="bg-red-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-red-700 cursor-pointer">
+                <div class="bg-white p-4 border border-red-200 rounded text-center gap-2 flex justify-center">
+                  <button
+                    class="bg-red-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-red-700 cursor-pointer">
                     Salvar com Sucesso
                   </button>
-                  <button class="bg-green-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Apagar Tudo</button>
+                  <button
+                    class="bg-green-600 text-white px-4 py-2 rounded transition-colors duration-150 hover:bg-green-700 cursor-pointer">Apagar
+                    Tudo</button>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Convenção)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Convenção)">
                 <p class="text-sm text-gray-700 mb-2">
                   <strong>Verde:</strong> Ações positivas, sucesso, saúde.<br />
                   <strong>Vermelho:</strong> Ações destrutivas, erros, paradas.
                 </p>
-                <div class="flex justify-around mt-6">
-                  <button class="bg-green-600 text-white px-4 py-2 rounded shadow transition-colors duration-150 hover:bg-green-700 cursor-pointer">
+                <div class="bg-white p-4 border border-green-200 rounded text-center gap-2 flex justify-center">
+                  <button
+                    class="bg-green-600 text-white px-4 py-2 rounded shadow transition-colors duration-150 hover:bg-green-700 cursor-pointer">
                     Salvar Dados
                   </button>
                   <button
-                    class="bg-red-600 text-white border border-red-200 px-4 py-2 rounded hover:bg-red-700 cursor-pointer"
-                  >
+                    class="bg-red-600 text-white border border-red-200 px-4 py-2 rounded hover:bg-red-700 cursor-pointer">
                     Excluir
                   </button>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -744,35 +687,29 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Contraste Duro)
-                </h4>
+              <ExemploErro titulo="O Erro (Contraste Duro)">
                 <p class="text-sm text-gray-700 mb-2">
                   Texto preto puro (#000000) em fundo branco puro (#FFFFFF). O contraste extremo
                   cansa a vista em leituras longas.
                 </p>
-                <div class="bg-white p-4 border border-gray-300">
+                <div class="bg-white p-4 border border-red-200 rounded">
                   <p class="text-[black] font-serif">
                     "O excesso de contraste pode causar vibração visual..."
                   </p>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Suavidade)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Suavidade)">
                 <p class="text-sm text-gray-700 mb-2">
                   Use cinza escuro (#333333 ou #1F2937) para textos. O azul é excelente para
                   corporativo pois é produtivo e não invasivo.
                 </p>
-                <div class="bg-white p-4 border border-gray-300">
+                <div class="bg-white p-4 border border-green-200 rounded">
                   <p class="text-gray-800 font-serif">
                     "Um contraste suavizado melhora a legibilidade por longos períodos."
                   </p>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -816,7 +753,7 @@
           <div class="bg-gray-800 text-white p-6 rounded-lg shadow-md my-6 font-mono text-center">
             <p class="text-sm text-gray-400 mb-2">A Fórmula Matemática:</p>
             <p class="text-2xl tracking-wider">RT = a + b log2(n)</p>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-sm text-gray-500 mt-2 italic">
               Onde <strong>RT</strong> é o Tempo de Reação, <strong>(n)</strong> é o número de
               estímulos e <strong>a</strong> e <strong>b</strong> são constantes mensuráveis que
               dependem da tarefa a ser realizada e das condições sob as quais serão tratadas.
@@ -841,17 +778,12 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Lista Plana)
-                </h4>
+              <ExemploErro titulo="O Erro (Lista Plana)">
                 <p class="text-sm text-gray-700 mb-4">
                   Um menu lateral com todas as funções misturadas. O usuário precisa ler uma a uma
                   (tempo linear).
                 </p>
-                <div
-                  class="bg-white p-4 border border-red-200 rounded text-sm space-y-2 h-40 overflow-y-auto"
-                >
+                <div class="bg-white p-4 border border-red-200 rounded text-sm space-y-2 h-40 overflow-y-auto">
                   <div class="text-gray-500 border-b">Cadastrar Aluno</div>
                   <div class="text-gray-500 border-b">Ver Boletim</div>
                   <div class="text-gray-500 border-b">Cadastrar Professor</div>
@@ -859,12 +791,9 @@
                   <div class="text-gray-500 border-b">Editar Turma</div>
                   <div class="text-gray-500 border-b">Imprimir Histórico</div>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Categorias)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Categorias)">
                 <p class="text-sm text-gray-700 mb-4">
                   Agrupar opções logicamente. O usuário decide primeiro "É Secretaria?", eliminando
                   tudo que é "Financeiro".
@@ -889,7 +818,7 @@
                     </div>
                   </details>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -902,10 +831,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Sobrecarga)
-                </h4>
+              <ExemploErro titulo="O Erro (Sobrecarga)">
                 <p class="text-sm text-gray-700 mb-2">
                   Um formulário de matrícula que pede 15 informações seguidas sem pausas ou
                   agrupamentos.
@@ -914,25 +840,22 @@
                   [Nome] [CPF] [RG] [Mãe] [Pai] [Endereço] [CEP] [Bairro] [Cidade] [Estado] [Tel]
                   [Cel] [Email]...
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Chunking)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Chunking)">
                 <p class="text-sm text-gray-700 mb-2">
                   Dividir o formulário em etapas ou blocos visuais menores (ex: "Dados Pessoais",
                   "Endereço").
                 </p>
-                <div class="space-y-2">
-                  <div class="bg-white p-2 border border-green-200 rounded text-xs">
+                <div class="bg-white p-2 border border-green-200 rounded text-xs space-y-2 pt-3 pb-3">
+                  <div class="bg-white p-2 border border-gray-300 rounded text-xs">
                     <strong>1. Dados Pessoais</strong> (3 campos)
                   </div>
-                  <div class="bg-white p-2 border border-green-200 rounded text-xs">
+                  <div class="bg-white p-2 border border-gray-300 rounded text-xs">
                     <strong>2. Endereço</strong> (4 campos)
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -945,49 +868,41 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Topo da Tela)
-                </h4>
+              <ExemploErro titulo="O Erro (Topo da Tela)">
                 <p class="text-sm text-gray-700 mb-2">
                   Colocar o botão principal de ação (ex: "Salvar Chamada") no canto superior
                   esquerdo.
                 </p>
-                <div
-                  class="w-32 h-48 bg-gray-100 border-4 border-gray-800 rounded mx-auto relative"
-                >
-                  <div
-                    class="absolute top-2 left-2 w-8 h-8 bg-red-500 rounded flex items-center justify-center text-white text-xs"
-                  >
-                    💾
-                  </div>
-                  <div class="mt-12 p-2 text-[8px] text-gray-400 text-center">
-                    Área difícil para o polegar
+                <div class="bg-white p-4 border border-red-200 rounded font-semibold text-red-600">
+                  <div class="w-32 h-48 bg-gray-100 border-4 border-gray-800 rounded mx-auto relative">
+                    <div
+                      class="absolute top-2 left-2 w-8 h-8 bg-red-500 rounded flex items-center justify-center text-white text-xs">
+                      💾
+                    </div>
+                    <div class="mt-12 p-2 text-[8px] text-gray-400 text-center">
+                      Área difícil para o polegar
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Botão Flutuante)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Botão Flutuante)">
                 <p class="text-sm text-gray-700 mb-2">
                   Usar botões na parte inferior (Floating Action Button) ou barras de navegação
                   inferiores, onde é "Confortável".
                 </p>
-                <div
-                  class="w-32 h-48 bg-gray-100 border-4 border-gray-800 rounded mx-auto relative"
-                >
-                  <div
-                    class="absolute bottom-4 right-4 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg"
-                  >
-                    +
-                  </div>
-                  <div class="mt-12 p-2 text-[8px] text-gray-400 text-center">
-                    Área confortável (Easy)
+                <div class="bg-white p-4 border border-green-200 rounded font-semibold text-green-600">
+                  <div class="w-32 h-48 bg-gray-100 border-4 border-gray-800 rounded mx-auto relative">
+                    <div
+                      class="absolute bottom-3 right-3 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg">
+                      +
+                    </div>
+                    <div class="mt-12 p-2 text-[8px] text-gray-400 text-center">
+                      Área confortável (Easy)
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -1004,7 +919,7 @@
           <div class="bg-gray-800 text-white p-6 rounded-lg shadow-md my-6 font-mono text-center">
             <p class="text-sm text-gray-400 mb-2">A Fórmula do Movimento:</p>
             <p class="text-2xl tracking-wider">T = a + b log2(D/W + 1)</p>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-sm text-gray-500 mt-2 italic">
               <strong>T</strong>: Tempo | <strong>D</strong>: Distância | <strong>W</strong>:
               Largura do Alvo
             </p>
@@ -1021,40 +936,32 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Alvo Minúsculo)
-                </h4>
+              <ExemploErro titulo="O Erro (Alvo Minúsculo)">
                 <p class="text-sm text-gray-700 mb-4">
                   Usar apenas um ícone pequeno ou texto sem padding.
                 </p>
-                <div class="flex justify-center items-center h-20 border border-red-200 bg-white">
-                  <span class="text-xs cursor-pointer text-blue-600 hover:underline">salvar</span>
+                <div class="flex justify-center items-center h-20 border border-red-200 bg-white rounded">
+                  <span class="text-xs cursor-pointer text-blue-600 hover:underline">Salvar</span>
                 </div>
                 <p class="text-xs text-red-500 mt-2 text-center">
                   Área de clique: 20x10px (Muito difícil)
                 </p>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Área Expandida)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Área Expandida)">
                 <p class="text-sm text-gray-700 mb-4">
                   Aumentar o padding (enchimento) do botão. O rótulo também ajuda a tornar o alvo
                   maior.
                 </p>
-                <div class="flex justify-center items-center h-20 border border-green-200 bg-white">
-                  <button
-                    class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 cursor-pointer"
-                  >
+                <div class="flex justify-center items-center h-20 border border-green-200 bg-white rounded">
+                  <button class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 cursor-pointer">
                     Salvar notas
                   </button>
                 </div>
                 <p class="text-xs text-green-700 mt-2 text-center">
                   Área de clique: 140x50px (Fácil)
                 </p>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1067,41 +974,33 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Proximidade Perigosa)
-                </h4>
+              <ExemploErro titulo="O Erro (Proximidade Perigosa)">
                 <p class="text-sm text-gray-700 mb-4">
                   Colocar "Salvar" e "Apagar Tudo" lado a lado com o mesmo tamanho. O risco de
                   clique acidental é enorme.
                 </p>
-                <div class="bg-white p-4 border border-red-200 rounded flex gap-2 justify-center">
-                  <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">Enviar</button>
-                  <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 cursor-pointer">Resetar</button>
+                <div class="bg-white p-4 border border-red-200 rounded flex gap-1 justify-center">
+                  <button
+                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">Enviar</button>
+                  <button
+                    class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 cursor-pointer">Resetar</button>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Distanciamento)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Distanciamento)">
                 <p class="text-sm text-gray-700 mb-4">
                   Colocar o botão de ação principal grande e destacado, e o "Resetar" pequeno,
                   distante ou como link textual.
                 </p>
                 <div
-                  class="bg-white p-4 border border-green-200 rounded flex justify-between items-center"
-                >
-                  <a href="#" class="text-red-400 text-xs hover:text-red-600 ml-2 center"
-                    >Resetar formulário</a
-                  >
+                  class="bg-white p-4 border border-green-200 rounded font-semibold text-red-600 flex gap-4 justify-center items-center">
+                  <a href="#" class="text-red-400 text-xs hover:text-red-600 ml-2 center">Resetar formulário</a>
                   <button
-                    class="bg-green-600 text-white px-6 py-2 rounded shadow-lg transform hover:bg-green-700 cursor-pointer"
-                  >
+                    class="bg-green-600 text-white px-6 py-2 rounded shadow-lg transform hover:bg-green-700 cursor-pointer">
                     Enviar dados
                   </button>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1114,35 +1013,29 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Menu Flutuante)
-                </h4>
+              <ExemploErro titulo="O Erro (Menu Flutuante)">
                 <p class="text-sm text-gray-700 mb-2">
                   Deixar um menu importante "boiando" no meio da tela. O usuário precisa desacelerar
                   o mouse para acertar o alvo.
                 </p>
-                <div class="bg-gray-200 h-32 w-full relative border border-gray-400 group/menu">
-                  <div class="absolute top-10 left-10 bg-white p-2 shadow border rounded cursor-default group-hover/menu:bg-gray-50 transition-colors duration-150">
-                    <span class="text-xl text-gray-700">Menu</span>
-                    <div class="hidden group-hover/menu:block mt-1 border-t border-gray-200 pt-1 space-y-1">
+                <div class="bg-white h-32 w-full relative border border-red-200 rounded">
+                  <div class="absolute top-10 left-10 bg-slate-100 p-2 shadow border rounded cursor-default group/menu">
+                    <span class="text-xl text-gray-700 cursor-pointer">Menu</span>
+                    <div class="hidden group-hover/menu:block mt-1 border-t border-gray-300 pt-1 space-y-1">
                       <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Início</div>
                       <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Alunos</div>
                       <div class="text-[10px] text-gray-500 hover:text-gray-800 cursor-pointer">Relatórios</div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Cantos e Bordas)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Cantos e Bordas)">
                 <p class="text-sm text-gray-700 mb-2">
                   Fixar menus no topo ou na lateral esquerda. O usuário pode "jogar" o mouse sem
                   medo de passar do ponto.
                 </p>
-                <div class="bg-gray-200 h-32 w-full relative border border-gray-400 overflow-hidden">
+                <div class="bg-gray-200 h-32 w-full relative border border-green-200 overflow-hidden rounded">
                   <!-- Barra de navegação no topo -->
                   <div class="absolute top-0 left-0 w-full bg-blue-800 h-8 shadow flex items-center px-2 gap-3">
                     <span class="text-[10px] text-white font-semibold">Início</span>
@@ -1157,7 +1050,7 @@
                     <div class="text-[9px] text-gray-400 px-1">Chamada</div>
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -1173,9 +1066,9 @@
       </div>
 
       <div v-if="state.paginaAtiva === 4" class="prose max-w-none">
-        <h1 class="text-2xl font-bold mb-4">Gestalt</h1>
+        <h1 class="text-2xl font-bold mb-4">Princípios de Gestalt</h1>
         <section class="prose max-w-none">
-          <p class="text-lg text-gray-700">
+          <p class="text-lg text-gray-700 mb-4">
             Gestalt é uma palavra alemã que significa "forma". O princípio básico é que
             <strong>"o todo é interpretado de maneira diferente que a soma das partes"</strong>. Na
             interface, isso nos ajuda a entender como os usuários agrupam mentalmente as informações
@@ -1184,8 +1077,6 @@
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold mb-6">Princípios Aplicados</h2>
-
           <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
             <div class="bg-gray-100 p-3 border-b border-gray-300">
               <h3 class="font-bold text-xl m-0">#1: Proximidade</h3>
@@ -1195,42 +1086,40 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Espaçamento Igual)
-                </h4>
+              <ExemploErro titulo="O Erro (Espaçamento Igual)">
                 <p class="text-sm text-gray-700 mb-4">
                   Quando o título, o campo e o botão têm o mesmo espaçamento, o usuário não sabe o
                   que pertence a quê.
                 </p>
                 <div class="bg-white p-4 border border-red-200 rounded flex flex-col gap-4">
-                  <span class="font-bold">Nome do Aluno</span>
-                  <input type="text" class="border p-1" placeholder="..." />
-                  <span class="font-bold">Nota Final</span>
-                  <input type="text" class="border p-1" placeholder="..." />
+                  <label class="text-xs text-gray-500 block">Nome do aluno</label>
+                  <input type="text" value="..." disabled
+                    class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
+                  <label class="text-xs text-gray-500 block">Nota final</label>
+                  <input type="text" value="..." disabled
+                    class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                 </div>
                 <p class="text-xs text-red-500 mt-2 text-center">Tudo parece solto.</p>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Agrupamento)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Agrupamento)">
                 <p class="text-sm text-gray-700 mb-4">
                   Aproximar o rótulo (Label) do seu campo (Input) e afastar dos outros grupos cria
                   blocos lógicos instantâneos.
                 </p>
                 <div class="bg-white p-4 border border-green-200 rounded flex flex-col gap-6">
                   <div class="flex flex-col gap-1">
-                    <span class="font-bold text-sm">Nome do Aluno</span>
-                    <input type="text" class="border p-1 rounded" placeholder="Ex: João Silva" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Nome do aluno:</label>
+                    <input type="text" value="João" disabled
+                      class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                   <div class="flex flex-col gap-1">
-                    <span class="font-bold text-sm">Nota Final</span>
-                    <input type="text" class="border p-1 rounded" placeholder="Ex: 8.5" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Nota final:</label>
+                    <input type="text" value="8.5" disabled
+                      class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1244,43 +1133,29 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Inconsistência)
-                </h4>
+              <ExemploErro titulo="O Erro (Inconsistência)">
                 <p class="text-sm text-gray-700 mb-4">
                   Links de navegação com cores e estilos diferentes. O usuário acha que são funções
                   diferentes.
                 </p>
-                <div
-                  class="bg-white p-4 border border-red-200 rounded flex gap-2 justify-center items-center"
-                >
+                <div class="bg-white p-4 border border-red-200 rounded flex gap-3 justify-center items-center">
                   <span class="text-blue-600 underline cursor-pointer hover:text-blue-800">Alunos</span>
                   <button class="bg-gray-200 px-2 rounded hover:bg-gray-300 cursor-pointer">Turmas</button>
                   <span class="text-red-600 font-bold cursor-pointer hover:text-red-800">Notas</span>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Padrão)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Padrão)">
                 <p class="text-sm text-gray-700 mb-4">
                   Se todos os itens do menu têm a mesma cor e fonte, o cérebro entende: "Isso tudo é
                   navegação".
                 </p>
-                <div class="bg-white p-4 border border-green-200 rounded flex gap-4 justify-center">
-                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer"
-                    >Alunos</span
-                  >
-                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer"
-                    >Turmas</span
-                  >
-                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer"
-                    >Notas</span
-                  >
+                <div class="bg-white p-4 border border-green-200 rounded flex gap-3 justify-center">
+                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer">Alunos</span>
+                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer">Turmas</span>
+                  <span class="text-gray-700 font-bold hover:text-blue-600 cursor-pointer">Notas</span>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1294,53 +1169,53 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Quebra de Fluxo)
-                </h4>
+              <ExemploErro titulo="O Erro (Quebra de Fluxo)">
                 <p class="text-sm text-gray-700 mb-2">
                   Alinhamento em zigue-zague. O olho do professor tem que pular pela tela para ler
                   os dados.
                 </p>
                 <div class="bg-white p-4 border border-red-200 rounded space-y-3">
                   <div>
-                    <label class="text-xs text-gray-500 block mb-0.5">Nome</label>
-                    <input type="text" value="João" disabled class="bg-gray-100 p-1 w-1/2 border border-gray-300 rounded text-sm text-gray-700" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Nome:</label>
+                    <input type="text" value="João" disabled
+                      class="bg-gray-100 p-1 w-1/2 border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                   <div class="text-right">
-                    <label class="text-xs text-gray-500 block mb-0.5 text-right">Turma</label>
-                    <input type="text" value="3B" disabled class="bg-gray-100 p-1 w-1/2 ml-auto block border border-gray-300 rounded text-sm text-gray-700 text-right" />
+                    <label class="text-xs text-gray-500 block mb-0.5 text-right">Turma:</label>
+                    <input type="text" value="3B" disabled
+                      class="bg-gray-100 p-1 w-1/2 ml-auto block border border-gray-300 rounded text-sm text-gray-700 text-right" />
                   </div>
                   <div class="text-center">
-                    <label class="text-xs text-gray-500 block mb-0.5">Status</label>
-                    <input type="text" value="Ativo" disabled class="bg-gray-100 p-1 w-1/2 mx-auto block border border-gray-300 rounded text-sm text-gray-700 text-center" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Status:</label>
+                    <input type="text" value="Ativo" disabled
+                      class="bg-gray-100 p-1 w-1/2 mx-auto block border border-gray-300 rounded text-sm text-gray-700 text-center" />
                   </div>
                 </div>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Alinhamento)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Alinhamento)">
                 <p class="text-sm text-gray-700 mb-2">
                   Alinhar tudo à esquerda (padrão ocidental de leitura) cria uma linha imaginária
                   que guia o olhar.
                 </p>
                 <div class="bg-white p-4 border border-green-200 rounded space-y-3">
                   <div>
-                    <label class="text-xs text-gray-500 block mb-0.5">Nome</label>
-                    <input type="text" value="João" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Nome:</label>
+                    <input type="text" value="João" disabled
+                      class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                   <div>
-                    <label class="text-xs text-gray-500 block mb-0.5">Turma</label>
-                    <input type="text" value="3B" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Turma:</label>
+                    <input type="text" value="3B" disabled
+                      class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                   <div>
-                    <label class="text-xs text-gray-500 block mb-0.5">Status</label>
-                    <input type="text" value="Ativo" disabled class="bg-gray-100 p-1 w-full border-l-4 border-blue-500 pl-2 border-r border-t border-b border-r-gray-300 border-t-gray-300 border-b-gray-300 rounded text-sm text-gray-700" />
+                    <label class="text-xs text-gray-500 block mb-0.5">Status:</label>
+                    <input type="text" value="Ativo" disabled
+                      class="bg-gray-100 p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
                   </div>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1354,38 +1229,36 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✕</span> O Erro (Complexidade)
-                </h4>
+              <ExemploErro titulo="O Erro (Complexidade)">
                 <p class="text-sm text-gray-700 mb-2">
                   Usar ícones super detalhados ou fotos complexas para representar ações simples.
                   Demora para o cérebro processar.
                 </p>
-                <div class="bg-white h-40 w-full border border-gray-200 rounded overflow-hidden">
-                  <img
-                    src="../assets/coleman-glover-ZF2_DnhI4t4-unsplash.jpg"
-                    alt="Foto realista de lixeira"
-                    class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-                  />
+                <div class="bg-white p-4 border border-red-200 rounded text-center text-gray-400">
+                  <div class="bg-white h-40 w-full rounded overflow-hidden flex justify-center">
+                    <img src="../assets/coleman-glover-ZF2_DnhI4t4-unsplash.jpg" alt="Foto realista de lixeira"
+                      class="w-1/2 h-full object-cover opacity-90 cursor-pointer hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
                 <p class="text-xs text-red-500 mt-2 text-center">
                   Muita informação visual desnecessária.
                 </p>
-              </div>
+              </ExemploErro>
 
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  <span class="text-xl">✓</span> A Solução (Simplicidade)
-                </h4>
+              <ExemploSolucao titulo="A Solução (Simplicidade)">
                 <p class="text-sm text-gray-700 mb-2">
                   Usar ícones minimalistas (ex: FontAwesome, Material Icons). Um simples traço de
                   lixeira é entendido instantaneamente.
                 </p>
                 <div class="bg-white h-16 flex items-center justify-center border border-gray-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    class="w-8 h-8 text-gray-700 cursor-pointer hover:text-gray-900" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -1402,7 +1275,7 @@
             <strong>funcional</strong> antes de ser decorativa.
           </p>
 
-          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6">
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
             <h3 class="text-blue-800 font-bold text-lg m-0">Por que é importante?</h3>
             <p class="m-0 text-blue-700 mt-2">
               Uma boa escolha tipográfica reduz a carga cognitiva, melhora a acessibilidade para
@@ -1423,30 +1296,23 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  ✕ O Erro (Baixa Nitidez)
-                </h4>
+              <ExemploErro titulo="O Erro (Baixa Nitidez)">
                 <p class="text-sm text-gray-700 mb-4">
                   Usar fontes decorativas ou com serifa muito fina para textos de instrução.
                 </p>
-                <div class="bg-white p-4 border border-red-200 rounded text-center">
-                  <span class="italic text-gray-400 font-serif"
-                    >Instruções complexas de IHC...</span
-                  >
+                <div class="bg-white p-4 border border-red-200 rounded">
+                  <span class="italic text-gray-400 font-serif">Instruções complexas de IHC...</span>
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  ✓ A Solução (Sans-serif)
-                </h4>
+                <p class="text-xs text-red-500 mt-2 text-center">Difícil de ler.</p>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Sans-serif)">
                 <p class="text-sm text-gray-700 mb-4">
                   Fontes sem serifa (Inter, Roboto) mantêm a nitidez em qualquer resolução.
                 </p>
-                <div class="bg-white p-4 border border-green-200 rounded text-center">
-                  <span class="font-sans font-bold text-gray-800">Instruções Claras de IHC</span>
+                <div class="bg-white p-4 border border-green-200 rounded">
+                  <span class="font-bold text-gray-800">Instruções Claras de IHC</span>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1458,28 +1324,22 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  ✕ O Erro (Baixo Contraste)
-                </h4>
+              <ExemploErro titulo="O Erro (Baixo Contraste)">
                 <p class="text-sm text-gray-700 mb-4">
                   Texto branco ou cinza claro sobre o fundo amarelo vibrante.
                 </p>
-                <div class="bg-yellow-400 p-4 rounded text-center">
+                <div class="bg-yellow-400 p-4 border border-red-200 rounded text-center">
                   <span class="text-white font-bold text-xs">Informação importante aqui</span>
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  ✓ A Solução (Contraste 4.5:1)
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Contraste 4.5:1)">
                 <p class="text-sm text-gray-700 mb-4">
                   Usar cores escuras sobre o amarelo garante a acessibilidade.
                 </p>
-                <div class="bg-yellow-400 p-4 rounded text-center">
-                  <span class="text-black font-black">Informação Clara e Legível</span>
+                <div class="bg-yellow-400 p-4 border border-green-200 rounded text-center">
+                  <span class="text-black font-bold">Informação Clara e Legível</span>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1492,31 +1352,25 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  ✕ O Erro (Monotonia Visual)
-                </h4>
+              <ExemploErro titulo="O Erro (Monotonia Visual)">
                 <p class="text-sm text-gray-700 mb-4">
                   Título e corpo de texto com o mesmo peso e tamanho. O usuário não sabe por onde
                   começar.
                 </p>
-                <div class="bg-white p-4 border border-gray-300 rounded">
+                <div class="bg-white p-4 border border-red-200 rounded">
                   <p class="text-base text-gray-800 m-0">Título do Módulo de Ensino</p>
                   <p class="text-base text-gray-800 m-0">
                     Este é um parágrafo explicativo sobre as métricas de usabilidade em sistemas
                     complexos.
                   </p>
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  ✓ A Solução (Pesos e Contraste)
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Pesos e Contraste)">
                 <p class="text-sm text-gray-700 mb-4">
                   Destacar o título com negrito e tamanho maior cria um caminho visual claro.
                 </p>
                 <div class="bg-white p-4 border border-green-200 rounded">
-                  <p class="text-xl font-black text-black m-0 uppercase tracking-tight">
+                  <p class="text-xl font-bold text-black m-0 uppercase mb-1">
                     Título do Módulo
                   </p>
                   <p class="text-sm text-gray-600 m-0">
@@ -1524,7 +1378,7 @@
                     complexos.
                   </p>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
 
@@ -1537,10 +1391,7 @@
               </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2">
-              <div class="p-6 bg-red-50 border-r border-gray-200">
-                <h4 class="text-red-700 font-bold flex items-center gap-2 mb-2">
-                  ✕ O Erro (Texto Sufocado)
-                </h4>
+              <ExemploErro titulo="O Erro (Texto Sufocado)">
                 <p class="text-sm text-gray-700 mb-4">
                   Linhas muito próximas (line-height: 1.0) fazem com que as palavras se "atropelem"
                   durante a leitura.
@@ -1552,11 +1403,8 @@
                     linha, causando fadiga rápida.
                   </p>
                 </div>
-              </div>
-              <div class="p-6 bg-green-50">
-                <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">
-                  ✓ A Solução (Respiro Visual)
-                </h4>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Respiro Visual)">
                 <p class="text-sm text-gray-700 mb-4">
                   Um espaçamento entre 1.5 e 1.6 torna a leitura fluida e profissional.
                 </p>
@@ -1567,7 +1415,7 @@
                     facilitado.
                   </p>
                 </div>
-              </div>
+              </ExemploSolucao>
             </div>
           </div>
         </section>
@@ -1587,6 +1435,8 @@
 
 <script lang="ts" setup>
 import { reactive, watch, ref, onMounted, nextTick } from 'vue'
+import ExemploErro from '@/components/ExemploErro.vue'
+import ExemploSolucao from '@/components/ExemploSolucao.vue'
 
 const props = defineProps<{
   menuAberto: boolean
@@ -1711,6 +1561,7 @@ function alterarPagina(index: number) {
 .fade-leave-active {
   transition: opacity 0.25s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

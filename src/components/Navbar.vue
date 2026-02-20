@@ -5,7 +5,7 @@
     <button
       v-show="pathAtual === '/documentacao'"
       @click="$emit('toggle-menu')"
-      class="min-[800px]:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all font-bold"
+      class=" rounded min-[800px]:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all font-bold"
     >
       <svg
         v-if="!state.mudarBotao"

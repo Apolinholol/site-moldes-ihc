@@ -17,6 +17,6 @@ const props = withDefaults(
 )
 
 const borderClass = computed(() =>
-  props.tipo === 'erro' ? 'border-red-200' : 'border-green-200',
+  props.tipo === 'erro' ? 'border-red-400 border-2' : 'border-emerald-400 border-2',
 )
 </script>

@@ -59,6 +59,14 @@
           class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Tipografia
         </button>
+
+        <button @click="alterarPagina(6)" :class="{
+          'bg-yellow-300 border-l-4 border-black font-black': state.paginaAtiva === 6,
+          'border-l-4 border-transparent': state.paginaAtiva !== 6,
+        }"
+          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
+          Acessibilidade
+        </button>
       </nav>
     </section>
 
@@ -1427,6 +1435,320 @@
             <strong>Gestalt</strong> e a <strong>Tipografia</strong>, você cria uma interface
             cientificamente eficiente.
           </p>
+        </section>
+      </div>
+
+      <div v-if="state.paginaAtiva === 6" class="prose max-w-none">
+        <section class="prose max-w-none">
+          <h1 class="text-3xl font-bold border-b-4 border-yellow-300 inline-block mb-4">
+            Acessibilidade Digital (WCAG)
+          </h1>
+          <p class="text-lg text-gray-700">
+            Acessibilidade na web significa garantir que todas as pessoas, incluindo aquelas com deficiências (visuais, auditivas, motoras, cognitivas), possam perceber, entender, navegar e interagir com o conteúdo. Não é um extra, mas um pilar fundamental do design centrado no ser humano.
+          </p>
+
+          <div class="bg-blue-50 border-l-4 border-blue-600 p-4 my-6 rounded">
+            <h3 class="text-blue-800 font-bold text-lg m-0">Por que é crucial?</h3>
+            <p class="m-0 text-blue-700 mt-2">
+              Um sistema acessível expande seu público, melhora a experiência de todos os usuários (não apenas os com deficiência), fortalece a imagem da marca e, em muitos países, é uma exigência legal.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-6">Erros Comuns vs. Boas Práticas</h2>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#1: Imagens sem Descrição (Texto Alternativo)</h3>
+              <p class="text-sm text-gray-500 m-0">
+                Leitores de tela para deficientes visuais dependem do atributo 'alt' para descrever o conteúdo de uma imagem.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <ExemploErro titulo="O Erro (Imagem Silenciosa)">
+                <p class="text-sm text-gray-700 mb-4">
+                  Uma imagem sem o atributo `alt` é invisível para leitores de tela. O usuário ouve apenas "imagem" ou o nome do arquivo, perdendo todo o contexto.
+                </p>
+                <div class="bg-white p-4 border border-red-200 rounded text-center">
+                  <img src="../assets/coleman-glover-ZF2_DnhI4t4-unsplash.jpg" class="h-24 mx-auto" />
+                  <code class="text-xs text-red-600 mt-2 block">&lt;img src="..."&gt;</code>
+                </div>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Imagem Descrita)">
+                <p class="text-sm text-gray-700 mb-4">
+                  O atributo `alt` deve ser conciso e descrever a essência da imagem. Se a imagem for puramente decorativa, use `alt=""`.
+                </p>
+                <div class="bg-white p-4 border border-green-200 rounded text-center">
+                  <img src="../assets/coleman-glover-ZF2_DnhI4t4-unsplash.jpg" alt="Lixeira de metal em um fundo de madeira." class="h-24 mx-auto" />
+                  <code class="text-xs text-green-700 mt-2 block">&lt;img src="..." alt="Lixeira de metal em um fundo de madeira."&gt;</code>
+                </div>
+              </ExemploSolucao>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+              <h3 class="font-bold text-xl m-0">#2: Controles Não Acessíveis via Teclado</h3>
+              <p class="text-sm text-gray-500 m-0">
+                Muitos usuários navegam usando apenas o teclado. Elementos clicáveis devem ser "focáveis" e "acionáveis" com teclas como 'Tab' e 'Enter'.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <ExemploErro titulo="O Erro (Div Clicável)">
+                <p class="text-sm text-gray-700 mb-4">
+                  Uma `&lt;div&gt;` com evento de clique não pode ser alcançada com a tecla 'Tab' por padrão, excluindo usuários de teclado.
+                </p>
+                <div class="bg-white p-4 border border-red-200 rounded text-center">
+                  <div class="bg-blue-500 text-white py-2 px-4 rounded inline-block cursor-pointer">
+                    Salvar (Não acessível)
+                  </div>
+                  <p class="text-xs text-red-500 mt-2">Tente alcançar este "botão" usando a tecla TAB.</p>
+                </div>
+              </ExemploErro>
+              <ExemploSolucao titulo="A Solução (Botão ou Atributos ARIA)">
+                <p class="text-sm text-gray-700 mb-4">
+                  Use o elemento `&lt;button&gt;` sempre que possível. Se precisar usar uma `&lt;div&gt;`, adicione `tabindex="0"`, `role="button"` e um evento de teclado.
+                </p>
+                <div class="bg-white p-4 border border-green-200 rounded text-center">
+                  <button class="bg-blue-600 text-white py-2 px-4 rounded">
+                    Salvar (Acessível)
+                  </button>
+                  <p class="text-xs text-green-700 mt-2">Este botão é focável e acionável pelo teclado.</p>
+                </div>
+              </ExemploSolucao>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#3: Formulários sem Rótulos (Labels)</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      A tag <code>&lt;label&gt;</code> associa um texto descritivo a um campo de formulário, permitindo que leitores de tela anunciem a finalidade do campo e que o clique no rótulo foque no campo.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Rótulo Visual Apenas)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Um texto ao lado de um campo não o associa semanticamente. Leitores de tela anunciam "campo de edição" sem explicar o que deve ser preenchido.
+                      </p>
+                      <div class="bg-white p-4 border border-red-200 rounded">
+                          <span class="text-sm text-gray-800">Nome:</span>
+                          <input type="text" class="border border-gray-300 rounded p-1 ml-2" />
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (Uso de 'for' e 'id')">
+                      <p class="text-sm text-gray-700 mb-4">
+                          O atributo <code>for</code> da label deve corresponder ao <code>id</code> do input, criando uma conexão clara. Clicar no rótulo agora foca no campo.
+                      </p>
+                      <div class="bg-white p-4 border border-green-200 rounded">
+                          <label for="nomeAluno" class="text-sm text-gray-800 cursor-pointer">Nome:</label>
+                          <input type="text" id="nomeAluno" class="border border-gray-300 rounded p-1 ml-2" />
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#4: HTML Não Semântico</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      O uso de tags HTML apropriadas (<code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;header&gt;</code>) cria "marcos" na página que ajudam usuários de leitores de tela a navegar rapidamente.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Sopa de Divs)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Estruturar a página inteira com <code>&lt;div&gt;</code>s impede que tecnologias assistivas identifiquem a estrutura e a finalidade de cada bloco.
+                      </p>
+                      <div class="bg-white p-2 border border-red-200 rounded text-xs text-gray-500 font-mono">
+<pre>
+&lt;div class="header"&gt;...&lt;/div&gt;
+&lt;div class="main-content"&gt;
+  &lt;div class="article"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="footer"&gt;...&lt;/div&gt;
+</pre>
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (Estrutura Clara)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Tags como <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> e <code>&lt;footer&gt;</code> definem a estrutura da página, permitindo uma navegação mais eficiente.
+                      </p>
+                      <div class="bg-white p-2 border border-green-200 rounded text-xs text-gray-600 font-mono">
+<pre>
+&lt;header&gt;...&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</pre>
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+                <h3 class="font-bold text-xl m-0">#5: Contraste de Cores Insuficiente</h3>
+                <p class="text-sm text-gray-500 m-0">
+                    Textos com baixo contraste em relação ao fundo são difíceis de ler para pessoas com baixa visão ou daltonismo. A WCAG recomenda um contraste mínimo de 4.5:1 para texto normal.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <ExemploErro titulo="O Erro (Baixo Contraste)">
+                    <p class="text-sm text-gray-700 mb-4">
+                        Um texto cinza claro sobre um fundo branco pode parecer "elegante", mas é ilegível para muitos usuários.
+                    </p>
+                    <div class="bg-white p-4 border border-red-200 rounded text-center">
+                        <p style="color: #999;">Texto com baixo contraste</p>
+                    </div>
+                </ExemploErro>
+                <ExemploSolucao titulo="A Solução (Contraste Adequado)">
+                    <p class="text-sm text-gray-700 mb-4">
+                        Use cores que garantam uma taxa de contraste adequada. Ferramentas online podem ajudar a verificar o contraste.
+                    </p>
+                    <div class="bg-white p-4 border border-green-200 rounded text-center">
+                        <p style="color: #333;">Texto com contraste adequado</p>
+                    </div>
+                </ExemploSolucao>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+            <div class="bg-gray-100 p-3 border-b border-gray-300">
+                <h3 class="font-bold text-xl m-0">#6: Texto Não Redimensionável</h3>
+                <p class="text-sm text-gray-500 m-0">
+                    Usuários com baixa visão precisam aumentar o tamanho do texto no navegador. Se o layout quebrar ou o texto ficar cortado, a página se torna inutilizável.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <ExemploErro titulo="O Erro (Fontes em 'px' e Layout Fixo)">
+                    <p class="text-sm text-gray-700 mb-4">
+                        Usar pixels (px) para fontes e ter um layout com alturas fixas pode fazer com que o texto transborde ou se sobreponha quando o usuário aumenta o zoom.
+                    </p>
+                    <div class="bg-white p-4 border border-red-200 rounded overflow-hidden" style="height: 50px;">
+                        <p style="font-size: 16px;">Este texto pode ficar cortado se você aumentar o zoom.</p>
+                    </div>
+                </ExemploErro>
+                <ExemploSolucao titulo="A Solução (Unidades Relativas e Layout Fluido)">
+                    <p class="text-sm text-gray-700 mb-4">
+                        Use unidades relativas como 'rem' para fontes e evite alturas fixas em contêineres de texto. O layout deve se adaptar ao conteúdo.
+                    </p>
+                    <div class="bg-white p-4 border border-green-200 rounded">
+                        <p style="font-size: 1rem;">Este texto flui corretamente com o zoom.</p>
+                    </div>
+                </ExemploSolucao>
+            </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#7: Links Não Descritivos</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      Usuários de leitores de tela frequentemente navegam pulando de link em link. Links como "clique aqui" ou "saiba mais" não oferecem contexto sobre o destino.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Links Genéricos)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Sem o contexto da frase, o usuário não sabe para onde o link "clique aqui" o levará.
+                      </p>
+                      <div class="bg-white p-4 border border-red-200 rounded">
+                          <p class="text-sm text-gray-800">Para ver o relatório de notas, <a href="#" class="text-blue-600 underline">clique aqui</a>.</p>
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (Links com Contexto)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          O próprio texto do link deve descrever a ação ou o destino, tornando a navegação mais clara e eficiente.
+                      </p>
+                      <div class="bg-white p-4 border border-green-200 rounded">
+                          <p class="text-sm text-gray-800">Acesse o <a href="#" class="text-blue-600 underline">relatório de notas de 2024</a>.</p>
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#8: Gerenciamento de Foco Incorreto</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      Ao abrir ou fechar elementos dinâmicos, como modais, o foco do teclado deve ser gerenciado para proporcionar uma experiência de navegação lógica.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Foco Perdido)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Após fechar um modal, o foco volta para o topo da página, forçando o usuário a navegar por tudo novamente para voltar onde estava.
+                      </p>
+                      <div class="bg-white p-4 border border-red-200 rounded">
+                          <p class="text-sm text-gray-500 italic">(Simulação) Ao fechar um pop-up, o foco se perde.</p>
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (Foco Preso e Restaurado)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          O foco deve ser "preso" dentro do modal enquanto ele estiver aberto. Ao fechar, o foco deve retornar programaticamente para o elemento que o abriu (o botão, por exemplo).
+                      </p>
+                      <div class="bg-white p-4 border border-green-200 rounded">
+                        <p class="text-sm text-gray-500 italic">(Simulação) O foco retorna ao botão "Abrir Modal" após o fechamento.</p>
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#9: Idioma da Página Não Declarado</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      O atributo <code>lang</code> na tag <code>&lt;html&gt;</code> informa aos leitores de tela qual o idioma do conteúdo, garantindo a pronúncia correta das palavras.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Idioma Ausente)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Sem o atributo <code>lang</code>, um leitor de tela configurado em inglês tentará ler o texto em português com sotaque e pronúncia em inglês, tornando-o incompreensível.
+                      </p>
+                      <div class="bg-white p-2 border border-red-200 rounded text-xs text-gray-500 font-mono">
+                          <pre>&lt;html&gt;...&lt;/html&gt;</pre>
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (Idioma Declarado)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Declarar o idioma principal da página é uma das otimizações de acessibilidade mais simples e importantes.
+                      </p>
+                      <div class="bg-white p-2 border border-green-200 rounded text-xs text-gray-600 font-mono">
+                          <pre>&lt;html lang="pt-BR"&gt;...&lt;/html&gt;</pre>
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
+
+          <div class="mb-10 border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <div class="bg-gray-100 p-3 border-b border-gray-300">
+                  <h3 class="font-bold text-xl m-0">#10: Conteúdo Dinâmico Não Anunciado</h3>
+                  <p class="text-sm text-gray-500 m-0">
+                      Quando um conteúdo muda dinamicamente na tela (ex: uma mensagem de erro ou de sucesso), usuários de leitores de tela precisam ser notificados da mudança.
+                  </p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                  <ExemploErro titulo="O Erro (Mudança Silenciosa)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Uma mensagem de "Salvo com sucesso!" aparece na tela, mas como não é focada, o usuário com deficiência visual não sabe que a ação foi concluída.
+                      </p>
+                      <div class="bg-white p-4 border border-red-200 rounded">
+                          <p class="text-sm text-green-600">Salvo com sucesso!</p>
+                      </div>
+                  </ExemploErro>
+                  <ExemploSolucao titulo="A Solução (ARIA Live Regions)">
+                      <p class="text-sm text-gray-700 mb-4">
+                          Usando atributos como <code>aria-live="polite"</code> ou <code>role="alert"</code>, o leitor de tela anunciará a nova mensagem assim que ela aparecer na tela, sem mover o foco do usuário.
+                      </p>
+                      <div class="bg-white p-2 border border-green-200 rounded text-xs text-gray-600 font-mono">
+                          <pre>&lt;div aria-live="polite"&gt;{{ mensagemDeStatus }}&lt;/div&gt;</pre>
+                      </div>
+                  </ExemploSolucao>
+              </div>
+          </div>
         </section>
       </div>
     </section>

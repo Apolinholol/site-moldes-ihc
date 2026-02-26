@@ -4,38 +4,14 @@
 
       <div>
 
-        <div id="DivApresentacao" class="mb-6 gap-4 flex flex-wrap flex-col">
-          <h1 class="text-5xl font-black text-black leading-tight w-fit fascinate-inline-regular">
+        <div id="DivApresentacao" class="mb-16 gap-4 flex flex-wrap flex-col">
+          <h1 class="text-5xl md:text-5xl sm:text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular">
             Seja bem-vindo ao mundo da IHC !
           </h1>
-          <span class="flex flex-wrap gap-3">
-            <h1 class="text-5xl font-black text-black leading-tight w-fit fascinate-inline-regular">
-              Interface Homem Máquina é
-            </h1>
-            <div
-              class="inline-block bg-white px-6 py-3 shadow-[4px_4px_0_0] h-[fit-content]"
-              style="
-                border: 2px solid black;
-                padding: 8px;
-                background-color: rgba(255, 255, 255, 0.589);
-                box-shadow: #000 4px 4px 0 0;
-                width: 40rem;
-                min-height: 80px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <span
-                class="fascinate-inline-regular text-5xl leading-tight font-black texto-sombra-padrao text-yellow-400 uppercase tracking-wider"
-              >
-                #{{ state.definicao }}
-              </span>
-            </div>
-          </span>
+          
         </div>
 
-        <h2 class="text-4xl font-black text-black mb-8 mt-12">PILARES DA IHC</h2>
+        <h2 class="text-4xl font-black text-black mb-8 mt-16">PILARES DA IHC</h2>
 
         <div id="DivCardsApresentacao" class="grid md:grid-cols-3 gap-6 mb-12">
           <div class="transform hover:scale-105 transition">

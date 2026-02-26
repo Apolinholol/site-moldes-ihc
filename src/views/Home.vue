@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <section id="SectionApresentacao" class="px-6 my-10">
 
-      <div class="min-h-screen">
+      <div>
 
         <div id="DivApresentacao" class="mb-6 gap-4 flex flex-wrap flex-col">
           <h1 class="text-5xl font-black text-black leading-tight w-fit fascinate-inline-regular">

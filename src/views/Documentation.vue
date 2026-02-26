@@ -535,7 +535,7 @@
             Fundo neutro (60%), Azul para estrutura (30%) e Verde para o botão principal
             (10%).
           </p>
-          <div class="bg-gray-50 p-4 border border-green-200 rounded space-y-2">
+          <div class="bg-gray-50 p-4 border-emerald-400 border-2 rounded space-y-2">
             <div class="h-8 bg-white w-full border border-gray-200 rounded"></div>
             <div class="flex gap-2">
               <div class="h-20 w-1/3 bg-blue-600 rounded opacity-90"></div>
@@ -811,7 +811,7 @@
             <p class="text-sm text-gray-700 mb-4">
               Usar apenas um ícone pequeno ou texto sem padding.
             </p>
-            <div class="flex justify-center items-center h-20 border border-red-200 bg-white rounded">
+            <div class="flex justify-center items-center h-20 border-red-400 border-2 bg-white rounded">
               <span class="text-xs cursor-pointer text-blue-600 hover:underline">Salvar</span>
             </div>
             <p class="text-xs text-red-500 mt-2 text-center">
@@ -824,7 +824,7 @@
               Aumentar o padding (enchimento) do botão. O rótulo também ajuda a tornar o alvo
               maior.
             </p>
-            <div class="flex justify-center items-center h-20 border border-green-200 bg-white rounded">
+            <div class="flex justify-center items-center h-20 border-emerald-400 border-2 bg-white rounded">
               <button class="bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 cursor-pointer">
                 Salvar notas
               </button>
@@ -855,7 +855,7 @@
               distante ou como link textual.
             </p>
             <div
-              class="bg-white p-4 border border-green-200 rounded font-semibold text-red-600 flex gap-4 justify-center items-center">
+              class="bg-white p-4 border-emerald-400 border-2 rounded font-semibold text-red-600 flex gap-4 justify-center items-center">
               <a href="#" class="text-red-400 text-xs hover:text-red-600 ml-2 center">Resetar formulário</a>
               <button
                 class="bg-green-600 text-white px-6 py-2 rounded shadow-lg transform hover:bg-green-700 cursor-pointer">
@@ -889,7 +889,7 @@
               Fixar menus no topo ou na lateral esquerda. O usuário pode "jogar" o mouse sem
               medo de passar do ponto.
             </p>
-            <div class="bg-gray-200 h-32 w-full relative border border-green-200 overflow-hidden rounded">
+            <div class="bg-gray-200 h-32 w-full relative border-2 border-emerald-400 overflow-hidden rounded">
               <!-- Barra de navegação no topo -->
               <div class="absolute top-0 left-0 w-full bg-blue-800 h-8 shadow flex items-center px-2 gap-3">
                 <span class="text-[10px] text-white font-semibold">Início</span>
@@ -1070,7 +1070,7 @@
               Usar ícones minimalistas (ex: FontAwesome, Material Icons). Um simples traço de
               lixeira é entendido instantaneamente.
             </p>
-            <div class="bg-white h-16 flex items-center justify-center border border-gray-200">
+            <div class="bg-white h-16 flex items-center justify-center border-emerald-400 border-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-700 cursor-pointer hover:text-gray-900"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -1134,7 +1134,7 @@
           <p class="text-sm text-gray-700 mb-4">
             Texto branco ou cinza claro sobre o fundo amarelo vibrante.
           </p>
-          <div class="bg-yellow-400 p-4 border border-red-200 rounded text-center">
+          <div class="bg-yellow-400 p-4 border-red-400 border-2 rounded text-center">
             <span class="text-white font-bold text-xs">Informação importante aqui</span>
           </div>
         </ExemploErro>
@@ -1142,7 +1142,7 @@
           <p class="text-sm text-gray-700 mb-4">
             Usar cores escuras sobre o amarelo garante a acessibilidade.
           </p>
-          <div class="bg-yellow-400 p-4 border border-green-200 rounded text-center">
+          <div class="bg-yellow-400 p-4 border-emerald-400 border-2 rounded text-center">
             <span class="text-black font-bold">Informação clara e legível</span>
           </div>
         </ExemploSolucao>
@@ -1389,7 +1389,7 @@
             Usar pixels (px) para fontes e ter um layout com alturas fixas pode fazer com que o texto transborde ou se
             sobreponha quando o usuário aumenta o zoom.
           </p>
-          <div class="bg-white p-4 border border-red-200 rounded overflow-hidden" style="height: 50px;">
+          <div class="bg-white p-4 border-red-400 border-2 rounded overflow-hidden" style="height: 50px;">
             <p style="font-size: 16px;">Este texto pode ficar cortado se você aumentar o zoom.</p>
           </div>
         </ExemploErro>

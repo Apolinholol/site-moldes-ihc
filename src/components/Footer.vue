@@ -15,7 +15,7 @@
             </div>
             <div>
               <h4 class="font-black text-lg mb-3" >PROFESSORA</h4>
-              <p class="font-bold text-sm">Michelle Maria Freitas Neto</p>
+              <p class="font-bold text-sm"><a href="https://integra.iff.edu.br/portfolio/pessoas/michelle-maria-freitas-neto/linux" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Michelle Maria Freitas Neto</a></p>
             </div>
           </div>
           <div class="border-t-2 border-yellow-400 pt-6 text-center font-bold">

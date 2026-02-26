@@ -200,7 +200,7 @@
           <div class="max-w-2xl merriweather-body ps-[6em]">
             <p class="text-lg leading-relaxed text-gray-900 mb-4">
               Este projeto foi desenvolvido como parte do curso de Interação Homem Máquina (IHC)
-              ministrado pela professora Michelle Maria Freitas Neto no Instituto Federal Fluminense
+              ministrado pela professora <a href="https://integra.iff.edu.br/portfolio/pessoas/michelle-maria-freitas-neto/linux" target="_blank" rel="noopener noreferrer" class="hover:underline">Michelle Maria Freitas Neto</a> no Instituto Federal Fluminense
               - Campus Itaperuna. O objetivo principal é fornecer uma visão abrangente sobre os
               conceitos e práticas essenciais para o design e avaliação de interfaces centradas no
               usuário.

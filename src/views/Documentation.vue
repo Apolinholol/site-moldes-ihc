@@ -1552,9 +1552,9 @@
         </ExemploSolucao>
       </ExemploCard>
     </section>
-    <section class="bg-purple-50 p-6 rounded-lg border border-purple-200 text-center mt-8">
-      <h3 class="font-bold text-xl mb-2 text-purple-900">Conclusão do Módulo de IHC</h3>
-      <p class="text-purple-800 max-w-2xl mx-auto">
+    <section class="bg-indigo-200 p-6 border-3 border-indigo-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+      <h3 class="font-bold text-xl mb-2 text-indigo-900">Conclusão do Módulo de IHC</h3>
+      <p class="text-indigo-800">
         Ao combinar as <strong>Heurísticas de Nielsen</strong>, a
         <strong>Teoria das Cores</strong>, as <strong>Leis de Hick-Hyman </strong> e <strong>Fitts</strong>, os
         <strong>Princípios de Gestalt</strong>, a <strong>Tipografia</strong> e a <strong>Acessibilidade</strong>, você

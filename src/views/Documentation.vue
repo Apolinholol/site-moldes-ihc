@@ -1,10 +1,10 @@
 <template>
-  <section id="SectionDocumentacao" class="flex sticky min-h-screen">
+  <section id="SectionDocumentacao" class="flex min-h-screen">
     <div v-if="props.menuAberto && eTelaMobile" class="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300"
       @click="$emit('toggle-menu')"></div>
 
     <section id="SectionItensDocumentacao"
-      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-[9999] transition-transform duration-500 ease-out min-[800px]:static min-[800px]:translate-x-0 min-[800px]:h-auto"
+      class="w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-40 transition-transform duration-500 ease-out min-[800px]:sticky min-[800px]:translate-x-0 min-[800px]:top-12 min-[800px]:h-[calc(100vh-3rem)]"
       :class="{
         '-translate-x-full h-[calc(100vh-3rem)] ': !props.menuAberto && eTelaMobile,
         'translate-x-0 h-[100vh] sticky': props.menuAberto && eTelaMobile,

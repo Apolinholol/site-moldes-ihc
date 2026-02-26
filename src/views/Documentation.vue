@@ -477,8 +477,8 @@
       </div>
 
       <div v-if="state.paginaAtiva === 1" class="prose max-w-none">
-        <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"">Teoria das cores</h1>
-        <section class=" prose max-w-none">
+        <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Teoria das cores</h1>
+        <section class="prose max-w-none">
           <p class="text-lg text-gray-700">
             A cor não é apenas estética; é comunicação. Estudos indicam que entre
             <strong>62% e 90%</strong> da avaliação de um produto é baseada apenas nas cores. Em um
@@ -642,9 +642,9 @@
     </div>
 
     <div v-if="state.paginaAtiva === 2" class="prose max-w-none">
-      <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"">Lei de Hick-Hyman</h1>
+      <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Lei de Hick-Hyman</h1>
         <section>
-          <p class=" text-lg text-gray-700">
+          <p class="text-lg text-gray-700">
         "Quanto mais opções de escolha forem apresentadas aos usuários, mais tempo eles levarão
         para chegar a uma decisão" Basicamente, o tempo de tomada de decisão aumenta conforme o
         número de opções cresce.
@@ -786,9 +786,9 @@
   </div>
 
   <div v-if="state.paginaAtiva === 3" class="prose max-w-none">
-    <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"">Lei de Fitts</h1>
+    <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Lei de Fitts</h1>
         <section>
-          <p class=" text-lg text-gray-700">
+          <p class="text-lg text-gray-700">
       "O tempo necessário para mover-se rapidamente até um alvo é função da distância até o
       alvo e do tamanho do alvo."
       </p>
@@ -919,8 +919,8 @@
   </div>
 
   <div v-if="state.paginaAtiva === 4" class="prose max-w-none">
-    <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"">Princípios de Gestalt</h1>
-        <section class=" prose max-w-none">
+    <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Princípios de Gestalt</h1>
+        <section class="prose max-w-none">
       <p class="text-lg text-gray-700 mb-4">
         Gestalt é uma palavra alemã que significa "forma". O princípio básico é que
         <strong>"o todo é interpretado de maneira diferente que a soma das partes"</strong>. Na
@@ -1317,9 +1317,9 @@
           <ExemploPreview tipo="solucao" class="p-4">
             <label for="nomeAluno" class="text-xs text-gray-500 block mb-0.5">Nome:</label>
             <input type="text" id="nomeAluno" placeholder="Digite seu nome"
-              class="bg-white p-1 w-full border border-gray-300 rounded text-sm text-gray-700"" />
+              class="bg-white p-1 w-full border border-gray-300 rounded text-sm text-gray-700" />
             </ExemploPreview>
-            <p class=" text-xs text-green-700 mt-2 text-center">Clique no rótulo 'Nome' para focar no campo.</p>
+            <p class="text-xs text-green-700 mt-2 text-center">Clique no rótulo 'Nome' para focar no campo.</p>
         </ExemploSolucao>
       </ExemploCard>
 

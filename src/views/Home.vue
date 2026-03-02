@@ -8,7 +8,7 @@
           <h1 class="text-5xl md:text-5xl sm:text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular">
             Seja bem-vindo ao mundo da IHC !
           </h1>
-          
+
         </div>
 
         <h2 class="text-4xl font-black text-black mb-8 mt-16">PILARES DA IHC</h2>
@@ -86,26 +86,28 @@
           <h2 class="text-4xl font-black text-black mb-8">POR QUE IHC IMPORTA?</h2>
 
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">15% da população</h4>
-              <p class="text-black font-bold">
-                tem algum tipo de deficiência que afeta a interação com tecnologia
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Tem algum tipo de deficiência que afeta a interação com tecnologia
               </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">40% de aumento</h4>
-              <p class="text-black font-bold">
-                em engajamento quando interfaces são bem projetadas
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Em engajamento quando interfaces são bem projetadas
               </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">75% dos usuários</h4>
-              <p class="text-black font-bold">abandonam sites se a experiência de usuário é ruim</p>
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Abandonam sites se a experiência de usuário é ruim
+              </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">3x mais confiança</h4>
-              <p class="text-black font-bold">
-                em empresas com interfaces acessíveis e bem pensadas
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Em empresas com interfaces acessíveis e bem pensadas
               </p>
             </div>
           </div>
@@ -120,7 +122,7 @@
     >
       <div class="mb-6">
         <h2 class="text-4xl font-black text-black mb-8">NORTEADORES DO PROJETO</h2>
-        
+
         <div class="grid md:grid-cols-3 gap-6">
           <div class="bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] transform hover:scale-105 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">

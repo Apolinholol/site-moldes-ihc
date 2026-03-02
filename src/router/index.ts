@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Documentation from '../views/Documentation.vue'
 import QuestionarioMetricas from '@/views/QuestionarioMetricas.vue'
 import Gamificacao from '@/views/Gamificacao.vue'
+import SobreNos from '../views/SobreNos.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,11 @@ const router = createRouter({
       name: 'Gamificacao',
       component: Gamificacao,
     },
+    {
+    path: '/sobre-nos',
+    name: 'SobreNos',
+    component: SobreNos
+  }
   ],
 })
 export default router

@@ -19,7 +19,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.97.0",
+    "@supabase/supabase-js": "^2.98.0",
     "@tailwindcss/vite": "^4.1.17",
     "supabase": "^2.76.10",
     "tailwindcss": "^4.1.17",

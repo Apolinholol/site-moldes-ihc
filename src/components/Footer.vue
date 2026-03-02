@@ -7,6 +7,7 @@
               <ul class="space-y-2 font-bold">
                 <li><a href="/" class="hover:text-white transition">Home</a></li>
                 <li><a href="/documentacao" class="hover:text-white transition">Documentação</a></li>
+                <li><a href="/sobre-nos" class="hover:text-white transition">Sobre Nós</a></li>
               </ul>
             </div>
             <div>

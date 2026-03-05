@@ -57,9 +57,9 @@
         </li>
       <li>
         <router-link
-          to="/gamificacao"
+          to="/pratica/1"
           class="text-yellow-300 font-bold hover:text-white transition-colors"
-          >Gamificação</router-link
+          >Prática</router-link
         >
       </li>
     </ul>

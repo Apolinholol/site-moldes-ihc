@@ -655,7 +655,7 @@
 
           <!-- bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] -->
           <div
-            class="bg-gray-100 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center">
+            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
             <p class="text-base text-gray-800 mb-2">A Fórmula Matemática:</p>
             <code class="text-2xl tracking-wider">RT = a + b log2(n)</code>
             <p class="text-sm text-gray-500 mt-2 italic">
@@ -1573,7 +1573,7 @@
             </ExemploSolucao>
           </ExemploCard>
         </section>
-        <section class="bg-indigo-200 p-6 border-3 border-indigo-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <!-- <section class="bg-indigo-200 p-6 border-3 border-indigo-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
           <h3 class="font-bold text-xl mb-2 text-indigo-900">Conclusão do Módulo de IHC</h3>
           <p class="text-indigo-800">
             Ao combinar as <strong>Heurísticas de Nielsen</strong>, a
@@ -1583,7 +1583,7 @@
             cria uma interface
             cientificamente eficiente.
           </p>
-        </section>
+        </section> -->
       </div>
     </section>
   </section>

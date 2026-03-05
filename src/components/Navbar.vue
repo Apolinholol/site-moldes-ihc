@@ -55,6 +55,13 @@
           >Gamificação</router-link
         >
       </li>
+      <li>
+        <router-link
+          to="/ferramentas"
+          class="text-yellow-300 font-bold hover:text-white transition-colors"
+          >Ferramentas</router-link
+        >
+      </li>
     </ul>
   </nav>
 

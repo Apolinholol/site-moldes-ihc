@@ -7,6 +7,7 @@
               <ul class="space-y-2 font-bold">
                 <li><a href="/" class="hover:text-white transition">Home</a></li>
                 <li><a href="/documentacao" class="hover:text-white transition">Documentação</a></li>
+                <li><a href="/sobre-nos" class="hover:text-white transition">Sobre Nós</a></li>
               </ul>
             </div>
             <div>
@@ -18,9 +19,7 @@
               <p class="font-bold text-sm"><a href="https://integra.iff.edu.br/portfolio/pessoas/michelle-maria-freitas-neto/linux" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Michelle Maria Freitas Neto</a></p>
             </div>
           </div>
-          <div class="border-t-2 border-yellow-400 pt-6 text-center font-bold">
-            <p>Direitos reservados para Matheus Lopes Couto Neves - © 2025</p>
-          </div>
+          
         </div>
       </footer>
 </template>

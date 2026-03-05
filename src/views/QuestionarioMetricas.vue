@@ -72,7 +72,7 @@
         <div v-else-if="quizzes.length === 0" class="bg-slate-50 rounded-lg p-8 text-center">
           <p class="text-slate-600 mb-4">Você ainda não respondeu nenhum quiz.</p>
           <router-link
-            to="/gamificacao"
+            to="/pratica/1"
             class="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Começar um Quiz
@@ -135,7 +135,7 @@
       <!-- Botão para novo Quiz -->
       <div class="text-center">
         <router-link
-          to="/gamificacao"
+          to="/pratica/1"
           class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
         >
           🎮 Fazer Outro Quiz

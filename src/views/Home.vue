@@ -8,12 +8,12 @@
           <h1 class="text-5xl md:text-5xl sm:text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular">
             Seja bem-vindo ao mundo da IHC !
           </h1>
-          
+
         </div>
 
         <h2 class="text-4xl font-black text-black mb-8 mt-16">PILARES DA IHC</h2>
 
-        <div id="DivCardsApresentacao" class="grid md:grid-cols-3 gap-6 mb-12">
+        <div id="DivCardsApresentacao" class="grid md:grid-cols-2 gap-6 mb-12">
           <div class="transform hover:scale-105 transition">
             <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] h-full">
               <div class="bg-black px-6 py-4 border-b-4 border-black">
@@ -28,8 +28,30 @@
                 class="merriweather-body text-2xl bg-white-100 p-6 border-t-4 border-black"
               >
                 <div class="flex flex-col gap-4">
-                  Refere-se à facilidade com que os usuários podem aprender a usar o sistema e
-                  realizar suas tarefas de forma eficiente e satisfatória.
+                  Responsável por definir o quanto uma interface é 
+                  intuitiva e funcional para quem a utiliza. 
+                  Ela mede a facilidade de aprendizado, a rapidez 
+                  na execução de tarefas e o nível de satisfação do usuário.
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="transform hover:scale-105 transition">
+            <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] h-full">
+              <div class="bg-black px-6 py-4 border-b-4 border-black">
+                <h2
+                  class="flex justify-center text-2xl font-black text-yellow-300 uppercase tracking-wider"
+                >
+                Comunicabilidade
+                </h2>
+              </div>
+
+              <div
+                class="merriweather-body text-2xl bg-white-100 p-6 border-t-4 border-black"
+              >
+                <div class="flex flex-col gap-4">
+                  Refere-se à capacidade de o sistema transmitir ao usuário, de forma clara, o conceito de design, as funcionalidades e a intenção do projetista (ou seja, "conversar" com o usuário através da interface).
                 </div>
               </div>
             </article>
@@ -49,12 +71,17 @@
                 class="merriweather-body text-2xl bg-white-100 p-6 border-t-4 border-black"
               >
                 <div class="flex flex-col gap-4">
-                  Garante que qualquer pessoa consiga usar o sistema, independentemente das suas
-                  respectivas habilidades ou limitações.
+                  Garante que qualquer pessoa consiga usar o sistema, 
+                  independentemente de suas capacidades físicas
+                  ou cognitivas. Ela busca eliminar 
+                  barreiras para promover a inclusão e a autonomia de 
+                  todos os usuários.
                 </div>
               </div>
             </article>
           </div>
+
+          
 
           <div class="transform hover:scale-105 transition">
             <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] h-full">
@@ -62,7 +89,7 @@
                 <h2
                   class="flex justify-center text-2xl font-black text-yellow-300 uppercase tracking-wider"
                 >
-                  Design
+                Experiência do Usuário (UX)
                 </h2>
               </div>
 
@@ -70,9 +97,7 @@
                 class="merriweather-body text-2xl bg-white-100 p-6 border-t-4 border-black"
               >
                 <div class="flex flex-col gap-4">
-                  Envolve a criação de interfaces intuitivas e atraentes que facilitem a interação
-                  do usuário, levando em consideração aspectos visuais, funcionais e emocionais
-                  (UX/UI).
+                  Refere-se a percepção subjetiva e emocional de uma pessoa ao interagir com um produto ou serviço. Ela foca em tornar essa jornada útil, fácil de usar e agradável, garantindo que o usuário sinta satisfação e valor real durante todo o contato com a marca.
                 </div>
               </div>
             </article>
@@ -86,26 +111,28 @@
           <h2 class="text-4xl font-black text-black mb-8">POR QUE IHC IMPORTA?</h2>
 
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">15% da população</h4>
-              <p class="text-black font-bold">
-                tem algum tipo de deficiência que afeta a interação com tecnologia
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Tem algum tipo de deficiência que afeta a interação com tecnologia
               </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">40% de aumento</h4>
-              <p class="text-black font-bold">
-                em engajamento quando interfaces são bem projetadas
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Em engajamento quando interfaces são bem projetadas
               </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">75% dos usuários</h4>
-              <p class="text-black font-bold">abandonam sites se a experiência de usuário é ruim</p>
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Abandonam sites se a experiência de usuário é ruim
+              </p>
             </div>
-            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition">
+            <div class="bg-white border-4 border-black p-6 transform hover:scale-105 transition shadow-[6px_6px_0_0_rgba(0,0,0,1)]">
               <h4 class="font-black text-2xl text-black mb-3">3x mais confiança</h4>
-              <p class="text-black font-bold">
-                em empresas com interfaces acessíveis e bem pensadas
+              <p class="font-serif text-black text-lg leading-relaxed">
+                Em empresas com interfaces acessíveis e bem pensadas
               </p>
             </div>
           </div>
@@ -120,8 +147,8 @@
     >
       <div class="mb-6">
         <h2 class="text-4xl font-black text-black mb-8">NORTEADORES DO PROJETO</h2>
-        
-        <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="grid md:grid-cols-2 gap-6">
           <div class="bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] transform hover:scale-105 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
               <h3 class="text-2xl font-black text-yellow-300 uppercase tracking-wider">W3C</h3>
@@ -142,10 +169,23 @@
 
           <div class="bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] transform hover:scale-105 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
-              <h3 class="text-2xl font-black text-yellow-300 uppercase tracking-wider">IHC</h3>
+              <h3 class="text-2xl font-black text-yellow-300 uppercase tracking-wider">Heurísticas de Nielsen</h3>
             </div>
             <p class="merriweather-body text-2xl text-gray-900 leading-relaxed">
-              Interação Homem Máquina é a disciplina que estuda como as pessoas interagem com sistemas computacionais, focando no design de interfaces intuitivas, eficientes e agradáveis que atendam às necessidades reais dos usuários.
+              As 10 Heurísticas de Nielsen são princípios de UI/UX criados 
+              por Jakob Nielsen e Rolf Molich para melhorar a usabilidade,
+              garantindo sistemas intuitivos, eficientes e consistentes, 
+              focando na prevenção de erros e na melhoria da experiência do usuário.
+            </p>
+          </div>
+          <div class="bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,1)] transform hover:scale-105 transition">
+            <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
+              <h3 class="text-2xl font-black text-yellow-300 uppercase tracking-wider">Affordance</h3>
+            </div>
+            <p class="merriweather-body text-2xl text-gray-900 leading-relaxed">
+              É a propriedade de um objeto ou ambiente que indica, 
+              intuitivamente, como ele pode ser usado, permitindo que 
+              o usuário compreenda sua funcionalidade sem instruções.
             </p>
           </div>
         </div>

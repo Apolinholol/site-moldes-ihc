@@ -16,7 +16,7 @@
           </div>
           <button
             @click="fecharModal"
-            class="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition-colors"
+            class="w-10 h-10 flex items-center justify-center rounded-full text-white hover:bg-white hover:text-blue-700 transition-colors duration-200"
           >
             ✕
           </button>

@@ -32,7 +32,8 @@ const pratica1Questions: GeminiQuestion[] = [
     pergunta:
       'Qual é o erro de tipografia nos cards de funcionalidades? Qual heurística de Nielsen é violada?',
     contexto:
-      'Alguns titles têm text-base e outros text-sm, causando inconsistência visual',
+      // 'Alguns titles têm text-base e outros text-sm, causando inconsistência visual',
+          'Tem o contexto envolvendo as fontes em negrito e tamanhos variados, criando confusão na hierarquia visual',
     tipo: 'multipla',
     opcoes: [
       'Heurística 1: Visibilidade do Status do Sistema',

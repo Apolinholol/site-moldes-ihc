@@ -12,7 +12,7 @@ const MODEL = import.meta.env.VITE_GEMINI_MODEL || 'gemini-3-flash-preview'
 export const geminiConfig: GeminiConfig = {
   apiKey: API_KEY,
   model: MODEL,
-  temperature: 0.7, // equilibrio entre criatividade e consistência
+  temperature: 0.5, // equilibrio entre criatividade e consistência
   maxTokens: 2048, // limite de tokens para respostas
 }
 

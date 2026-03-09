@@ -7,6 +7,7 @@ import QuestionarioMetricas from '@/views/QuestionarioMetricas.vue'
 import Pratica1 from '@/views/Pratica-1.vue'
 import Pratica2 from '@/views/Pratica-2.vue'
 import SobreNos from '@/views/SobreNos.vue'
+import Ferramentas from '@/views/Ferramentas.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,11 @@ const router = createRouter({
           path: 'sobre-nos',
           name: 'SobreNos',
           component: SobreNos,
+        },
+        {
+          path: 'ferramentas',
+          name: 'Ferramentas',
+          component: Ferramentas,
         },
       ],
     },

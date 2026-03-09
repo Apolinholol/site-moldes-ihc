@@ -97,7 +97,7 @@
     </Teleport>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <section id="SectionConteudoDocumentacao" class="flex-1 p-6 min-[576px]:ml-0">
+    <section id="SectionConteudoDocumentacao" class="flex-1 p-6 min-[576px]:ml-0 bg-yellow-50">
       <div v-if="state.paginaAtiva === 0" class="prose max-w-none">
         <section class="prose max-w-none">
           <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">
@@ -120,7 +120,7 @@
           </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-3 border-black mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
           <ExemploCard titulo="#1: Visibilidade do Status do Sistema"
             descricao="O sistema deve sempre informar o usuário sobre o que está acontecendo.">

@@ -5,7 +5,7 @@
     <button
       v-show="pathAtual === '/documentacao'"
       @click="$emit('toggle-menu')"
-      class="rounded min-[800px]:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all font-bold"
+      class=" rounded min-[800px]:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-yellow-300 hover:bg-yellow-400 hover:shadow-[2px_2px_0_0] transition-all font-bold"
     >
       <svg
         v-if="!state.mudarBotao"
@@ -48,14 +48,13 @@
           >Documentação</router-link
         >
       </li>
-
-      <li>
-        <router-link
-          to="/sobre-nos"
-          class="text-yellow-300 font-bold hover:text-white transition-colors"
-          >Sobre Nós</router-link
-        >
-      </li>
+        <li>
+          <router-link
+            to="/sobre-nos"
+            class="text-yellow-300 font-bold hover:text-white transition-colors"
+            >Sobre Nós</router-link
+          >
+        </li>
       <li>
         <router-link
           to="/pratica/1"
@@ -63,12 +62,20 @@
           >Prática</router-link
         >
       </li>
+      <li>
+        <router-link
+          to="/ferramentas"
+          class="text-yellow-300 font-bold hover:text-white transition-colors"
+          >Ferramentas</router-link
+        >
+      </li>
     </ul>
   </nav>
+
 </template>
 <script lang="ts" setup>
-import { computed, reactive, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed, reactive, watch } from 'vue';
+import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
@@ -86,7 +93,7 @@ watch(
   () => props.menuAberto,
   () => {
     state.mudarBotao = !state.mudarBotao
-  },
+  }
 )
 
 defineEmits(['toggle-menu'])

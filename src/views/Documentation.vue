@@ -67,13 +67,6 @@
           class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
           Acessibilidade
         </button>
-        <button @click="alterarPagina(7)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 7,
-          'border-l-4 border-transparent': state.paginaAtiva !== 7,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Ferramentas
-        </button>
       </nav>
     </section>
 
@@ -494,15 +487,6 @@
             status (Aprovado, Reprovado, Alerta).
           </p>
 
-           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante  ?</h3>
-            <p class="m-0 text-blue-800 mt-2 font-medium">
-              Ajuda a criar interfaces visualmente agradáveis, organizadas e fáceis de entender.
-              O uso correto das cores melhora a legibilidade, destaca informações importantes e orienta o usuário na navegação da interface.
-              Além disso, cores bem escolhidas podem transmitir emoções, reforçar identidade visual e melhorar a acessibilidade.
-            </p>  
-          </div>
           <div
             class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
             <h3 class="text-blue-900 font-black text-lg m-0">A Regra de Ouro: 60-30-10</h3>
@@ -668,20 +652,12 @@
             para chegar a uma decisão" Basicamente, o tempo de tomada de decisão aumenta conforme o
             número de opções cresce.
           </p>
-          <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante  ?</h3>
-            <p class="m-0 text-blue-800 mt-2 font-medium">
-            Em IHC, essa lei é importante para orientar o design de menus e interfaces, incentivando a redução ou organização
-            de opções para que o usuário consiga decidir mais rapidamente e com menos esforço cognitivo.
-            </p>  
-          </div>
 
           <!-- bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] -->
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center">
-            <p class="text-blue-900 font-black text-lg m-0">A Fórmula Matemática:</p>
-            <code class="text-2xl tracking-wider ">RT = a + b log2(n)</code>
+            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+            <p class="text-base text-gray-800 mb-2">A Fórmula Matemática:</p>
+            <code class="text-2xl tracking-wider">RT = a + b log2(n)</code>
             <p class="text-sm text-gray-500 mt-2 italic">
               Onde <strong>RT</strong> é o Tempo de Reação, <strong>(n)</strong> é o número de
               estímulos e <strong>a</strong> e <strong>b</strong> são constantes mensuráveis que
@@ -820,16 +796,10 @@
             "O tempo necessário para mover-se rapidamente até um alvo é função da distância até o
             alvo e do tamanho do alvo."
           </p>
+
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante  ?</h3>
-            <p class="m-0 text-blue-800 mt-2 font-medium">
-            Ela ajuda a definir o tamanho e posicionamento de elementos interativos, garantindo que botões e controles sejam fáceis e rápidos de selecionar, melhorando a usabilidade da interface.
-            </p>  
-          </div>
-          <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center">
-            <p class="text-blue-900 font-black text-lg m-0">A Fórmula do Movimento:</p>
+            class="bg-gray-100 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center">
+            <p class="text-base text-gray-800 mb-2">A Fórmula do Movimento:</p>
             <code class="text-2xl tracking-wider">T = a + b log2(D/W + 1)</code>
             <p class="text-sm text-gray-500 mt-2 italic">
               <strong>T</strong>: Tempo | <strong>D</strong>: Distância | <strong>W</strong>:
@@ -958,7 +928,7 @@
         <h1 class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Princípios de
           Gestalt
         </h1>
-        <section class="prose max-w-none  ">
+        <section class="prose max-w-none">
           <p class="text-lg text-gray-700 mb-4">
             Gestalt é uma palavra alemã que significa "forma". O princípio básico é que
             <strong>"o todo é interpretado de maneira diferente que a soma das partes"</strong>. Na
@@ -967,14 +937,6 @@
           </p>
         </section>
 
-        <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante  ?</h3>
-            <p class="m-0 text-blue-800 mt-2 font-medium">
-            Tem como objetivo ajudar na estruturação layouts de forma clara e intuitiva, utilizando conceitos como proximidade, similaridade, continuidade
-            e fechamento, facilitando a compreensão das informações e a navegação do usuário.
-            </p>  
-        </div>
         <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
           <ExemploCard titulo="#1: Proximidade"
@@ -1289,8 +1251,7 @@
                 nome do arquivo, perdendo todo o contexto.
               </p>
               <ExemploPreview tipo="erro" class="p-4 text-center">
-                <!-- <img src="https://thumbs.dreamstime.com/b/costa-tropical-do-oceano-paisagem-20517527.jpg" -->
-                <img src="../assets/computadores.jpg"
+                <img src="https://thumbs.dreamstime.com/b/costa-tropical-do-oceano-paisagem-20517527.jpg"
                   class="h-24 mx-auto" />
                 <code class="text-xs text-red-500 mt-2 text-center">&lt;img src="..."&gt;</code>
               </ExemploPreview>
@@ -1302,9 +1263,10 @@
                 use 'alt=""'.
               </p>
               <ExemploPreview tipo="solucao" class="p-4 text-center">
-                <img src="../assets/computadores.jpg"
+                <img src="https://thumbs.dreamstime.com/b/costa-tropical-do-oceano-paisagem-20517527.jpg"
                   alt="Rochas na beira do mar com pequenas ondas." class="h-24 mx-auto" />
-                <code class="text-xs text-green-700 mt-2 text-center">&lt;img src="..." alt="Vários computadores dentro de uma sala de aula"</code>
+                <code class="text-xs text-green-700 mt-2 text-center">&lt;img src="..." alt="Rochas na beira do mar com
+            pequenas ondas."&gt;</code>
               </ExemploPreview>
             </ExemploSolucao>
           </ExemploCard>
@@ -1623,10 +1585,6 @@
           </p>
         </section> -->
       </div>
-
-      <div v-if="state.paginaAtiva == 7" class="prose max-w-none" >
-          <Ferramentas></Ferramentas>
-      </div>
     </section>
   </section>
 </template>
@@ -1637,7 +1595,7 @@ import ExemploCard from '@/components/ExemploCard.vue'
 import ExemploErro from '@/components/ExemploErro.vue'
 import ExemploPreview from '@/components/ExemploPreview.vue'
 import ExemploSolucao from '@/components/ExemploSolucao.vue'
-import Ferramentas from './Ferramentas.vue'
+
 const props = defineProps<{
   menuAberto: boolean
 }>()

@@ -1,5 +1,4 @@
-<template>
-  <div :class="['bg-white rounded border', borderClass]">
+<template>   <div :class="['bg-gray-50 rounded border', borderClass]">
     <slot />
   </div>
 </template>

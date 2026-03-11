@@ -33,10 +33,6 @@
         <router-link to="/pratica/1"
           class="nav-link border-2 border-transparent shadow-[2px_2px_0_0_#FFDF20]">Prática</router-link>
       </li>
-      <li>
-        <router-link to="/ferramentas"
-          class="nav-link border-2 border-transparent shadow-[2px_2px_0_0_#FFDF20]">Ferramentas</router-link>
-      </li>
     </ul>
   </nav>
 

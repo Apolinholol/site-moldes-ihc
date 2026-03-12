@@ -759,7 +759,7 @@
             para chegar a uma decisão" Basicamente, o tempo de tomada de decisão aumenta conforme o
             número de opções cresce.
           </p>
-          <div
+          <!-- <div
             class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]"
           >
             <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante ?</h3>
@@ -768,7 +768,7 @@
               incentivando a redução ou organização de opções para que o usuário consiga decidir
               mais rapidamente e com menos esforço cognitivo.
             </p>
-          </div>
+          </div> -->
 
           <!-- bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] -->
           <div

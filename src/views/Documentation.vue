@@ -4,7 +4,7 @@
       @click="$emit('toggle-menu')"></div>
 
     <section id="SectionItensDocumentacao"
-      class="w-[80vw] max-w-64 bg-white border-2 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-40 transition-transform duration-500 ease-out h-[calc(100vh-3rem)] min-[800px]:sticky min-[800px]:translate-x-0 min-[800px]:top-12 min-[800px]:h-[calc(100vh-3rem)] min-[800px]:w-64"
+      class="w-[80vw] max-w-64 bg-gray-50 border-3 border-y-0 border-black p-4 overflow-y-auto fixed left-0 top-12 z-40 transition-transform duration-500 ease-out h-[calc(100vh-3rem)] min-[800px]:sticky min-[800px]:translate-x-0 min-[800px]:top-12 min-[800px]:h-[calc(100vh-3rem)] min-[800px]:w-64"
       :class="{
         '-translate-x-full': !props.menuAberto && eTelaMobile,
         'translate-x-0': props.menuAberto && eTelaMobile,
@@ -12,60 +12,12 @@
       <nav role="tablist" class="flex flex-col gap-3">
         <p class="text-xs font-bold uppercase tracking-wider text-gray-600 pl-2">Tópicos</p>
 
-        <button @click="alterarPagina(0)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 0,
-          'border-l-4 border-transparent': state.paginaAtiva !== 0,
+        <button v-for="(topico, i) in topicos" :key="i" @click="alterarPagina(i)" :class="{
+          'bg-yellow-300 border-black font-black shadow-[3px_3px_0_0_#000]': state.paginaAtiva === i,
+          'border-transparent shadow-[3px_3px_0_0_#F9FAFB]': state.paginaAtiva !== i,
         }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Heurísticas de Nielsen
-        </button>
-
-        <button @click="alterarPagina(1)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 1,
-          'border-l-4 border-transparent': state.paginaAtiva !== 1,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Teoria das cores
-        </button>
-
-        <button @click="alterarPagina(2)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 2,
-          'border-l-4 border-transparent': state.paginaAtiva !== 2,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Lei de Hick-Hyman
-        </button>
-
-        <button @click="alterarPagina(3)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 3,
-          'border-l-4 border-transparent': state.paginaAtiva !== 3,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Lei de Fitts
-        </button>
-
-        <button @click="alterarPagina(4)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 4,
-          'border-l-4 border-transparent': state.paginaAtiva !== 4,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Princípios de Gestalt
-        </button>
-
-        <button @click="alterarPagina(5)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 5,
-          'border-l-4 border-transparent': state.paginaAtiva !== 5,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Tipografia
-        </button>
-
-        <button @click="alterarPagina(6)" :class="{
-          'bg-yellow-300 border-black font-black': state.paginaAtiva === 6,
-          'border-l-4 border-transparent': state.paginaAtiva !== 6,
-        }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0]">
-          Acessibilidade
+          class="tab-item border-3 px-4 py-3 font-bold text-left transition-all duration-200 hover:border-black hover:shadow-[3px_3px_0_0_#000] hover:bg-yellow-300 active:shadow-[1px_1px_0_0] cursor-pointer">
+          {{ topico }}
         </button>
       </nav>
     </section>
@@ -111,16 +63,16 @@
           </p>
 
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
             <h3 class="text-blue-900 font-black text-lg m-0">Por que são importantes?</h3>
             <p class="m-0 text-blue-800 mt-2 font-medium">
-              Aplicar essas heurísticas reduz a carga cognitiva do usuário (ele pensa menos para
-              agir), previne erros frustrantes e torna o aprendizado do sistema muito mais rápido.
+              Para reduzir a carga cognitiva do usuário (ele pensa menos para agir),
+              prevenindo erros frustrantes e tornando o aprendizado do sistema muito mais rápido.
             </p>
           </div>
         </section>
 
-        <section class="bg-yellow-300 p-6 border-3 border-black mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
           <ExemploCard titulo="#1: Visibilidade do Status do Sistema"
             descricao="O sistema deve sempre informar o usuário sobre o que está acontecendo.">
@@ -481,19 +433,19 @@
         </h1>
         <section class="prose max-w-none">
           <p class="text-lg text-gray-700">
-            A cor não é apenas estética; é comunicação. Estudos indicam que entre
+            A cor é mais do que estética; é comunicação. Estudos indicam que entre
             <strong>62% e 90%</strong> da avaliação de um produto é baseada apenas nas cores. Em um
             sistema escolar por exemplo, a cor serve para guiar a atenção do usuário e indicar
             status (Aprovado, Reprovado, Alerta).
           </p>
 
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="text-blue-900 font-black text-lg m-0">A Regra de Ouro: 60-30-10</h3>
-            <p class="m-0 text-blue-800 mt-2 font-medium">
+            class="bg-indigo-200 p-6 border-4 border-indigo-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="text-indigo-900 font-black text-lg m-0">A Regra de Ouro: 60-30-10</h3>
+            <p class="m-0 text-indigo-800 mt-2 font-medium">
               Para garantir equilíbrio visual, utilize a proporção:
             </p>
-            <ul class="list-disc pl-5 mt-2 text-blue-900 font-medium">
+            <ul class="list-disc pl-5 mt-2 text-indigo-900 font-medium">
               <li>
                 <strong>60% Cor Dominante:</strong> Geralmente neutra (Fundo, espaços em branco).
               </li>
@@ -504,9 +456,19 @@
               </li>
             </ul>
           </div>
+
+          <div
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante?</h3>
+            <p class="m-0 text-blue-800 mt-2 font-medium">
+              Para criar interfaces visualmente agradáveis, organizadas e fáceis de entender.
+              O uso correto das cores melhora a legibilidade, destaca informações importantes e orienta o usuário na navegação da interface.
+              Além disso, cores bem escolhidas podem transmitir emoções, reforçar identidade visual e melhorar a acessibilidade.
+            </p>
+          </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
 
           <ExemploCard titulo="#1: Equilíbrio Visual (60-30-10)"
@@ -614,27 +576,27 @@
           </ExemploCard>
 
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <h3 class="font-bold text-xl mb-4">Paleta Sugerida para Escolas:</h3>
+            class="bg-indigo-200 p-6 border-4 border-indigo-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="font-bold text-xl mb-4 text-indigo-900">Paleta Sugerida para Escolas:</h3>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div class="text-center">
                 <div class="h-12 w-full bg-blue-600 rounded mb-2"></div>
-                <span class="font-bold text-sm block">Azul</span>
+                <span class="font-bold text-sm block text-indigo-900">Azul</span>
                 <span class="text-xs text-gray-600">Confiança / Dados</span>
               </div>
               <div class="text-center">
                 <div class="h-12 w-full bg-green-600 rounded mb-2"></div>
-                <span class="font-bold text-sm block">Verde</span>
+                <span class="font-bold text-sm block text-indigo-900">Verde</span>
                 <span class="text-xs text-gray-600">Aprovação / $</span>
               </div>
               <div class="text-center">
                 <div class="h-12 w-full bg-yellow-400 rounded mb-2"></div>
-                <span class="font-bold text-sm block">Amarelo</span>
+                <span class="font-bold text-sm block text-indigo-900">Amarelo</span>
                 <span class="text-xs text-gray-600">Atenção / Otimismo</span>
               </div>
               <div class="text-center">
                 <div class="h-12 w-full bg-red-600 rounded mb-2"></div>
-                <span class="font-bold text-sm block">Vermelho</span>
+                <span class="font-bold text-sm block text-indigo-900">Vermelho</span>
                 <span class="text-xs text-gray-600">Erro / Urgência</span>
               </div>
             </div>
@@ -653,25 +615,38 @@
             número de opções cresce.
           </p>
 
-          <!-- bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] -->
+          <!-- bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] -->
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
-            <p class="text-base text-gray-800 mb-2">A Fórmula Matemática:</p>
-            <code class="text-2xl tracking-wider">RT = a + b log2(n)</code>
-            <p class="text-sm text-gray-500 mt-2 italic">
-              Onde <strong>RT</strong> é o Tempo de Reação, <strong>(n)</strong> é o número de
-              estímulos e <strong>a</strong> e <strong>b</strong> são constantes mensuráveis que
-              dependem da tarefa a ser realizada e das condições sob as quais serão tratadas.
+            class="bg-pink-100 p-6 border-4 border-pink-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] text-center">
+            <p class="text-base text-pink-900 mb-2">A Fórmula Matemática:</p>
+            <code class="text-2xl tracking-wider text-gray-800">RT = a + b log2(n)</code>
+            <p class="text-sm text-pink-800 mt-2 italic">
+              <strong>RT:</strong> Tempo de Reação | <strong>n:</strong> Número de
+              Estímulos | <strong>a, b:</strong> Constantes da Tarefa e do Contexto.
             </p>
           </div>
 
-          <p class="text-base text-gray-700 mb-6 text-center">
-            Em um sistema, isso significa que apresentar um menu com 50 opções para um usuário vai
-            fazê-lo perder tempo procurando onde está a opção desejada ou mais utilizada.
-          </p>
+          <!-- <div
+            class="bg-pink-100 p-6 border-4 border-pink-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] text-center">
+            <p class="text-base text-pink-900 mb-2">A Fórmula do Movimento:</p>
+            <code class="text-2xl tracking-wider text-gray-800">T = a + b log2(D/W + 1)</code>
+            <p class="text-sm text-pink-800 mt-2 italic">
+              <strong>T</strong>: Tempo | <strong>D</strong>: Distância | <strong>W</strong>:
+              Largura do Alvo
+            </p>
+          </div> -->
+
+          <div
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante?</h3>
+            <p class="m-0 text-blue-800 mt-2 font-medium">
+              Para orientar o design de menus e interfaces, incentivando a redução ou organização
+              de opções para que o usuário consiga decidir mais rapidamente e com menos esforço cognitivo.
+            </p>
+          </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
 
           <ExemploCard titulo="#1: Categorização (Hick's Law)"
@@ -798,17 +773,27 @@
           </p>
 
           <div
-            class="bg-gray-100 p-6 border-3 border-blue-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)] text-center">
-            <p class="text-base text-gray-800 mb-2">A Fórmula do Movimento:</p>
-            <code class="text-2xl tracking-wider">T = a + b log2(D/W + 1)</code>
-            <p class="text-sm text-gray-500 mt-2 italic">
+            class="bg-pink-100 p-6 border-4 border-pink-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] text-center">
+            <p class="text-base text-pink-900 mb-2">A Fórmula do Movimento:</p>
+            <code class="text-2xl tracking-wider text-gray-800">T = a + b log2(D/W + 1)</code>
+            <p class="text-sm text-pink-800 mt-2 italic">
               <strong>T</strong>: Tempo | <strong>D</strong>: Distância | <strong>W</strong>:
               Largura do Alvo
             </p>
           </div>
+
+          <div
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante?</h3>
+            <p class="m-0 text-blue-800 mt-2 font-medium">
+              Para ajudar a definir o tamanho e posicionamento de elementos interativos, garantindo que botões e
+              controles
+              sejam fáceis e rápidos de selecionar, melhorando a usabilidade da interface.
+            </p>
+          </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
           <ExemploCard titulo="#1: Tamanho e Área de Clique"
             descricao="Botões maiores são mais rápidos de clicar e têm menos chance de erro.">
@@ -914,7 +899,8 @@
           </ExemploCard>
         </section>
 
-        <section class="bg-indigo-200 p-6 border-3 border-indigo-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section
+          class="bg-indigo-200 p-6 border-4 border-indigo-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h3 class="font-bold text-xl mb-2 text-indigo-900">Regra de Bolso:</h3>
           <p class="text-indigo-800">
             Se você quer que o usuário clique (Salvar, Confirmar), faça o botão
@@ -929,15 +915,24 @@
           Gestalt
         </h1>
         <section class="prose max-w-none">
-          <p class="text-lg text-gray-700 mb-4">
+          <p class="text-lg text-gray-700">
             Gestalt é uma palavra alemã que significa "forma". O princípio básico é que
             <strong>"o todo é interpretado de maneira diferente que a soma das partes"</strong>. Na
             interface, isso nos ajuda a entender como os usuários agrupam mentalmente as informações
             na tela.
           </p>
+
+          <div
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+            <h3 class="text-blue-900 font-black text-lg m-0">Por que são importantes?</h3>
+            <p class="m-0 text-blue-800 mt-2 font-medium">
+              Para ajudar na estruturação de layouts de forma clara e intuitiva, facilitando a compreensão das informações e
+              a navegação do usuário.
+            </p>
+          </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
           <ExemploCard titulo="#1: Proximidade"
             descricao="Tendemos a agrupar elementos que estão próximos uns dos outros como uma unidade.">
@@ -1102,17 +1097,17 @@
           </p>
 
           <div
-            class="bg-blue-200 border-l-4 border-blue-700 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
             <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante?</h3>
             <p class="m-0 text-blue-800 mt-2 font-medium">
-              Uma boa escolha tipográfica reduz a carga cognitiva, melhora a acessibilidade para
-              pessoas com dificuldades visuais e guia o olhar do usuário através da hierarquia
+              Para reduzir a carga cognitiva, melhorar a acessibilidade para
+              pessoas com dificuldades visuais e guiar o olhar do usuário através da hierarquia
               visual.
             </p>
           </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
 
           <ExemploCard titulo="#1: Legibilidade e Família Tipográfica"
@@ -1231,16 +1226,16 @@
           </p>
 
           <div
-            class="bg-blue-200 p-6 border-3 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+            class="bg-blue-200 p-6 border-4 border-blue-900 mt-6 p-4 my-6 border-2 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
             <h3 class="text-blue-900 font-black text-lg m-0">Por que é importante?</h3>
             <p class="m-0 text-blue-800 mt-2 font-medium">
-              Um sistema acessível expande seu público, melhora a experiência de todos os usuários (não apenas os com
-              deficiência), fortalece a imagem da marca e, em muitos países, é uma exigência legal.
+              Para expandir o público, melhorar a experiência de todos os usuários (não apenas os com
+              deficiência), fortalecer a imagem da marca, além disso, em muitos países, é uma exigência legal.
             </p>
           </div>
         </section>
 
-        <section class="bg-yellow-50 p-6 border-3 border-yellow-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <section class="bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2 class="text-2xl font-bold mb-6">Erros Comuns VS Boas Práticas</h2>
 
           <ExemploCard titulo="#1: Imagens sem Descrição (Texto Alternativo)"
@@ -1573,7 +1568,7 @@
             </ExemploSolucao>
           </ExemploCard>
         </section>
-        <!-- <section class="bg-indigo-200 p-6 border-3 border-indigo-900 mt-6 p-4 my-6 shadow-[3px_3px_0_0_rgba(0,0,0,1)]">
+        <!-- <section class="bg-indigo-200 p-6 border-4 border-indigo-900 mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h3 class="font-bold text-xl mb-2 text-indigo-900">Conclusão do Módulo de IHC</h3>
           <p class="text-indigo-800">
             Ao combinar as <strong>Heurísticas de Nielsen</strong>, a
@@ -1602,6 +1597,16 @@ const props = defineProps<{
 
 const emit = defineEmits(['toggle-menu'])
 const eTelaMobile = ref(false)
+
+const topicos = [
+  'Heurísticas de Nielsen',
+  'Teoria das cores',
+  'Lei de Hick-Hyman',
+  'Lei de Fitts',
+  'Princípios de Gestalt',
+  'Tipografia',
+  'Acessibilidade',
+]
 
 const state = reactive({
   paginaAtiva: 0,

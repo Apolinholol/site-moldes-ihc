@@ -3,7 +3,7 @@
   <nav
     class="limelight-regular bg-yellow-300 h-[3rem] flex items-center justify-end px-4 w-[100%] sticky top-0 z-50 border-b-3 border-black">
     <button v-show="pathAtual === '/documentacao'" @click="$emit('toggle-menu')"
-      class="mr-auto shadow-[2px_2px_0_0_#FFDF20] hover:border-2 hover:border-black hover:shadow-[2px_2px_0_0_#000] border-2 border-transparent cursor-pointer">
+      class="mr-auto shadow-[2px_2px_0_0_#FFDF20] hover:border-2 hover:border-black hover:shadow-[2px_2px_0_0_#000] border-2 border-transparent cursor-pointer transition-200">
       <svg v-if="!state.mudarBotao" xmlns="http://www.w3.org/2000/svg" width="28" height="auto" fill="currentColor"
         class="bi bi-list" viewBox="0 0 16 16">
         <path fill-rule="evenodd"
@@ -15,7 +15,7 @@
           d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
       </svg>
     </button>
-    <ul class="flex justify-end gap-6 me-[15px]">
+    <ul class="flex justify-end gap-4 me-[15px]">
       <li>
         <router-link to="/"
           class="nav-link border-2 border-transparent shadow-[2px_2px_0_0_#FFDF20]">Início</router-link>
@@ -85,16 +85,17 @@ a {
 a.nav-link.router-link-exact-active {
   border-color: black;
   box-shadow: 2px 2px 0 0 #000;
+  background-color: #F9FAFB;
 }
 
 a.nav-link.router-link-exact-active:hover {
-  background-color: rgb(250 250 250);
+  background-color: #F9FAFB;
 }
 
 a.nav-link:not(.router-link-exact-active):hover {
   border-color: black;
   box-shadow: 2px 2px 0 0 #000;
-  background-color: rgb(250 250 250);
+  background-color: #F9FAFB;
 }
 
 li {

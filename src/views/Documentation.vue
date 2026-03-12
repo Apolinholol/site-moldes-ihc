@@ -19,16 +19,6 @@
           class="tab-item border-3 px-4 py-3 font-bold text-left transition-all duration-200 hover:border-black hover:shadow-[3px_3px_0_0_#000] hover:bg-yellow-300 active:shadow-[1px_1px_0_0] cursor-pointer">
           {{ topico }}
         </button>
-        <button
-          @click="alterarPagina(7)"
-          :class="{
-            'bg-yellow-300 border-black font-black': state.paginaAtiva === 7,
-            'border-l-4 border-transparent': state.paginaAtiva !== 7,
-          }"
-          class="tab-item border-2 border-black px-4 py-3 font-bold text-left transition-all duration-200 hover:shadow-[2px_2px_0_0] active:shadow-[1px_1px_0_0] cursor-pointer"
-        >
-          Ferramentas
-        </button>
       </nav>
     </section>
 
@@ -1625,6 +1615,7 @@ const topicos = [
   'Princípios de Gestalt',
   'Tipografia',
   'Acessibilidade',
+  'Ferramentas',
 ]
 
 const state = reactive({
@@ -1769,17 +1760,6 @@ onMounted(() => {
   checarTelaMobile()
   window.addEventListener('resize', checarTelaMobile)
 })
-
-watch(
-  () => window.innerWidth,
-  (novoValor) => {
-    if (window.innerWidth >= 800) {
-      eTelaMobile.value = false
-    } else {
-      eTelaMobile.value = true
-    }
-  },
-)
 
 function alterarPagina(index: number) {
   state.paginaAtiva = index

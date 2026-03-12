@@ -15,7 +15,11 @@
       <div class="grid md:grid-cols-2 gap-6">
         <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] p-6">
           <header>
-            <h2 class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">Lighthouse do Navegador</h2>
+            <h2
+              class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"
+            >
+              Lighthouse do Navegador
+            </h2>
           </header>
           <p class="text-justify mb-4">
             A ferramenta de auditoria embutida nos navegadores Chrome e Edge permite gerar
@@ -37,7 +41,11 @@
 
         <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] p-6">
           <header>
-            <h2 class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">ColorShark.io</h2>
+            <h2
+              class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"
+            >
+              ColorShark.io
+            </h2>
           </header>
           <p class="text-justify mb-4">
             Serviço online para explorar paletas de cores acessíveis e compatíveis com WCAG.
@@ -55,19 +63,23 @@
 
         <article class="border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] p-6">
           <header>
-            <h2 class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4">WAVE</h2>
+            <h2
+              class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4"
+            >
+              WAVE
+            </h2>
           </header>
           <p class="text-justify mb-4">
-            O avaliador WAVE foi usado para inspecionar a página em busca de erros de acessibilidade,
-            como imagens sem alt ou estruturas de cabeçalho inconsistentes; as correções foram
-            aplicadas conforme indicado. Os relatórios mostraram apenas alguns avisos
-            iniciais que foram rapidamente resolvidos, melhorando a qualidade do código.
+            O avaliador WAVE foi usado para inspecionar a página em busca de erros de
+            acessibilidade, como imagens sem alt ou estruturas de cabeçalho inconsistentes. As
+            correções foram aplicadas conforme indicado. Os relatórios mostraram apenas alguns
+            avisos iniciais que foram rapidamente resolvidos, melhorando a qualidade do código.
           </p>
           <p class="mb-2">
             Link:
             <a href="https://wave.webaim.org/" target="_blank" class="text-blue-600 underline"
-              >https://wave.webaim.org/</a>
-
+              >https://wave.webaim.org/</a
+            >
           </p>
         </article>
       </div>
@@ -77,7 +89,9 @@
       id="SectionEstudos"
       class="px-6 my-10 border-4 border-black bg-white shadow-[6px_6px_0_0_rgba(0,0,0,1)] p-6"
     >
-      <h2 class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-6">Estudos e Referências</h2>
+      <h2 class="text-2xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-6">
+        Estudos e Referências
+      </h2>
       <ul class="list-disc list-inside space-y-3">
         <li>
           <a

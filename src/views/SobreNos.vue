@@ -8,7 +8,6 @@
       </header>
 
       <div class="grid gap-8">
-        <!-- bg-yellow-300 p-6 border-4 border-black mt-6 p-4 my-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] -->
         <section class="bg-gray-50 border-4 border-black p-8 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
           <h2
             class="text-3xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-4 uppercase border-l-8 border-blue-600 pl-4">
@@ -61,46 +60,45 @@
           </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-black">
+        <dl class="grid grid-cols-1 md:grid-cols-3 gap-8 text-black">
           <div class="border-4 border-black p-4 text-center bg-gray-50 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
-            <p class="text-[10px] font-black uppercase opacity-60">Instituição</p>
-            <p class="font-black text-lg uppercase tracking-tighter">IFF Itaperuna</p>
+            <dt class="text-[10px] font-black uppercase opacity-60">Instituição</dt>
+            <dd class="font-black text-lg uppercase tracking-tighter">IFF Itaperuna</dd>
           </div>
           <div class="border-4 border-black p-4 text-center bg-gray-50 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
-            <p class="text-[10px] font-black uppercase opacity-60">Curso</p>
-            <p class="font-black text-lg uppercase tracking-tighter">Sistemas de Inf.</p>
+            <dt class="text-[10px] font-black uppercase opacity-60">Curso</dt>
+            <dd class="font-black text-lg uppercase tracking-tighter">Sistemas de Informação</dd>
           </div>
           <div class="border-4 border-black p-4 text-center bg-gray-50 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
-            <p class="text-[10px] font-black uppercase opacity-60">Disciplina</p>
-            <p class="font-black text-lg uppercase tracking-tighter">IHC</p>
+            <dt class="text-[10px] font-black uppercase opacity-60">Disciplina</dt>
+            <dd class="font-black text-lg uppercase tracking-tighter">Interface Homem-Máquina</dd>
           </div>
-        </div>
+        </dl>
 
         <section class="border-4 border-black p-6 text-center bg-gray-50 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
-          <h2
-            class="text-[10px] font-black uppercase opacity-60">
+          <h2 class="text-[10px] font-black uppercase opacity-60">
             Integrantes
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
-            <div class="py-2">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Matheus Lopes Couto Neves</p>
-            </div>
-            <div class="py-2">
+            </li>
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Bruno Apolinário da Silva</p>
-            </div>
-            <div class="py-2">
+            </li>
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Luiz Phelippe S. A. de M. e Souza</p>
-            </div>
-            <div class="py-2">
+            </li>
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Gabriel de Souza Almeida</p>
-            </div>
-            <div class="py-2">
+            </li>
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Danilo Batista Reilly</p>
-            </div>
-            <div class="py-2">
+            </li>
+            <li class="py-2">
               <p class="font-black text-base uppercase tracking-tighter">Rafael Carvalho Pinheiro</p>
-            </div>
-          </div>
+            </li>
+          </ul>
         </section>
       </div>
     </div>

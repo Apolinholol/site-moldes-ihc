@@ -1766,6 +1766,9 @@ function alterarPagina(index: number) {
   if (eTelaMobile.value && props.menuAberto) {
     emit('toggle-menu')
   }
+  nextTick(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  })
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-yellow-300 text-black px-8 py-8 border-black border-t-3 border-black">
+  <footer class="bg-yellow-300 text-black px-4 sm:px-8 py-8 border-t-3 border-black">
     <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-8">
         <div>
           <h4 class="font-black text-lg mb-3">NAVEGAÇÃO</h4>
           <ul class="space-y-2 font-bold">
@@ -14,7 +14,7 @@
           <h4 class="font-black text-lg mb-3">INSTITUIÇÃO</h4>
           <p class="font-bold text-sm">Instituto Federal Fluminense -<br />Campus Itaperuna<br />Disciplina IHC</p>
         </div>
-        <div>
+        <div class="sm:col-span-2 md:col-span-1">
           <h4 class="font-black text-lg mb-3">PROFESSORA</h4>
           <p class="font-bold text-sm"><a
               href="https://integra.iff.edu.br/portfolio/pessoas/michelle-maria-freitas-neto/linux" target="_blank"

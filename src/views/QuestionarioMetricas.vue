@@ -95,7 +95,7 @@
               </span>
             </div>
 
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <p class="text-xs text-slate-600 font-medium">Desempenho</p>
                 <p class="text-2xl font-bold text-slate-900">

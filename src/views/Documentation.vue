@@ -1577,7 +1577,7 @@
                 anunciará a nova mensagem assim que ela aparecer na tela, sem mover o foco do usuário.
               </p>
               <ExemploPreview tipo="solucao" class="p-2 text-xs text-gray-600 font-mono">
-                <p>&lt;div aria-live="polite"&gt;{{ mensagemDeStatus }}&lt;/div&gt;</p>
+                <p role="alert" class="text-sm text-green-600">Salvo com sucesso!</p>
               </ExemploPreview>
             </ExemploSolucao>
           </ExemploCard>

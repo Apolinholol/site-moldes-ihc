@@ -125,7 +125,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { supabase } from '@/utils/supabaseClient'
+
+const router = useRouter()
 
 const props = defineProps<{
   aberto: boolean
@@ -144,7 +147,7 @@ interface Pergunta {
 
 const perguntas = ref<Pergunta[]>([
   {
-    pergunta: 'Qual é o problema com o botão "Entrar" no header?',
+    pergunta: 'Qual é o problema com o botão "Entrar" no topo da página?',
     tipo: 'multipla',
     opcoes: [
       'Tem cor muito chamativa',
@@ -155,7 +158,7 @@ const perguntas = ref<Pergunta[]>([
     resposta_correta: 'O hover é imperceptível (mudança de cor muito fraca)',
   },
   {
-    pergunta: 'Observe os parágrafos da hero section. O espaçamento entre eles é consistente?',
+    pergunta: 'Observe os textos principais da página. O espaçamento entre eles é consistente?',
     tipo: 'verdadeiro-falso',
     resposta_correta: 'Falso',
   },
@@ -176,7 +179,7 @@ const perguntas = ref<Pergunta[]>([
     resposta_correta: 'Há inconsistência nos tamanhos de fonte dos títulos',
   },
   {
-    pergunta: 'Os dois botões na hero section ("Começar Grátis" e "Ver Demo") têm estilos visuais facilmente distinguíveis?',
+    pergunta: 'Os dois botões principais ("Começar Grátis" e "Ver Demo") têm estilos visuais facilmente distinguíveis?',
     tipo: 'verdadeiro-falso',
     resposta_correta: 'Falso',
   },
@@ -241,6 +244,7 @@ const enviarFormulario = async () => {
 
     const dadosParaEnvio = {
       data: new Date().toISOString(),
+      pratica: 1,
       total_perguntas: totalSteps.value,
       respostas_corretas: respostasCorretas,
       pontos: pontos,
@@ -260,10 +264,9 @@ const enviarFormulario = async () => {
       console.error('Erro:', error)
       alert('Erro ao enviar!')
     } else {
-      const mensagem = `✅ Quiz enviado!\n\nAcertos: ${respostasCorretas}/5\nPontos: ${pontos}`
-      alert(mensagem)
       resetarFormulario()
       emit('fechar')
+      router.push('/pratica/2')
     }
   } catch (err) {
     console.error('Erro:', err)

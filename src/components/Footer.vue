@@ -8,6 +8,7 @@
             <li><a href="/" class="hover:text-yellow-700 transition">Home</a></li>
             <li><a href="/documentacao" class="hover:text-yellow-700 transition">Documentação</a></li>
             <li><a href="/sobre-nos" class="hover:text-yellow-700 transition">Sobre Nós</a></li>
+            <li><a href="/metricas" class="hover:text-yellow-700 transition">Métricas</a></li>
           </ul>
         </div>
         <div>

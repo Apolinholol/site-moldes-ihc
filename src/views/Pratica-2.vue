@@ -111,10 +111,21 @@ import { RouterLink, useRouter } from 'vue-router';
 import { Target, Home } from 'lucide-vue-next';
 import { supabase } from '@/utils/supabaseClient';
 
+interface MenuItem {
+  nome: string;
+  preco: string;
+  descricao: string;
+  imagem: string;
+}
+
+interface MenuCategories {
+  [key: string]: MenuItem[];
+}
+
 const router = useRouter();
 
 // --- DADOS DO CARDÁPIO ---
-const menu = {
+const menu: MenuCategories = {
   principais: [
     {
       nome: 'Filé de Salmão',
@@ -272,7 +283,8 @@ const finalizarQuiz = async () => {
 
   let finalScore = 0;
   respostas.value.forEach((resposta, index) => {
-    if (resposta === perguntas.value[index].resposta_correta) { finalScore++; }
+    const pergunta = perguntas.value[index]
+    if (pergunta && resposta === pergunta.resposta_correta) { finalScore++; }
   });
   score.value = finalScore;
   quizFinished.value = true;

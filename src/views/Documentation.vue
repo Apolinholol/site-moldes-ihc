@@ -296,7 +296,7 @@
               </p>
               <ExemploPreview tipo="erro" class="p-3 text-sm space-y-2">
                 <div v-for="i in 3" :key="'h7err' + i" class="flex items-center gap-2">
-                  <label class="text-xs text-gray-500 w-20 shrink-0">Aluno {{ i }}:</label>
+                  <label class="text-xs text-gray-500 w-20">Aluno {{ i }}:</label>
                   <span class="border border-gray-300 w-full p-1 text-gray-300 rounded bg-gray-50 text-xs">Nome do
                     aluno</span>
                   <button
@@ -314,7 +314,7 @@
               </p>
               <ExemploPreview tipo="solucao" class="p-3 text-sm space-y-2">
                 <div v-for="(_, i) in 3" :key="i" class="flex items-center gap-2">
-                  <label class="text-xs text-gray-500 w-20 shrink-0">Aluno {{ i + 1 }}:</label>
+                  <label class="text-xs text-gray-500 w-20">Aluno {{ i + 1 }}:</label>
                   <input :ref="(el) => { h7Refs[i] = el as HTMLInputElement | null }" v-model="state.h7Notas[i]"
                     type="text" :placeholder="i < 2 ? 'Digite a nota e pressione TAB' : 'Digite a nota e pressione TAB'"
                     @keydown="(e) => h7TabHandler(e, i)"

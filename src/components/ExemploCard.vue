@@ -1,10 +1,11 @@
 <template>
   <div class="mb-10 border-4 border-black shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
     <div class="bg-yellow-50 p-3 border-b-3 border-black">
-      <h3 class="text-xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-2 uppercase tracking-wide">{{ titulo }}</h3>
-      <p v-if="descricao" class="text-base text-gray-800 m-0 font-medium">{{ descricao }}</p>
-      <p v-else-if="$slots.descricao" class="text-sm text-gray-800 m-0 font-medium">
+      <h3 class="text-xl font-black text-black leading-tight w-fit fascinate-inline-regular mb-2 uppercase">{{ titulo }}</h3>
+      <p v-if="descricao" class="merriweather-body text-lg text-gray-800 leading-relaxed">{{ descricao }}</p>
+      <p v-else-if="$slots.descricao" class="merriweather-body text-lg text-gray-800 leading-relaxed">
         <slot name="descricao" />
+        <!--  text-blue-800  -->
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2">

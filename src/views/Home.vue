@@ -47,7 +47,7 @@
                 </h2>
               </div>
 
-              <div class="merriweather-body text-2xl bg-gray-100 p-6 border-t-4 border-black leading-relaxed">
+              <div class="merriweather-body text-2xl bg-gray-50 p-6 border-t-4 border-black leading-relaxed">
                 Responsável por definir o quanto uma interface é
                 intuitiva e funcional para quem a utiliza.
                 Ela mede a facilidade de aprendizado, a rapidez
@@ -64,7 +64,7 @@
                 </h2>
               </div>
 
-              <div class="merriweather-body text-2xl bg-gray-100 p-6 border-t-4 border-black leading-relaxed">
+              <div class="merriweather-body text-2xl bg-gray-50 p-6 border-t-4 border-black leading-relaxed">
                 Refere-se à capacidade de o sistema transmitir ao usuário, de forma clara, o conceito de design, as
                 funcionalidades e a intenção do projetista (ou seja, "conversar" com o usuário através da interface).
               </div>
@@ -80,7 +80,7 @@
                 </h2>
               </div>
 
-              <div class="merriweather-body text-2xl bg-gray-100 p-6 border-t-4 border-black leading-relaxed">
+              <div class="merriweather-body text-2xl bg-gray-50 p-6 border-t-4 border-black leading-relaxed">
                 Garante que qualquer pessoa consiga usar o sistema,
                 independentemente de suas capacidades físicas
                 ou cognitivas. Ela busca eliminar
@@ -99,7 +99,7 @@
                 </h2>
               </div>
 
-              <div class="merriweather-body text-2xl bg-gray-100 p-6 border-t-4 border-black leading-relaxed">
+              <div class="merriweather-body text-2xl bg-gray-50 p-6 border-t-4 border-black leading-relaxed">
                 Refere-se a percepção subjetiva e emocional de uma pessoa ao interagir com um produto ou serviço. Ela
                 foca em tornar essa jornada útil, fácil de usar e agradável, garantindo que o usuário sinta satisfação
                 e valor real durante todo o contato com a marca.
@@ -119,38 +119,38 @@
 
           <div class="grid md:grid-cols-2 gap-6">
             <div
-              class="bg-gray-100 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+              class="bg-gray-50 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
               <h4
                 class="flex justify-center text-2xl mb-2 font-black text-black leading-tight w-fit fascinate-inline-regular tracking-wide">
                 15% da população...</h4>
-              <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+              <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
                 Tem algum tipo de deficiência que afeta a interação com tecnologia.
               </p>
             </div>
             <div
-              class="bg-gray-100 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+              class="bg-gray-50 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
               <h4
                 class="flex justify-center text-2xl mb-2 font-black text-black leading-tight w-fit fascinate-inline-regular tracking-wide">
                 40% de aumento...</h4>
-              <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+              <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
                 Em engajamento quando interfaces são bem projetadas.
               </p>
             </div>
             <div
-              class="bg-gray-100 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+              class="bg-gray-50 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
               <h4
                 class="flex justify-center text-2xl mb-2 font-black text-black leading-tight w-fit fascinate-inline-regular tracking-wide">
                 75% dos usuários...</h4>
-              <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+              <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
                 Abandonam sites se a experiência de usuário é ruim.
               </p>
             </div>
             <div
-              class="bg-gray-100 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
+              class="bg-gray-50 border-4 border-black p-6 transform hover:scale-103 transition shadow-[6px_6px_0_0_rgba(0,0,0,0.85)]">
               <h4
                 class="flex justify-center text-2xl mb-2 font-black text-black leading-tight w-fit fascinate-inline-regular tracking-wide">
                 3x mais confiança...</h4>
-              <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+              <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
                 Em empresas com interfaces acessíveis e bem pensadas.
               </p>
             </div>
@@ -169,13 +169,13 @@
 
         <div class="grid md:grid-cols-2 gap-6">
           <div
-            class="bg-gray-100 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
+            class="bg-gray-50 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
               <h3
                 class="flex text-2xl font-black text-yellow-300 uppercase leading-tight w-full fascinate-inline-regular tracking-wide">
                 W3C</h3>
             </div>
-            <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+            <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
               World Wide Web Consortium é a organização internacional responsável por estabelecer os padrões web,
               garantindo que a internet seja acessível e funcional para todos os usuários, independentemente de suas
               capacidades.
@@ -183,13 +183,13 @@
           </div>
 
           <div
-            class="bg-gray-100 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
+            class="bg-gray-50 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
               <h3
                 class="flex text-2xl font-black text-yellow-300 uppercase leading-tight w-full fascinate-inline-regular tracking-wide">
                 WCAG</h3>
             </div>
-            <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+            <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
               Web Content Accessibility Guidelines são diretrizes técnicas criadas pela W3C que definem como tornar
               conteúdo web acessível a pessoas com deficiências, promovendo uma experiência inclusiva e igualitária para
               todos.
@@ -197,13 +197,13 @@
           </div>
 
           <div
-            class="bg-gray-100 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
+            class="bg-gray-50 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
               <h3
                 class="flex text-2xl font-black text-yellow-300 uppercase leading-tight w-full fascinate-inline-regular tracking-wide">
                 Heurísticas de Nielsen</h3>
             </div>
-            <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+            <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
               As 10 Heurísticas de Nielsen são princípios de UI/UX criados
               por Jakob Nielsen e Rolf Molich para melhorar a usabilidade,
               garantindo sistemas intuitivos, eficientes e consistentes,
@@ -211,13 +211,13 @@
             </p>
           </div>
           <div
-            class="bg-gray-100 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
+            class="bg-gray-50 border-4 border-black p-6 shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] transform hover:scale-103 transition">
             <div class="bg-black px-4 py-3 border-b-4 border-black mb-4">
               <h3
                 class="flex text-2xl font-black text-yellow-300 uppercase leading-tight w-full fascinate-inline-regular tracking-wide">
                 Affordance</h3>
             </div>
-            <p class="merriweather-body text-2xl bg-gray-100 leading-relaxed">
+            <p class="merriweather-body text-2xl bg-gray-50 leading-relaxed">
               É a propriedade de um objeto ou ambiente que indica,
               intuitivamente, como ele pode ser usado, permitindo que
               o usuário compreenda sua funcionalidade sem instruções.
